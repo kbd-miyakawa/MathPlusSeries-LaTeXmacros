@@ -1,7 +1,8 @@
-/OCR-data
 *.aux
 *.log
 *.dvi
 *.toc
 *.tex
-!main.tex
+*.gz
+!MathPlus-sample.tex
+
