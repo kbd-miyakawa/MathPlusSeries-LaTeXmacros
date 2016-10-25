@@ -4,5 +4,6 @@
 *.toc
 *.tex
 *.gz
+Archive/
 !MathPlus-sample.tex
 
