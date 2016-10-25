@@ -1,5 +1,5 @@
 %% MathPlus series Macro set by miyakawa.
-
+\ProvidesPackage{macrosMP}[2016/10/26 beta1]
 %% otf packageが読まれ，かつ[deluxe]が指定されているかをチェックして，
 %% trueならば，\bfseriesを再定義
 \newif\if@otf@d@chack
@@ -22,13 +22,12 @@
 \DeclareRobustCommand{\KozukaG}{\kanjifamily{\gtdefault}\kanjiseries{m}%
 \romanfamily{\sfdefault}\romanseries{bx}\selectfont}
 
-% command: for 游ゴシック
+% command: for 游ゴシックM（従属にHelvetica）
 \DeclareRobustCommand{\yugothM}{\not@math@alphabet\yugothM\relax
  \kanjifamily{\gtdefault}\kanjiseries{bx}\romanfamily{phv}\romanseries{m}\selectfont}
+% command: for 游ゴシックL（従属にCMbright）
 \DeclareRobustCommand{\yugothL}{\not@math@alphabet\yugothL\relax
  \kanjifamily{\gtdefault}\ebseries\romanfamily{cmbr}\romanseries{m}\selectfont}
-
-
 
 
 % chapter, section , subsectionの共通shade
@@ -113,8 +112,6 @@
 \advance\kb@Chaptertextwidth by-\kb@Chapter@shadebox@width
 \advance\kb@Chaptertextwidth by-\kb@Chaptertexsep
 
-
-
 \def\@makechapterhead#1{{\parindent\z@%
 \toplinebox{8}{\vskip2\normalbaselineskip%
    \KBchapternumfont
@@ -181,11 +178,12 @@
 \def\@make@section@head#1#2#3{%
 \bgroup
        \noindent#2\hskip#1\relax
+       % amsmath.styとの相性からbox0をbox3へ変更 *this is todo!
        \setbox3\hbox{\hskip1mm\textcolor{white}{\@svsec}\hskip1mm}%
        \@tempdima\linewidth\advance\@tempdima-\wd\z@
        \advance\@tempdima-#1\relax
        \setbox\tw@\hbox{#3}%
-       \dp3\z@{\raisebox{.4mm}{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\vfil\copy3\vfil}$}}}\hskip.5zw% ここが\thesectionの出力
+       \dp3\z@{\raisebox{.4mm}{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\vfil\copy3\vfil}$}}}\hskip.5zw% \thesection output!
           \ifdim\wd\tw@>\@tempdima%% タイトルが折り返す場合
                \vtop{\hsize=\@tempdima\@parboxrestore\unhbox\tw@\@@par}
                \par\noindent
