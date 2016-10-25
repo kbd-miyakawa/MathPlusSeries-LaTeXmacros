@@ -1,0 +1,1065 @@
+%\ProvidesFile{ly1lmdh.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ly1lmr.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ly1lmss.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ly1lmssq.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ly1lmtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ly1lmvtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{omllmm.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{omllmr.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{omslmr.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{omslmsy.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{omxlmex.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ot1lmdh.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ot1lmr.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ot1lmss.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ot1lmssq.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ot1lmtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ot1lmvtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{t1lmdh.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{t1lmr.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{t1lmss.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{t1lmssq.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{t1lmtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{t1lmvtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ts1lmdh.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ts1lmr.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ts1lmss.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ts1lmssq.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ts1lmtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+%\ProvidesFile{ts1lmvtt.fd}[2009/10/30 v1.6 Font defs for Latin Modern]
+
+
+\makeatletter
+\@ifclassloaded{kbdbook6a}{}{\endinput}
+\DeclareFontFamily{LY1}{lmdh}{}
+\DeclareFontShape{LY1}{lmdh}{m}{n}
+     {<-> [\@jescale] texnansi-lmdunh10}{}
+\DeclareFontShape{LY1}{lmdh}{m}{it}
+     {<->sub*lmdh/m/sl}{}
+\DeclareFontShape{LY1}{lmdh}{m}{sl}
+     {<-> [\@jescale] texnansi-lmduno10}{}
+
+\DeclareFontFamily{LY1}{lmr}{}
+\DeclareFontShape{LY1}{lmr}{m}{n}%
+     {<-5.5> [\@jescale]    texnansi-lmr5     <5.5-6.5> [\@jescale] texnansi-lmr6
+      <6.5-7.5> [\@jescale] texnansi-lmr7     <7.5-8.5> [\@jescale] texnansi-lmr8
+      <8.5-9.5> [\@jescale] texnansi-lmr9     <9.5-11> [\@jescale]  texnansi-lmr10
+      <11-15> [\@jescale]   texnansi-lmr12
+      <15-> [\@jescale] texnansi-lmr17
+      }{}
+\DeclareFontShape{LY1}{lmr}{m}{sl}%
+     {<-8.5> [\@jescale]    texnansi-lmro8    <8.5-9.5> [\@jescale] texnansi-lmro9
+      <9.5-11> [\@jescale]  texnansi-lmro10   <11-15> [\@jescale]   texnansi-lmro12
+      <15-> [\@jescale] texnansi-lmro17
+      }{}
+\DeclareFontShape{LY1}{lmr}{m}{it}%
+     {<-7.5> [\@jescale]    texnansi-lmri7
+      <7.5-8.5> [\@jescale] texnansi-lmri8    <8.5-9.5> [\@jescale] texnansi-lmri9
+      <9.5-11> [\@jescale]  texnansi-lmri10   <11-> [\@jescale]   texnansi-lmri12
+      }{}
+\DeclareFontShape{LY1}{lmr}{m}{sc}%
+     {<-> [\@jescale] [\@jescale] texnansi-lmcsc10}{}
+\DeclareFontShape{LY1}{lmr}{m}{ui}%
+     {<-> [\@jescale] [\@jescale] texnansi-lmu10}{}
+%
+% Is this the right 'shape'?:
+\DeclareFontShape{LY1}{lmr}{m}{scsl}%
+     {<-> [\@jescale] texnansi-lmcsco10}{}
+%%%%%%% bold series
+\DeclareFontShape{LY1}{lmr}{b}{n}
+     {<-> [\@jescale] texnansi-lmb10}{}
+\DeclareFontShape{LY1}{lmr}{b}{sl}
+     {<-> [\@jescale] texnansi-lmbo10}{}
+%%%%%%% bold extended series
+\DeclareFontShape{LY1}{lmr}{bx}{n}
+     {<-5.5> [\@jescale]   texnansi-lmbx5      <5.5-6.5> [\@jescale] texnansi-lmbx6
+      <6.5-7.5> [\@jescale] texnansi-lmbx7      <7.5-8.5> [\@jescale] texnansi-lmbx8
+      <8.5-9.5> [\@jescale] texnansi-lmbx9      <9.5-11> [\@jescale]  texnansi-lmbx10
+      <11-> [\@jescale]   texnansi-lmbx12
+      }{}
+\DeclareFontShape{LY1}{lmr}{bx}{it}
+     {<-> [\@jescale] texnansi-lmbxi10}{}
+\DeclareFontShape{LY1}{lmr}{bx}{sl}
+     {<-> [\@jescale] texnansi-lmbxo10}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{LY1}{lmr}{b}{it}
+     {<->sub * lmr/b/sl}{}
+
+\DeclareFontFamily{LY1}{lmss}{}
+\DeclareFontShape{LY1}{lmss}{m}{n}
+     {<-8.5> [\@jescale] texnansi-lmss8
+      <8.5-9.5> [\@jescale] texnansi-lmss9      <9.5-11> [\@jescale]  texnansi-lmss10
+      <11-15.5> [\@jescale] texnansi-lmss12     <15.5-> [\@jescale] texnansi-lmss17
+      }{}
+\DeclareFontShape{LY1}{lmss}{m}{it}
+      {<->ssub*lmss/m/sl}{}
+\DeclareFontShape{LY1}{lmss}{m}{sl}
+     {<-8.5> [\@jescale] texnansi-lmsso8
+      <8.5-9.5> [\@jescale] texnansi-lmsso9      <9.5-11> [\@jescale]  texnansi-lmsso10
+      <11-15.5> [\@jescale] texnansi-lmsso12     <15.5-> [\@jescale] texnansi-lmsso17
+      }{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{LY1}{lmss}{m}{sc}
+     {<->sub*lmr/m/sc}{}
+\DeclareFontShape{LY1}{lmss}{b}{n}
+     {<->ssub * lmss/bx/n}{}
+\DeclareFontShape{LY1}{lmss}{b}{sl}
+     {<->ssub * lmss/bx/sl}{}
+\DeclareFontShape{LY1}{lmss}{b}{it}
+     {<->ssub * lmss/bx/it}{}
+%%%%%%%% semibold condensed series
+\DeclareFontShape{LY1}{lmss}{sbc}{n}
+     {<-> [\@jescale] texnansi-lmssdc10}{}
+\DeclareFontShape{LY1}{lmss}{sbc}{sl}
+     {<-> [\@jescale] texnansi-lmssdo10}{}
+\DeclareFontShape{LY1}{lmss}{sbc}{it}
+     {<->ssub*lmss/sbc/sl}{}
+%%%%%%%%% bold extended series
+\DeclareFontShape{LY1}{lmss}{bx}{n}
+     {<-> [\@jescale] texnansi-lmssbx10}{}
+\DeclareFontShape{LY1}{lmss}{bx}{sl}
+     {<-> [\@jescale] texnansi-lmssbo10}{}
+\DeclareFontShape{LY1}{lmss}{bx}{it}
+     {<->ssub*lmss/bx/sl}{}
+
+\DeclareFontFamily{LY1}{lmssq}{}
+\DeclareFontShape{LY1}{lmssq}{m}{n}
+     {<-> [\@jescale] texnansi-lmssq8}{}
+\DeclareFontShape{LY1}{lmssq}{m}{sl}
+     {<-> [\@jescale] texnansi-lmssqo8}{}
+\DeclareFontShape{LY1}{lmssq}{bx}{n}
+     {<-> [\@jescale] texnansi-lmssqbx8}{}
+\DeclareFontShape{LY1}{lmssq}{bx}{sl}
+     {<-> [\@jescale] texnansi-lmssqbo8}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{LY1}{lmssq}{m}{it}
+     {<->ssub*lmssq/m/sl}{}
+\DeclareFontShape{LY1}{lmssq}{bx}{it}
+     {<->ssub*lmssq/bx/sl}{}
+\DeclareFontShape{LY1}{lmssq}{b}{n}
+     {<->ssub * lmssq/bx/n}{}
+\DeclareFontShape{LY1}{lmssq}{b}{sl}
+     {<->ssub * lmssq/bx/sl}{}
+\DeclareFontShape{LY1}{lmssq}{b}{it}
+     {<->ssub * lmssq/bx/it}{}
+\DeclareFontFamily{LY1}{lmtt}{\hyphenchar \font\m@ne}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{LY1}{lmtt}{sb}{n}
+     {<-8.5> [\@jescale]   texnansi-lmtt8     <8.5-9.5> [\@jescale] texnansi-lmtt9
+      <9.5-11> [\@jescale] texnansi-lmtt10    <11-> [\@jescale]     texnansi-lmtt12
+      }{}
+\DeclareFontShape{LY1}{lmtt}{sb}{it}
+     {<-> [\@jescale] texnansi-lmtti10}{}
+\DeclareFontShape{LY1}{lmtt}{sb}{sl}
+     {<-> [\@jescale] texnansi-lmtto10}{}
+\DeclareFontShape{LY1}{lmtt}{sb}{sc}
+     {<-> [\@jescale] texnansi-lmtcsc10}{}
+\DeclareFontShape{LY1}{lmtt}{sb}{scsl}
+     {<-> [\@jescale] texnansi-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{LY1}{lmtt}{m}{n}
+     {<-> [\@jescale] texnansi-lmtl10}{}
+\DeclareFontShape{LY1}{lmtt}{m}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{LY1}{lmtt}{m}{sl}
+     {<-> [\@jescale] texnansi-lmtlo10}{}
+\DeclareFontShape{LY1}{lmtt}{c}{n}
+     {<-> [\@jescale] texnansi-lmtlc10}{}
+\DeclareFontShape{LY1}{lmtt}{c}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{LY1}{lmtt}{c}{sl}
+     {<-> [\@jescale] texnansi-lmtlco10}{}
+\else
+% usual setup of variants:
+\DeclareFontShape{LY1}{lmtt}{m}{n}
+     {<-8.5> [\@jescale]   texnansi-lmtt8     <8.5-9.5> [\@jescale] texnansi-lmtt9
+      <9.5-11> [\@jescale] texnansi-lmtt10    <11-> [\@jescale]     texnansi-lmtt12
+      }{}
+\DeclareFontShape{LY1}{lmtt}{m}{it}
+     {<-> [\@jescale] texnansi-lmtti10}{}
+\DeclareFontShape{LY1}{lmtt}{m}{sl}
+     {<-> [\@jescale] texnansi-lmtto10}{}
+\DeclareFontShape{LY1}{lmtt}{m}{sc}
+     {<-> [\@jescale] texnansi-lmtcsc10}{}
+\DeclareFontShape{LY1}{lmtt}{m}{scsl}
+     {<-> [\@jescale] texnansi-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{LY1}{lmtt}{l}{n}
+     {<-> [\@jescale] texnansi-lmtl10}{}
+\DeclareFontShape{LY1}{lmtt}{l}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{LY1}{lmtt}{l}{sl}
+     {<-> [\@jescale] texnansi-lmtlo10}{}
+\DeclareFontShape{LY1}{lmtt}{lc}{n}
+     {<-> [\@jescale] texnansi-lmtlc10}{}
+\DeclareFontShape{LY1}{lmtt}{lc}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{LY1}{lmtt}{lc}{sl}
+     {<-> [\@jescale] texnansi-lmtlco10}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{LY1}{lmtt}{b}{n}
+     {<-> [\@jescale] texnansi-lmtk10}{}
+\DeclareFontShape{LY1}{lmtt}{b}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{LY1}{lmtt}{b}{sl}
+{<-> [\@jescale] texnansi-lmtko10}{}
+\DeclareFontShape{LY1}{lmtt}{bx}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{LY1}{lmtt}{bx}{n}
+     {<->ssub*lmtt/b/n}{}
+\DeclareFontShape{LY1}{lmtt}{bx}{sl}
+     {<->ssub*lmtt/b/sl}{}
+
+\DeclareFontFamily{LY1}{lmvtt}{}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{LY1}{lmvtt}{sb}{n}
+     {<-> [\@jescale] texnansi-lmvtt10}{}
+\DeclareFontShape{LY1}{lmvtt}{sb}{sl}
+     {<-> [\@jescale] texnansi-lmvtto10}{}
+\DeclareFontShape{LY1}{lmvtt}{sb}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{LY1}{lmvtt}{m}{n}
+     {<-> [\@jescale] texnansi-lmvtl10}{}
+\DeclareFontShape{LY1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] texnansi-lmvtlo10}{}
+\DeclareFontShape{LY1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/l/sl}{}
+
+\else
+% usual setup of variants:
+\DeclareFontShape{LY1}{lmvtt}{m}{n}
+     {<-> [\@jescale] texnansi-lmvtt10}{}
+\DeclareFontShape{LY1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] texnansi-lmvtto10}{}
+\DeclareFontShape{LY1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{LY1}{lmvtt}{l}{n}
+     {<-> [\@jescale] texnansi-lmvtl10}{}
+\DeclareFontShape{LY1}{lmvtt}{l}{sl}
+     {<-> [\@jescale] texnansi-lmvtlo10}{}
+\DeclareFontShape{LY1}{lmvtt}{l}{it}
+     {<->sub*lmvtt/l/sl}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{LY1}{lmvtt}{b}{n}
+     {<-> [\@jescale] texnansi-lmvtk10}{}
+\DeclareFontShape{LY1}{lmvtt}{b}{sl}
+     {<-> [\@jescale] texnansi-lmvtko10}{}
+\DeclareFontShape{LY1}{lmvtt}{b}{it}
+     {<->sub*lmvtt/b/sl}{}
+\DeclareFontShape{LY1}{lmvtt}{bx}{n}
+     {<->ssub*lmvtt/b/n}{}
+\DeclareFontShape{LY1}{lmvtt}{bx}{sl}
+     {<->ssub*lmvtt/b/sl}{}
+\DeclareFontShape{LY1}{lmvtt}{bx}{it}
+     {<->sub*lmvtt/b/sl}{}
+%%
+%% End of file `ly1lmvtt.fd'.
+% This file belongs to the Latin Modern package. The work is released
+% under the GUST Font License. See the MANIFEST-Latin-Modern.txt and
+% README-Latin-Modern.txt files for the details. For the most recent version of
+% this license see http://www.gust.org.pl/fonts/licenses/GUST-FONT-LICENSE.txt
+% or http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt
+
+
+\DeclareFontFamily{OML}{lmm}{\skewchar\font127 }
+\DeclareFontShape{OML}{lmm}{m}{it}%
+     {<-5.5> [\@jescale]    lmmi5     <5.5-6.5> [\@jescale] lmmi6
+      <6.5-7.5> [\@jescale] lmmi7     <7.5-8.5> [\@jescale] lmmi8
+      <8.5-9.5> [\@jescale] lmmi9     <9.5-11> [\@jescale]  lmmi10
+      <11-> [\@jescale]   lmmi12
+      }{}
+\DeclareFontShape{OML}{lmm}{b}{it}{%
+       <-6> [\@jescale] lmmib5     
+      <6-8> [\@jescale] lmmib7     
+      <8-> [\@jescale]  lmmib10
+      }{}
+\DeclareFontShape{OML}{lmm}{bx}{it}%
+     {<->ssub*lmm/b/it}{}
+%%
+%% End of file `omllmm.fd'.
+% This file belongs to the Latin Modern package. The work is released
+% under the GUST Font License. See the MANIFEST-Latin-Modern.txt and
+% README-Latin-Modern.txt files for the details. For the most recent version of
+% this license see http://www.gust.org.pl/fonts/licenses/GUST-FONT-LICENSE.txt
+% or http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt
+
+
+\DeclareFontFamily{OML}{lmr}{\skewchar\font127 }
+\DeclareFontShape{OML}{lmr}{m}{n}%
+     {<->ssub*lmm/m/it}{}
+\DeclareFontShape{OML}{lmr}{m}{it}%
+     {<->ssub*lmm/m/it}{}
+\DeclareFontShape{OML}{lmr}{m}{sl}%
+     {<->ssub*lmm/m/it}{}
+\DeclareFontShape{OML}{lmr}{m}{sc}%
+     {<->ssub*lmm/m/it}{}
+\DeclareFontShape{OML}{lmr}{bx}{n}%
+     {<->ssub*lmm/b/it}{}
+\DeclareFontShape{OML}{lmr}{bx}{it}%
+     {<->ssub*lmm/b/it}{}
+\DeclareFontShape{OML}{lmr}{bx}{sl}%
+     {<->ssub*lmm/b/it}{}
+\DeclareFontShape{OML}{lmr}{bx}{sc}%
+     {<->ssub*lmm/b/it}{}
+%%
+%% End of file `omllmr.fd'.
+% This file belongs to the Latin Modern package. The work is released
+% under the GUST Font License. See the MANIFEST-Latin-Modern.txt and
+% README-Latin-Modern.txt files for the details. For the most recent version of
+% this license see http://www.gust.org.pl/fonts/licenses/GUST-FONT-LICENSE.txt
+% or http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt
+
+
+\DeclareFontFamily{OMS}{lmr}{\skewchar\font48 }
+\DeclareFontShape{OMS}{lmr}{m}{n}%
+     {<->ssub*lmsy/m/n}{}
+\DeclareFontShape{OMS}{lmr}{m}{it}%
+     {<->ssub*lmsy/m/n}{}
+\DeclareFontShape{OMS}{lmr}{m}{sl}%
+     {<->ssub*lmsy/m/n}{}
+\DeclareFontShape{OMS}{lmr}{m}{sc}%
+     {<->ssub*lmsy/m/n}{}
+\DeclareFontShape{OMS}{lmr}{bx}{n}%
+     {<->ssub*lmsy/b/n}{}
+\DeclareFontShape{OMS}{lmr}{bx}{it}%
+     {<->ssub*lmsy/b/n}{}
+\DeclareFontShape{OMS}{lmr}{bx}{sl}%
+     {<->ssub*lmsy/b/n}{}
+\DeclareFontShape{OMS}{lmr}{bx}{sc}%
+     {<->ssub*lmsy/b/n}{}
+%%
+%% End of file `omslmr.fd'.
+% This file belongs to the Latin Modern package. The work is released
+% under the GUST Font License. See the MANIFEST-Latin-Modern.txt and
+% README-Latin-Modern.txt files for the details. For the most recent version of
+% this license see http://www.gust.org.pl/fonts/licenses/GUST-FONT-LICENSE.txt
+% or http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt
+
+
+\DeclareFontFamily{OMS}{lmsy}{\skewchar\font48 }
+\DeclareFontShape{OMS}{lmsy}{m}{n}{%
+         <-5.5> [\@jescale] lmsy5     <5.5-6.5> [\@jescale] lmsy6
+      <6.5-7.5> [\@jescale] lmsy7     <7.5-8.5> [\@jescale] lmsy8
+      <8.5-9.5> [\@jescale] lmsy9     <9.5-> [\@jescale]  lmsy10
+      }{}
+\DeclareFontShape{OMS}{lmsy}{b}{n}{%
+       <-6> [\@jescale] lmbsy5     
+      <6-8> [\@jescale] lmbsy7     
+      <8-> [\@jescale]  lmbsy10
+      }{}
+
+
+\DeclareFontFamily{OMX}{lmex}{}
+\DeclareFontShape{OMX}{lmex}{m}{n}{%
+   <->sfixed*lmex10%
+   }{}
+
+\DeclareFontFamily{OT1}{lmdh}{}
+\DeclareFontShape{OT1}{lmdh}{m}{n}
+     {<-> [\@jescale] rm-lmdunh10}{}
+\DeclareFontShape{OT1}{lmdh}{m}{it}
+     {<->sub*lmdh/m/sl}{}
+\DeclareFontShape{OT1}{lmdh}{m}{sl}
+     {<-> [\@jescale] rm-lmduno10}{}
+
+\DeclareFontFamily{OT1}{lmr}{}
+\DeclareFontShape{OT1}{lmr}{m}{n}%
+     {<-5.5> [\@jescale]    rm-lmr5     <5.5-6.5> [\@jescale] rm-lmr6
+      <6.5-7.5> [\@jescale] rm-lmr7     <7.5-8.5> [\@jescale] rm-lmr8
+      <8.5-9.5> [\@jescale] rm-lmr9     <9.5-11> [\@jescale]  rm-lmr10
+      <11-15> [\@jescale]   rm-lmr12
+      <15-> [\@jescale] rm-lmr17
+      }{}
+\DeclareFontShape{OT1}{lmr}{m}{sl}%
+     {<-8.5> [\@jescale]    rm-lmro8    <8.5-9.5> [\@jescale] rm-lmro9
+      <9.5-11> [\@jescale]  rm-lmro10   <11-15> [\@jescale]   rm-lmro12
+      <15-> [\@jescale] rm-lmro17
+      }{}
+\DeclareFontShape{OT1}{lmr}{m}{it}%
+     {<-7.5> [\@jescale]    rm-lmri7
+      <7.5-8.5> [\@jescale] rm-lmri8    <8.5-9.5> [\@jescale] rm-lmri9
+      <9.5-11> [\@jescale]  rm-lmri10   <11-> [\@jescale]   rm-lmri12
+      }{}
+\DeclareFontShape{OT1}{lmr}{m}{sc}%
+     {<-> [\@jescale] rm-lmcsc10}{}
+\DeclareFontShape{OT1}{lmr}{m}{ui}%
+     {<-> [\@jescale] rm-lmu10}{}
+%
+% Is this the right 'shape'?:
+\DeclareFontShape{OT1}{lmr}{m}{scsl}%
+     {<-> [\@jescale] rm-lmcsco10}{}
+%%%%%%% bold series
+\DeclareFontShape{OT1}{lmr}{b}{n}
+     {<-> [\@jescale] rm-lmb10}{}
+\DeclareFontShape{OT1}{lmr}{b}{sl}
+     {<-> [\@jescale] rm-lmbo10}{}
+%%%%%%% bold extended series
+\DeclareFontShape{OT1}{lmr}{bx}{n}
+     {<-5.5> [\@jescale]   rm-lmbx5      <5.5-6.5> [\@jescale] rm-lmbx6
+      <6.5-7.5> [\@jescale] rm-lmbx7      <7.5-8.5> [\@jescale] rm-lmbx8
+      <8.5-9.5> [\@jescale] rm-lmbx9      <9.5-11> [\@jescale]  rm-lmbx10
+      <11-> [\@jescale]   rm-lmbx12
+      }{}
+\DeclareFontShape{OT1}{lmr}{bx}{it}
+     {<-> [\@jescale] rm-lmbxi10}{}
+\DeclareFontShape{OT1}{lmr}{bx}{sl}
+     {<-> [\@jescale] rm-lmbxo10}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{OT1}{lmr}{b}{it}
+     {<->sub * lmr/b/sl}{}
+
+\DeclareFontFamily{OT1}{lmss}{}
+\DeclareFontShape{OT1}{lmss}{m}{n}
+     {<-8.5> [\@jescale] rm-lmss8
+      <8.5-9.5> [\@jescale] rm-lmss9      <9.5-11> [\@jescale]  rm-lmss10
+      <11-15.5> [\@jescale] rm-lmss12     <15.5-> [\@jescale] rm-lmss17
+      }{}
+\DeclareFontShape{OT1}{lmss}{m}{it}
+      {<->ssub*lmss/m/sl}{}
+\DeclareFontShape{OT1}{lmss}{m}{sl}
+     {<-8.5> [\@jescale] rm-lmsso8
+      <8.5-9.5> [\@jescale] rm-lmsso9      <9.5-11> [\@jescale]  rm-lmsso10
+      <11-15.5> [\@jescale] rm-lmsso12     <15.5-> [\@jescale] rm-lmsso17
+      }{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{OT1}{lmss}{m}{sc}
+     {<->sub*lmr/m/sc}{}
+\DeclareFontShape{OT1}{lmss}{b}{n}
+     {<->ssub * lmss/bx/n}{}
+\DeclareFontShape{OT1}{lmss}{b}{sl}
+     {<->ssub * lmss/bx/sl}{}
+\DeclareFontShape{OT1}{lmss}{b}{it}
+     {<->ssub * lmss/bx/it}{}
+%%%%%%%% semibold condensed series
+\DeclareFontShape{OT1}{lmss}{sbc}{n}
+     {<-> [\@jescale] rm-lmssdc10}{}
+\DeclareFontShape{OT1}{lmss}{sbc}{sl}
+     {<-> [\@jescale] rm-lmssdo10}{}
+\DeclareFontShape{OT1}{lmss}{sbc}{it}
+     {<->ssub*lmss/sbc/sl}{}
+%%%%%%%%% bold extended series
+\DeclareFontShape{OT1}{lmss}{bx}{n}
+     {<-> [\@jescale] rm-lmssbx10}{}
+\DeclareFontShape{OT1}{lmss}{bx}{sl}
+     {<-> [\@jescale] rm-lmssbo10}{}
+\DeclareFontShape{OT1}{lmss}{bx}{it}
+     {<->ssub*lmss/bx/sl}{}
+
+\DeclareFontFamily{OT1}{lmssq}{}
+\DeclareFontShape{OT1}{lmssq}{m}{n}
+     {<-> [\@jescale] rm-lmssq8}{}
+\DeclareFontShape{OT1}{lmssq}{m}{sl}
+     {<-> [\@jescale] rm-lmssqo8}{}
+\DeclareFontShape{OT1}{lmssq}{bx}{n}
+     {<-> [\@jescale] rm-lmssqbx8}{}
+\DeclareFontShape{OT1}{lmssq}{bx}{sl}
+     {<-> [\@jescale] rm-lmssqbo8}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{OT1}{lmssq}{m}{it}
+     {<->ssub*lmssq/m/sl}{}
+\DeclareFontShape{OT1}{lmssq}{bx}{it}
+     {<->ssub*lmssq/bx/sl}{}
+\DeclareFontShape{OT1}{lmssq}{b}{n}
+     {<->ssub * lmssq/bx/n}{}
+\DeclareFontShape{OT1}{lmssq}{b}{sl}
+     {<->ssub * lmssq/bx/sl}{}
+\DeclareFontShape{OT1}{lmssq}{b}{it}
+     {<->ssub * lmssq/bx/it}{}
+
+\DeclareFontFamily{OT1}{lmtt}{\hyphenchar \font\m@ne}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{OT1}{lmtt}{sb}{n}
+     {<-8.5> [\tt@face@scale]  rm-lmtt8     <8.5-9.5> [\tt@face@scale] rm-lmtt9
+      <9.5-11> [\tt@face@scale] rm-lmtt10    <11->  [\tt@face@scale]   rm-lmtt12
+      }{}
+\DeclareFontShape{OT1}{lmtt}{sb}{it}
+     {<-> [\tt@face@scale] rm-lmtti10}{}
+\DeclareFontShape{OT1}{lmtt}{sb}{sl}
+     {<-> [\tt@face@scale] rm-lmtto10}{}
+\DeclareFontShape{OT1}{lmtt}{sb}{sc}
+     {<-> [\tt@face@scale] rm-lmtcsc10}{}
+\DeclareFontShape{OT1}{lmtt}{sb}{scsl}
+     {<-> [\tt@face@scale] rm-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{OT1}{lmtt}{m}{n}
+     {<-> [\tt@face@scale] rm-lmtl10}{}
+\DeclareFontShape{OT1}{lmtt}{m}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{OT1}{lmtt}{m}{sl}
+     {<-> [\tt@face@scale] rm-lmtlo10}{}
+\DeclareFontShape{OT1}{lmtt}{c}{n}
+     {<-> [\tt@face@scale] rm-lmtlc10}{}
+\DeclareFontShape{OT1}{lmtt}{c}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{OT1}{lmtt}{c}{sl}
+     {<-> [\tt@face@scale] rm-lmtlco10}{}
+\else
+% usual setup of variants:
+\DeclareFontShape{OT1}{lmtt}{m}{n}
+     {<-8.5> [\tt@face@scale]  rm-lmtt8     <8.5-9.5>  [\tt@face@scale]rm-lmtt9
+      <9.5-11> [\tt@face@scale] rm-lmtt10    <11->  [\tt@face@scale]   rm-lmtt12
+      }{}
+\DeclareFontShape{OT1}{lmtt}{m}{it}
+     {<-> [\tt@face@scale] rm-lmtti10}{}
+\DeclareFontShape{OT1}{lmtt}{m}{sl}
+     {<-> [\tt@face@scale] rm-lmtto10}{}
+\DeclareFontShape{OT1}{lmtt}{m}{sc}
+     {<-> [\tt@face@scale] rm-lmtcsc10}{}
+\DeclareFontShape{OT1}{lmtt}{m}{scsl}
+     {<-> [\tt@face@scale] rm-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{OT1}{lmtt}{l}{n}
+     {<-> [\tt@face@scale] rm-lmtl10}{}
+\DeclareFontShape{OT1}{lmtt}{l}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{OT1}{lmtt}{l}{sl}
+     {<-> [\tt@face@scale] rm-lmtlo10}{}
+\DeclareFontShape{OT1}{lmtt}{lc}{n}
+     {<-> [\tt@face@scale] rm-lmtlc10}{}
+\DeclareFontShape{OT1}{lmtt}{lc}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{OT1}{lmtt}{lc}{sl}
+     {<-> [\tt@face@scale] rm-lmtlco10}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{OT1}{lmtt}{b}{n}
+     {<-> [\tt@face@scale] rm-lmtk10}{}
+\DeclareFontShape{OT1}{lmtt}{b}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{OT1}{lmtt}{b}{sl}
+{<-> [\tt@face@scale] rm-lmtko10}{}
+\DeclareFontShape{OT1}{lmtt}{bx}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{OT1}{lmtt}{bx}{n}
+     {<->ssub*lmtt/b/n}{}
+\DeclareFontShape{OT1}{lmtt}{bx}{sl}
+     {<->ssub*lmtt/b/sl}{}
+
+\DeclareFontFamily{OT1}{lmvtt}{}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{OT1}{lmvtt}{sb}{n}
+     {<-> [\@jescale] rm-lmvtt10}{}
+\DeclareFontShape{OT1}{lmvtt}{sb}{sl}
+     {<-> [\@jescale] rm-lmvtto10}{}
+\DeclareFontShape{OT1}{lmvtt}{sb}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{OT1}{lmvtt}{m}{n}
+     {<-> [\@jescale] rm-lmvtl10}{}
+\DeclareFontShape{OT1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] rm-lmvtlo10}{}
+\DeclareFontShape{OT1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/l/sl}{}
+
+\else
+% usual setup of variants:
+\DeclareFontShape{OT1}{lmvtt}{m}{n}
+     {<-> [\@jescale] rm-lmvtt10}{}
+\DeclareFontShape{OT1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] rm-lmvtto10}{}
+\DeclareFontShape{OT1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{OT1}{lmvtt}{l}{n}
+     {<-> [\@jescale] rm-lmvtl10}{}
+\DeclareFontShape{OT1}{lmvtt}{l}{sl}
+     {<-> [\@jescale] rm-lmvtlo10}{}
+\DeclareFontShape{OT1}{lmvtt}{l}{it}
+     {<->sub*lmvtt/l/sl}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{OT1}{lmvtt}{b}{n}
+     {<-> [\@jescale] rm-lmvtk10}{}
+\DeclareFontShape{OT1}{lmvtt}{b}{sl}
+     {<-> [\@jescale] rm-lmvtko10}{}
+\DeclareFontShape{OT1}{lmvtt}{b}{it}
+     {<->sub*lmvtt/b/sl}{}
+\DeclareFontShape{OT1}{lmvtt}{bx}{n}
+     {<->ssub*lmvtt/b/n}{}
+\DeclareFontShape{OT1}{lmvtt}{bx}{sl}
+     {<->ssub*lmvtt/b/sl}{}
+\DeclareFontShape{OT1}{lmvtt}{bx}{it}
+     {<->sub*lmvtt/b/sl}{}
+
+\DeclareFontFamily{T1}{lmdh}{}
+\DeclareFontShape{T1}{lmdh}{m}{n}
+     {<-> [\@jescale] ec-lmdunh10}{}
+\DeclareFontShape{T1}{lmdh}{m}{it}
+     {<->sub*lmdh/m/sl}{}
+\DeclareFontShape{T1}{lmdh}{m}{sl}
+     {<-> [\@jescale] ec-lmduno10}{}
+
+\DeclareFontFamily{T1}{lmr}{}
+\DeclareFontShape{T1}{lmr}{m}{n}%
+     {<-5.5> [\@jescale]    ec-lmr5     <5.5-6.5> [\@jescale] ec-lmr6
+      <6.5-7.5> [\@jescale] ec-lmr7     <7.5-8.5> [\@jescale] ec-lmr8
+      <8.5-9.5> [\@jescale] ec-lmr9     <9.5-11> [\@jescale]  ec-lmr10
+      <11-15> [\@jescale]   ec-lmr12
+      <15-> [\@jescale] ec-lmr17
+      }{}
+\DeclareFontShape{T1}{lmr}{m}{sl}%
+     {<-8.5> [\@jescale]    ec-lmro8    <8.5-9.5> [\@jescale] ec-lmro9
+      <9.5-11> [\@jescale]  ec-lmro10   <11-15> [\@jescale]   ec-lmro12
+      <15-> [\@jescale] ec-lmro17
+      }{}
+\DeclareFontShape{T1}{lmr}{m}{it}%
+     {<-7.5> [\@jescale]    ec-lmri7
+      <7.5-8.5> [\@jescale] ec-lmri8    <8.5-9.5> [\@jescale] ec-lmri9
+      <9.5-11> [\@jescale]  ec-lmri10   <11-> [\@jescale]   ec-lmri12
+      }{}
+\DeclareFontShape{T1}{lmr}{m}{sc}%
+     {<-> [\@jescale] ec-lmcsc10}{}
+\DeclareFontShape{T1}{lmr}{m}{ui}%
+     {<-> [\@jescale] ec-lmu10}{}
+%
+% Is this the right 'shape'?:
+\DeclareFontShape{T1}{lmr}{m}{scsl}%
+     {<-> [\@jescale] ec-lmcsco10}{}
+%%%%%%% bold series
+\DeclareFontShape{T1}{lmr}{b}{n}
+     {<-> [\@jescale] ec-lmb10}{}
+\DeclareFontShape{T1}{lmr}{b}{sl}
+     {<-> [\@jescale] ec-lmbo10}{}
+%%%%%%% bold extended series
+\DeclareFontShape{T1}{lmr}{bx}{n}
+     {<-5.5> [\@jescale]   ec-lmbx5      <5.5-6.5> [\@jescale] ec-lmbx6
+      <6.5-7.5> [\@jescale] ec-lmbx7      <7.5-8.5> [\@jescale] ec-lmbx8
+      <8.5-9.5> [\@jescale] ec-lmbx9      <9.5-11> [\@jescale]  ec-lmbx10
+      <11-> [\@jescale]   ec-lmbx12
+      }{}
+\DeclareFontShape{T1}{lmr}{bx}{it}
+     {<-> [\@jescale] ec-lmbxi10}{}
+\DeclareFontShape{T1}{lmr}{bx}{sl}
+     {<-> [\@jescale] ec-lmbxo10}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{T1}{lmr}{b}{it}
+     {<->sub * lmr/b/sl}{}
+
+\DeclareFontFamily{T1}{lmss}{}
+\DeclareFontShape{T1}{lmss}{m}{n}
+     {<-8.5> [\@jescale] ec-lmss8
+      <8.5-9.5> [\@jescale] ec-lmss9      <9.5-11> [\@jescale]  ec-lmss10
+      <11-15.5> [\@jescale] ec-lmss12     <15.5-> [\@jescale] ec-lmss17
+      }{}
+\DeclareFontShape{T1}{lmss}{m}{it}
+      {<->ssub*lmss/m/sl}{}
+\DeclareFontShape{T1}{lmss}{m}{sl}
+     {<-8.5> [\@jescale] ec-lmsso8
+      <8.5-9.5> [\@jescale] ec-lmsso9      <9.5-11> [\@jescale]  ec-lmsso10
+      <11-15.5> [\@jescale] ec-lmsso12     <15.5-> [\@jescale] ec-lmsso17
+      }{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{T1}{lmss}{m}{sc}
+     {<->sub*lmr/m/sc}{}
+\DeclareFontShape{T1}{lmss}{b}{n}
+     {<->ssub * lmss/bx/n}{}
+\DeclareFontShape{T1}{lmss}{b}{sl}
+     {<->ssub * lmss/bx/sl}{}
+\DeclareFontShape{T1}{lmss}{b}{it}
+     {<->ssub * lmss/bx/it}{}
+%%%%%%%% semibold condensed series
+\DeclareFontShape{T1}{lmss}{sbc}{n}
+     {<-> [\@jescale] [\@jescale] ec-lmssdc10}{}
+\DeclareFontShape{T1}{lmss}{sbc}{sl}
+     {<-> [\@jescale] ec-lmssdo10}{}
+\DeclareFontShape{T1}{lmss}{sbc}{it}
+     {<->ssub*lmss/sbc/sl}{}
+%%%%%%%%% bold extended series
+\DeclareFontShape{T1}{lmss}{bx}{n}
+     {<-> [\@jescale] ec-lmssbx10}{}
+\DeclareFontShape{T1}{lmss}{bx}{sl}
+     {<-> [\@jescale] ec-lmssbo10}{}
+\DeclareFontShape{T1}{lmss}{bx}{it}
+     {<->ssub*lmss/bx/sl}{}
+
+\DeclareFontFamily{T1}{lmssq}{}
+\DeclareFontShape{T1}{lmssq}{m}{n}
+     {<-> [\@jescale] ec-lmssq8}{}
+\DeclareFontShape{T1}{lmssq}{m}{sl}
+     {<-> [\@jescale] ec-lmssqo8}{}
+\DeclareFontShape{T1}{lmssq}{bx}{n}
+     {<-> [\@jescale] ec-lmssqbx8}{}
+\DeclareFontShape{T1}{lmssq}{bx}{sl}
+     {<-> [\@jescale] ec-lmssqbo8}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{T1}{lmssq}{m}{it}
+     {<->ssub*lmssq/m/sl}{}
+\DeclareFontShape{T1}{lmssq}{bx}{it}
+     {<->ssub*lmssq/bx/sl}{}
+\DeclareFontShape{T1}{lmssq}{b}{n}
+     {<->ssub * lmssq/bx/n}{}
+\DeclareFontShape{T1}{lmssq}{b}{sl}
+     {<->ssub * lmssq/bx/sl}{}
+\DeclareFontShape{T1}{lmssq}{b}{it}
+     {<->ssub * lmssq/bx/it}{}
+
+\DeclareFontFamily{T1}{lmtt}{\hyphenchar \font\m@ne}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{T1}{lmtt}{sb}{n}
+     {<-8.5> [\tt@face@scale]  ec-lmtt8     <8.5-9.5> [\tt@face@scale] ec-lmtt9
+      <9.5-11> [\tt@face@scale] ec-lmtt10    <11->  [\tt@face@scale]   ec-lmtt12
+      }{}
+\DeclareFontShape{T1}{lmtt}{sb}{it}
+     {<-> [\tt@face@scale] ec-lmtti10}{}
+\DeclareFontShape{T1}{lmtt}{sb}{sl}
+     {<-> [\tt@face@scale] ec-lmtto10}{}
+\DeclareFontShape{T1}{lmtt}{sb}{sc}
+     {<-> [\tt@face@scale] ec-lmtcsc10}{}
+\DeclareFontShape{T1}{lmtt}{sb}{scsl}
+     {<-> [\tt@face@scale] ec-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{T1}{lmtt}{m}{n}
+     {<-> [\tt@face@scale] ec-lmtl10}{}
+\DeclareFontShape{T1}{lmtt}{m}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{T1}{lmtt}{m}{sl}
+     {<-> [\tt@face@scale] ec-lmtlo10}{}
+\DeclareFontShape{T1}{lmtt}{c}{n}
+     {<-> [\tt@face@scale] ec-lmtlc10}{}
+\DeclareFontShape{T1}{lmtt}{c}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{T1}{lmtt}{c}{sl}
+     {<-> [\tt@face@scale] ec-lmtlco10}{}
+\else
+% usual setup of variants:
+\DeclareFontShape{T1}{lmtt}{m}{n}
+     {<-8.5> [\tt@face@scale]  ec-lmtt8     <8.5-9.5> [\tt@face@scale] ec-lmtt9
+      <9.5-11> [\tt@face@scale] ec-lmtt10    <11->  [\tt@face@scale]   ec-lmtt12
+      }{}
+\DeclareFontShape{T1}{lmtt}{m}{it}
+     {<-> [\tt@face@scale] ec-lmtti10}{}
+\DeclareFontShape{T1}{lmtt}{m}{sl}
+     {<-> [\tt@face@scale] ec-lmtto10}{}
+\DeclareFontShape{T1}{lmtt}{m}{sc}
+     {<-> [\tt@face@scale] ec-lmtcsc10}{}
+\DeclareFontShape{T1}{lmtt}{m}{scsl}
+     {<-> [\tt@face@scale] ec-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{T1}{lmtt}{l}{n}
+     {<-> [\tt@face@scale] ec-lmtl10}{}
+\DeclareFontShape{T1}{lmtt}{l}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{T1}{lmtt}{l}{sl}
+     {<-> [\tt@face@scale] ec-lmtlo10}{}
+\DeclareFontShape{T1}{lmtt}{lc}{n}
+     {<-> [\tt@face@scale] ec-lmtlc10}{}
+\DeclareFontShape{T1}{lmtt}{lc}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{T1}{lmtt}{lc}{sl}
+     {<-> [\tt@face@scale] ec-lmtlco10}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{T1}{lmtt}{b}{n}
+     {<-> [\tt@face@scale] ec-lmtk10}{}
+\DeclareFontShape{T1}{lmtt}{b}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{T1}{lmtt}{b}{sl}
+{<-> [\tt@face@scale] ec-lmtko10}{}
+\DeclareFontShape{T1}{lmtt}{bx}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{T1}{lmtt}{bx}{n}
+     {<->ssub*lmtt/b/n}{}
+\DeclareFontShape{T1}{lmtt}{bx}{sl}
+     {<->ssub*lmtt/b/sl}{}
+
+\DeclareFontFamily{T1}{lmvtt}{}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{T1}{lmvtt}{sb}{n}
+     {<-> [\@jescale] ec-lmvtt10}{}
+\DeclareFontShape{T1}{lmvtt}{sb}{sl}
+     {<-> [\@jescale] ec-lmvtto10}{}
+\DeclareFontShape{T1}{lmvtt}{sb}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{T1}{lmvtt}{m}{n}
+     {<-> [\@jescale] ec-lmvtl10}{}
+\DeclareFontShape{T1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] ec-lmvtlo10}{}
+\DeclareFontShape{T1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/l/sl}{}
+
+\else
+% usual setup of variants:
+\DeclareFontShape{T1}{lmvtt}{m}{n}
+     {<-> [\@jescale] ec-lmvtt10}{}
+\DeclareFontShape{T1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] ec-lmvtto10}{}
+\DeclareFontShape{T1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{T1}{lmvtt}{l}{n}
+     {<-> [\@jescale] ec-lmvtl10}{}
+\DeclareFontShape{T1}{lmvtt}{l}{sl}
+     {<-> [\@jescale] ec-lmvtlo10}{}
+\DeclareFontShape{T1}{lmvtt}{l}{it}
+     {<->sub*lmvtt/l/sl}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{T1}{lmvtt}{b}{n}
+     {<-> [\@jescale] ec-lmvtk10}{}
+\DeclareFontShape{T1}{lmvtt}{b}{sl}
+     {<-> [\@jescale] ec-lmvtko10}{}
+\DeclareFontShape{T1}{lmvtt}{b}{it}
+     {<->sub*lmvtt/b/sl}{}
+\DeclareFontShape{T1}{lmvtt}{bx}{n}
+     {<->ssub*lmvtt/b/n}{}
+\DeclareFontShape{T1}{lmvtt}{bx}{sl}
+     {<->ssub*lmvtt/b/sl}{}
+\DeclareFontShape{T1}{lmvtt}{bx}{it}
+     {<->sub*lmvtt/b/sl}{}
+
+\DeclareFontFamily{TS1}{lmdh}{}
+\DeclareFontShape{TS1}{lmdh}{m}{n}
+     {<-> [\@jescale] ts1-lmdunh10}{}
+\DeclareFontShape{TS1}{lmdh}{m}{it}
+     {<->sub*lmdh/m/sl}{}
+\DeclareFontShape{TS1}{lmdh}{m}{sl}
+     {<-> [\@jescale] ts1-lmduno10}{}
+
+\DeclareFontFamily{TS1}{lmr}{}
+\DeclareFontShape{TS1}{lmr}{m}{n}%
+     {<-5.5> [\@jescale]    ts1-lmr5     <5.5-6.5> [\@jescale] ts1-lmr6
+      <6.5-7.5> [\@jescale] ts1-lmr7     <7.5-8.5> [\@jescale] ts1-lmr8
+      <8.5-9.5> [\@jescale] ts1-lmr9     <9.5-11> [\@jescale]  ts1-lmr10
+      <11-15> [\@jescale]   ts1-lmr12
+      <15-> [\@jescale] ts1-lmr17
+      }{}
+\DeclareFontShape{TS1}{lmr}{m}{sl}%
+     {<-8.5> [\@jescale]    ts1-lmro8    <8.5-9.5> [\@jescale] ts1-lmro9
+      <9.5-11> [\@jescale]  ts1-lmro10   <11-15> [\@jescale]   ts1-lmro12
+      <15-> [\@jescale] ts1-lmro17
+      }{}
+\DeclareFontShape{TS1}{lmr}{m}{it}%
+     {<-7.5> [\@jescale]    ts1-lmri7
+      <7.5-8.5> [\@jescale] ts1-lmri8    <8.5-9.5> [\@jescale] ts1-lmri9
+      <9.5-11> [\@jescale]  ts1-lmri10   <11-> [\@jescale]   ts1-lmri12
+      }{}
+\DeclareFontShape{TS1}{lmr}{m}{sc}%
+     {<-> [\@jescale] ts1-lmcsc10}{}
+\DeclareFontShape{TS1}{lmr}{m}{ui}%
+     {<-> [\@jescale] ts1-lmu10}{}
+%
+% Is this the right 'shape'?:
+\DeclareFontShape{TS1}{lmr}{m}{scsl}%
+     {<-> [\@jescale] ts1-lmcsco10}{}
+%%%%%%% bold series
+\DeclareFontShape{TS1}{lmr}{b}{n}
+     {<-> [\@jescale] ts1-lmb10}{}
+\DeclareFontShape{TS1}{lmr}{b}{sl}
+     {<-> [\@jescale] ts1-lmbo10}{}
+%%%%%%% bold extended series
+\DeclareFontShape{TS1}{lmr}{bx}{n}
+     {<-5.5> [\@jescale]   ts1-lmbx5      <5.5-6.5> [\@jescale] ts1-lmbx6
+      <6.5-7.5> [\@jescale] ts1-lmbx7      <7.5-8.5> [\@jescale] ts1-lmbx8
+      <8.5-9.5> [\@jescale] ts1-lmbx9      <9.5-11> [\@jescale]  ts1-lmbx10
+      <11-> [\@jescale]   ts1-lmbx12
+      }{}
+\DeclareFontShape{TS1}{lmr}{bx}{it}
+     {<-> [\@jescale] ts1-lmbxi10}{}
+\DeclareFontShape{TS1}{lmr}{bx}{sl}
+     {<-> [\@jescale] ts1-lmbxo10}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{TS1}{lmr}{b}{it}
+     {<->sub * lmr/b/sl}{}
+
+\DeclareFontFamily{TS1}{lmss}{}
+\DeclareFontShape{TS1}{lmss}{m}{n}
+     {<-8.5> [\@jescale] ts1-lmss8
+      <8.5-9.5> [\@jescale] ts1-lmss9      <9.5-11> [\@jescale]  ts1-lmss10
+      <11-15.5> [\@jescale] ts1-lmss12     <15.5-> [\@jescale] ts1-lmss17
+      }{}
+\DeclareFontShape{TS1}{lmss}{m}{it}
+      {<->ssub*lmss/m/sl}{}
+\DeclareFontShape{TS1}{lmss}{m}{sl}
+     {<-8.5> [\@jescale] ts1-lmsso8
+      <8.5-9.5> [\@jescale] ts1-lmsso9      <9.5-11> [\@jescale]  ts1-lmsso10
+      <11-15.5> [\@jescale] ts1-lmsso12     <15.5-> [\@jescale] ts1-lmsso17
+      }{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{TS1}{lmss}{m}{sc}
+     {<->sub*lmr/m/sc}{}
+\DeclareFontShape{TS1}{lmss}{b}{n}
+     {<->ssub * lmss/bx/n}{}
+\DeclareFontShape{TS1}{lmss}{b}{sl}
+     {<->ssub * lmss/bx/sl}{}
+\DeclareFontShape{TS1}{lmss}{b}{it}
+     {<->ssub * lmss/bx/it}{}
+%%%%%%%% semibold condensed series
+\DeclareFontShape{TS1}{lmss}{sbc}{n}
+     {<-> [\@jescale] ts1-lmssdc10}{}
+\DeclareFontShape{TS1}{lmss}{sbc}{sl}
+     {<-> [\@jescale] ts1-lmssdo10}{}
+\DeclareFontShape{TS1}{lmss}{sbc}{it}
+     {<->ssub*lmss/sbc/sl}{}
+%%%%%%%%% bold extended series
+\DeclareFontShape{TS1}{lmss}{bx}{n}
+     {<-> [\@jescale] ts1-lmssbx10}{}
+\DeclareFontShape{TS1}{lmss}{bx}{sl}
+     {<-> [\@jescale] ts1-lmssbo10}{}
+\DeclareFontShape{TS1}{lmss}{bx}{it}
+     {<->ssub*lmss/bx/sl}{}
+
+\DeclareFontFamily{TS1}{lmssq}{}
+\DeclareFontShape{TS1}{lmssq}{m}{n}
+     {<-> [\@jescale] ts1-lmssq8}{}
+\DeclareFontShape{TS1}{lmssq}{m}{sl}
+     {<-> [\@jescale] ts1-lmssqo8}{}
+\DeclareFontShape{TS1}{lmssq}{bx}{n}
+     {<-> [\@jescale] ts1-lmssqbx8}{}
+\DeclareFontShape{TS1}{lmssq}{bx}{sl}
+     {<-> [\@jescale] ts1-lmssqbo8}{}
+%%%%%%% Font/shape undefined, therefore substituted
+\DeclareFontShape{TS1}{lmssq}{m}{it}
+     {<->ssub*lmssq/m/sl}{}
+\DeclareFontShape{TS1}{lmssq}{bx}{it}
+     {<->ssub*lmssq/bx/sl}{}
+\DeclareFontShape{TS1}{lmssq}{b}{n}
+     {<->ssub * lmssq/bx/n}{}
+\DeclareFontShape{TS1}{lmssq}{b}{sl}
+     {<->ssub * lmssq/bx/sl}{}
+\DeclareFontShape{TS1}{lmssq}{b}{it}
+     {<->ssub * lmssq/bx/it}{}
+
+\DeclareFontFamily{TS1}{lmtt}{\hyphenchar \font\m@ne}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{TS1}{lmtt}{sb}{n}
+     {<-8.5> [\tt@face@scale]   ts1-lmtt8     <8.5-9.5> [\tt@face@scale] ts1-lmtt9
+      <9.5-11> [\tt@face@scale] ts1-lmtt10    <11-> [\tt@face@scale]     ts1-lmtt12
+      }{}
+\DeclareFontShape{TS1}{lmtt}{sb}{it}
+     {<-> [\tt@face@scale] ts1-lmtti10}{}
+\DeclareFontShape{TS1}{lmtt}{sb}{sl}
+     {<-> [\tt@face@scale] ts1-lmtto10}{}
+\DeclareFontShape{TS1}{lmtt}{sb}{sc}
+     {<-> [\tt@face@scale] ts1-lmtcsc10}{}
+\DeclareFontShape{TS1}{lmtt}{sb}{scsl}
+     {<-> [\tt@face@scale] ts1-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{TS1}{lmtt}{m}{n}
+     {<-> [\tt@face@scale] ts1-lmtl10}{}
+\DeclareFontShape{TS1}{lmtt}{m}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{TS1}{lmtt}{m}{sl}
+     {<-> [\tt@face@scale] ts1-lmtlo10}{}
+\DeclareFontShape{TS1}{lmtt}{c}{n}
+     {<-> [\tt@face@scale] ts1-lmtlc10}{}
+\DeclareFontShape{TS1}{lmtt}{c}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{TS1}{lmtt}{c}{sl}
+     {<-> [\tt@face@scale] ts1-lmtlco10}{}
+\else
+% usual setup of variants:
+\DeclareFontShape{TS1}{lmtt}{m}{n}
+     {<-8.5> [\tt@face@scale]   ts1-lmtt8     <8.5-9.5> [\tt@face@scale] ts1-lmtt9
+      <9.5-11> [\tt@face@scale] ts1-lmtt10    <11-> [\tt@face@scale]     ts1-lmtt12
+      }{}
+\DeclareFontShape{TS1}{lmtt}{m}{it}
+     {<-> [\tt@face@scale] ts1-lmtti10}{}
+\DeclareFontShape{TS1}{lmtt}{m}{sl}
+     {<-> [\tt@face@scale] ts1-lmtto10}{}
+\DeclareFontShape{TS1}{lmtt}{m}{sc}
+     {<-> [\tt@face@scale] ts1-lmtcsc10}{}
+\DeclareFontShape{TS1}{lmtt}{m}{scsl}
+     {<-> [\tt@face@scale] ts1-lmtcso10}{}
+%%%%%%%% light (l), light condensed (lc), and dark (b) variants:
+\DeclareFontShape{TS1}{lmtt}{l}{n}
+     {<-> [\tt@face@scale] ts1-lmtl10}{}
+\DeclareFontShape{TS1}{lmtt}{l}{it}
+     {<->sub*lmtt/l/sl}{}
+\DeclareFontShape{TS1}{lmtt}{l}{sl}
+     {<-> [\tt@face@scale] ts1-lmtlo10}{}
+\DeclareFontShape{TS1}{lmtt}{lc}{n}
+     {<-> [\tt@face@scale] ts1-lmtlc10}{}
+\DeclareFontShape{TS1}{lmtt}{lc}{it}
+     {<->sub*lmtt/lc/sl}{}
+\DeclareFontShape{TS1}{lmtt}{lc}{sl}
+     {<-> [\tt@face@scale] ts1-lmtlco10}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{TS1}{lmtt}{b}{n}
+     {<-> [\tt@face@scale] ts1-lmtk10}{}
+\DeclareFontShape{TS1}{lmtt}{b}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{TS1}{lmtt}{b}{sl}
+{<-> [\tt@face@scale] ts1-lmtko10}{}
+\DeclareFontShape{TS1}{lmtt}{bx}{it}
+     {<->sub*lmtt/b/sl}{}
+\DeclareFontShape{TS1}{lmtt}{bx}{n}
+     {<->ssub*lmtt/b/n}{}
+\DeclareFontShape{TS1}{lmtt}{bx}{sl}
+     {<->ssub*lmtt/b/sl}{}
+
+\DeclareFontFamily{TS1}{lmvtt}{}
+
+\ifx\lmtt@use@light@as@normal\@empty
+% macro defined, so we use the light variant as medium (m), and
+% medium as semi-bold (sb):
+\DeclareFontShape{TS1}{lmvtt}{sb}{n}
+     {<-> [\@jescale] ts1-lmvtt10}{}
+\DeclareFontShape{TS1}{lmvtt}{sb}{sl}
+     {<-> [\@jescale] ts1-lmvtto10}{}
+\DeclareFontShape{TS1}{lmvtt}{sb}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{TS1}{lmvtt}{m}{n}
+     {<-> [\@jescale] ts1-lmvtl10}{}
+\DeclareFontShape{TS1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] ts1-lmvtlo10}{}
+\DeclareFontShape{TS1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/l/sl}{}
+
+\else
+% usual setup of variants:
+\DeclareFontShape{TS1}{lmvtt}{m}{n}
+     {<-> [\@jescale] ts1-lmvtt10}{}
+\DeclareFontShape{TS1}{lmvtt}{m}{sl}
+     {<-> [\@jescale] ts1-lmvtto10}{}
+\DeclareFontShape{TS1}{lmvtt}{m}{it}
+     {<->sub*lmvtt/m/sl}{}
+%%%%%%%% light (l) and dark (b) variants:
+\DeclareFontShape{TS1}{lmvtt}{l}{n}
+     {<-> [\@jescale] ts1-lmvtl10}{}
+\DeclareFontShape{TS1}{lmvtt}{l}{sl}
+     {<-> [\@jescale] ts1-lmvtlo10}{}
+\DeclareFontShape{TS1}{lmvtt}{l}{it}
+     {<->sub*lmvtt/l/sl}{}
+\fi
+% bold is always bold (b):
+\DeclareFontShape{TS1}{lmvtt}{b}{n}
+     {<-> [\@jescale] ts1-lmvtk10}{}
+\DeclareFontShape{TS1}{lmvtt}{b}{sl}
+     {<-> [\@jescale] ts1-lmvtko10}{}
+\DeclareFontShape{TS1}{lmvtt}{b}{it}
+     {<->sub*lmvtt/b/sl}{}
+\DeclareFontShape{TS1}{lmvtt}{bx}{n}
+     {<->ssub*lmvtt/b/n}{}
+\DeclareFontShape{TS1}{lmvtt}{bx}{sl}
+     {<->ssub*lmvtt/b/sl}{}
+\DeclareFontShape{TS1}{lmvtt}{bx}{it}
+     {<->sub*lmvtt/b/sl}{}
+\makeatother

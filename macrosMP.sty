@@ -1,0 +1,198 @@
+%% MathPlus series Macro set by miyakawa.
+
+%% otf packageが読まれ，かつ[deluxe]が指定されているかをチェックして，
+%% trueならば，\bfseriesを再定義
+\newif\if@otf@d@chack
+\@otf@d@chackfalse
+\@ifpackageloaded{otf}{\if@deluxe\@otf@d@chacktrue\fi}{}
+\if@otf@d@chack
+\DeclareRobustCommand{\bfseries}{%
+        \not@math@alphabet\bfseries\mathbf%
+        \kanjifamily{\gtdefault}\kanjiseries{m}%
+        \romanfamily{\rmdefault}\romanseries{bx}\selectfont}%
+\fi
+
+%% section font
+\DeclareRobustCommand*\KBsectionfont{\reset@font\fontsize{13.5Q}{27H}\yugothL}
+\DeclareRobustCommand*\KBsectionnumfont{\reset@font\fontsize{13.5Q}{27H}\bfs}
+\DeclareRobustCommand*\KBsubsectionfont{\reset@font\normalsize\yugothL}
+\DeclareRobustCommand*\KBsubsectionnumfont{\reset@font\normalsize\bfs}
+
+% command: for 小塚ゴシック
+\DeclareRobustCommand{\KozukaG}{\kanjifamily{\gtdefault}\kanjiseries{m}%
+\romanfamily{\sfdefault}\romanseries{bx}\selectfont}
+
+% command: for 游ゴシック
+\DeclareRobustCommand{\yugothM}{\not@math@alphabet\yugothM\relax
+ \kanjifamily{\gtdefault}\kanjiseries{bx}\romanfamily{phv}\romanseries{m}\selectfont}
+\DeclareRobustCommand{\yugothL}{\not@math@alphabet\yugothL\relax
+ \kanjifamily{\gtdefault}\ebseries\romanfamily{cmbr}\romanseries{m}\selectfont}
+
+
+
+
+% chapter, section , subsectionの共通shade
+\definecolor{headermark}{gray}{0.7}
+\DeclareRobustCommand*\KBchapterfont{\reset@font\huge\yugothM}
+\DeclareRobustCommand*\KBchapternumfont{\reset@font
+\fontsize{48Q}{0pt}\KozukaG\slshape}
+\DeclareRobustCommand*\KBpagenumfont{\reset@font\footnotesize}
+\DeclareRobustCommand*\KBheaderfont{\reset@font\footnotesize}
+
+% header
+\def\ps@headings{\let\ps@jpl@in\ps@footnombre
+    \let\@evenhead\@empty
+    \let\@oddhead\@empty
+    \def\@evenfoot{\KBpagenumfont\thepage\hskip1.5zw\KBheaderfont\rightmark\hfill}%
+    \def\@oddfoot{\hfill\KBheaderfont\leftmark\hskip1.5zw\KBpagenumfont\thepage}%
+    \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{%
+     \ifnum \c@secnumdepth >\m@ne
+         \if@mainmatter
+         \@chapapp\thechapter\@chappos\hskip1zw%
+         \fi
+     \fi
+     ##1}{}}%
+  \def\sectionmark##1{\markright{%
+     \ifnum \c@secnumdepth >\z@
+           \ifseccntfixHead\@seccnt@prefix@section\fi%
+              \thesection%
+           \ifseccntfixHead\@seccnt@postfix@section\fi%
+\hskip1zw%
+\fi
+     \protect\@inhibitglue##1}}%
+  }
+\pagestyle{headings}
+
+
+%% chapter
+\renewcommand{\chapter}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{headings}%
+  \global\@topnum\z@
+%  \@afterindentfalse
+\global\advance\@chapterid\@ne% for multicite.sty, multilabel.sty
+\xdef\@ref@prefix{refPrefixID\the\@chapterid:}
+  \@afterindenttrue
+%  \secdef\@chapter\@schapter}
+  \KBsecdef\@chapter\@schapter}
+
+% \thechapterの影
+\RequirePackage{shadowtext}
+%% bugfix pach: \shadowtext
+\renewcommand\shadowtext[1]%
+{%
+   \begingroup%
+   \settowidth{\st@temp@width}{#1}%
+   \settoheight{\st@temp@height}{#1}%
+   \setlength{\st@pic@width}{\st@temp@width}%
+   \setlength{\st@pic@height}{\st@temp@height}%
+   \addtolength{\st@pic@width}{\st@shadowoffsetx}%
+   \addtolength{\st@pic@height}{\st@shadowoffsety}%
+   %
+   \edef\num@tw{\strip@pt\st@temp@width}%
+   \edef\num@th{\strip@pt\st@temp@height}%
+   \edef\num@pw{\strip@pt\st@pic@width}%
+   \edef\num@ph{\strip@pt\st@pic@height}%
+   \edef\num@offsetx{\strip@pt\st@shadowoffsetx}%
+   \edef\num@offsety{\strip@pt\st@shadowoffsety}%
+   \raisebox{-\st@shadowoffsety}{% %bugfix: added `%` by miya
+      \begin{picture}(\num@pw,\num@ph)(0,0)
+	    \put(\num@offsetx,0){\makebox(\num@tw,\num@th)[tl]{\color{\st@shadowcolor}\def\color##1{}\ignorespaces #1}}
+		\put(0,\num@offsety){\makebox(\num@tw,\num@th)[tl]{\ignorespaces #1}}
+	\end{picture}}%
+	\endgroup%
+	\ignorespaces%
+}
+\newdimen\kb@Chapter@shadebox@width
+\newdimen\kb@Chaptertexsep
+\newdimen\kb@Chaptertextwidth
+\setlength{\kb@Chapter@shadebox@width}{20mm}
+\setlength{\kb@Chaptertexsep}{1mm}
+\setlength{\kb@Chaptertextwidth}{\textwidth}
+\advance\kb@Chaptertextwidth by-\kb@Chapter@shadebox@width
+\advance\kb@Chaptertextwidth by-\kb@Chaptertexsep
+
+
+
+\def\@makechapterhead#1{{\parindent\z@%
+\toplinebox{8}{\vskip2\normalbaselineskip%
+   \KBchapternumfont
+   \shadowcolor{black}%
+   \shadowoffsetx{1pt}%
+   \shadowoffsety{1pt}%
+   \ifnum \c@secnumdepth >\m@ne
+     \setlength\@tempdima{\linewidth}%
+    \if@mainmatter
+      {\fboxsep\z@\colorbox{headermark}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize\kb@Chapter@shadebox@width%
+      \textcolor{white}{\makebox[\kb@Chapter@shadebox@width][c]{\raisebox{2mm}{\small\@chapapp}%
+      \kern-\z@\shadowtext{\thechapter}\kern\kb@Chaptertexsep\raisebox{2mm}{\small\@chappos}}}\vfil}$}}\hskip.2zw%
+     \else
+      \hbox{}
+    \fi
+     \KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}\vfill\fi}}%
+}
+\let\@make@appendix@chapterhead\@makechapterhead
+
+% section
+\def\@startsection#1#2#3#4#5#6{%
+  \if@noskipsec \leavevmode \fi
+  \par
+  \@tempskipa #4\relax
+  \@afterindenttrue
+  \ifdim \@tempskipa <\z@
+    \@tempskipa -\@tempskipa \@afterindentfalse
+  \fi
+  \if@nobreak
+    \everypar{}%
+  \else
+	\ifheadingTopGap%% 
+		\vskip-\prevdepth \prevdepth\z@\vskip\baselineskip
+		\vspace*{-\baselineskip}\vskip\@tempskipa
+	\else
+                \addpenalty\@secpenalty\addvspace\@tempskipa
+        \fi
+  \fi
+  \@ifstar
+    {\@ssect{#1}{#3}{#4}{#5}{#6}}%
+    {%
+%	\@dblarg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}%
+	\KB@larg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}%
+
+\def\sectFlad{section}
+\def\@ssect#1#2#3#4#5#6{%
+\def\@sectFlad{#1}%
+  \@tempskipa #4\relax
+  \ifdim \@tempskipa<\z@
+    \def\@svsechd{#5{\hskip #2\relax #6}}%
+  \else
+    \begingroup\noindent
+      #5\ifx\sectFlad\@sectFlad{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\hbox to2mm{a}}$}}\hskip2mm\fi
+%      #5%
+      {%
+        \@hangfrom{\hskip #2}%
+          \interlinepenalty \@M\@inhibitglue#6\@@par}%
+    \endgroup
+  \fi
+  \@xsect{#4}}
+
+
+\def\@seccnt@afterskip@section{}
+\def\@make@section@head#1#2#3{%
+\bgroup
+       \noindent#2\hskip#1\relax
+       \setbox3\hbox{\hskip1mm\textcolor{white}{\@svsec}\hskip1mm}%
+       \@tempdima\linewidth\advance\@tempdima-\wd\z@
+       \advance\@tempdima-#1\relax
+       \setbox\tw@\hbox{#3}%
+       \dp3\z@{\raisebox{.4mm}{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\vfil\copy3\vfil}$}}}\hskip.5zw% ここが\thesectionの出力
+          \ifdim\wd\tw@>\@tempdima%% タイトルが折り返す場合
+               \vtop{\hsize=\@tempdima\@parboxrestore\unhbox\tw@\@@par}
+               \par\noindent
+          \else%% タイトルが折り返さない場合．
+               \@inhibitglue\unhbox\tw@
+          \fi
+       \advance\@tempdima\wd\z@
+\egroup
+}
+
