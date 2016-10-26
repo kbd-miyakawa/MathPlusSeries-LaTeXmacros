@@ -4,6 +4,10 @@
 *.toc
 *.tex
 *.gz
+base.pdf
 Archive/
+fontmap/Yugo_test/
+texmf-local/
 !MathPlus-sample.tex
+!base.tex
 
