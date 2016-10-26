@@ -1,4 +1,6 @@
 % usejfont: ipaex, kozuka gochic
+%% MathPlus series Macro set by miyakawa.
+\ProvidesPackage{fontmap}[2016/10/26 beta1]
 % ipaex
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/otf-ipaex.map}}
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/otf-up-ipaex.map}}
@@ -24,32 +26,37 @@
 %\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \KozuGo}}
 
 
-\AtBeginDvi{\special{pdf:mapline hgothb-h H :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline hgothb-v V :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline hgothbn-h H :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline hgothbn-v V :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-cjgb-h Identity-H :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-cjgb-v Identity-V :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgothb-h UniJIS-UTF16-H :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgothb-v UniJIS-UTF16-V :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H :0:YUGOTHM.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V :0:YUGOTHM.TTC}}
+\@ifundefined{YugothM}{\def\YugothM{:0:YUGOTHM.TTC}}{}
+\@ifundefined{YugothMaj}{\def\YugothMaj{:0:YUGOTHM.TTC/AJ16}}{}
+\@ifundefined{YugothL}{\def\YugothL{:0:YUGOTHL.TTC}}{}
+\@ifundefined{YugothLaj}{\def\YugothLaJ{:0:YUGOTHL.TTC/AJ16}}{}
 
-\AtBeginDvi{\special{pdf:mapline hgotheb-h H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline hgotheb-v V :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline hgothebn-h H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline hgothebn-v V :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-cjge-h Identity-H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-cjge-v Identity-V :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujge-h UniJIS-UTF16-H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujge-v UniJIS-UTF16-V :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgen-h UniJIS2004-UTF16-H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgen-v UniJIS2004-UTF16-V :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgotheb-h UniJIS-UTF16-H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H :0:YUGOTHL.TTC}}
-\AtBeginDvi{\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V :0:YUGOTHL.TTC}}
+\AtBeginDvi{\special{pdf:mapline hgothb-h H \YugothM}}
+\AtBeginDvi{\special{pdf:mapline hgothb-v V \YugothM}}
+\AtBeginDvi{\special{pdf:mapline hgothbn-h H \YugothM}}
+\AtBeginDvi{\special{pdf:mapline hgothbn-v V \YugothM}}
+\AtBeginDvi{\special{pdf:mapline otf-cjgb-h Identity-H \YugothMaj}}
+\AtBeginDvi{\special{pdf:mapline otf-cjgb-v Identity-V \YugothMaj}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H \YugothM}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V \YugothM}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H \YugothM}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V \YugothM}}
+\AtBeginDvi{\special{pdf:mapline uphgothb-h UniJIS-UTF16-H \YugothM}}
+\AtBeginDvi{\special{pdf:mapline uphgothb-v UniJIS-UTF16-V \YugothM}}
+\AtBeginDvi{\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H \YugothM}}
+\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \YugothM}}
+
+\AtBeginDvi{\special{pdf:mapline hgotheb-h H \YugothL}}
+\AtBeginDvi{\special{pdf:mapline hgotheb-v V \YugothL}}
+\AtBeginDvi{\special{pdf:mapline hgothebn-h H \YugothL}}
+\AtBeginDvi{\special{pdf:mapline hgothebn-v V \YugothL}}
+\AtBeginDvi{\special{pdf:mapline otf-cjge-h Identity-H \YugothLaJ}}
+\AtBeginDvi{\special{pdf:mapline otf-cjge-v Identity-V \YugothLaJ}}
+\AtBeginDvi{\special{pdf:mapline otf-ujge-h UniJIS-UTF16-H \YugothL}}
+\AtBeginDvi{\special{pdf:mapline otf-ujge-v UniJIS-UTF16-V \YugothL}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgen-h UniJIS2004-UTF16-H \YugothL}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgen-v UniJIS2004-UTF16-V \YugothL}}
+\AtBeginDvi{\special{pdf:mapline uphgotheb-h UniJIS-UTF16-H \YugothL}}
+\AtBeginDvi{\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V \YugothL}}
+\AtBeginDvi{\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H \YugothL}}
+\AtBeginDvi{\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V \YugothL}}

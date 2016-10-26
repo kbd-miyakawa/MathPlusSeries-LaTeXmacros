@@ -1,0 +1,61 @@
+\documentclass[4x6t/12Q,gtsf,%
+%              uplatex,%% LaTeX文書がutf8の場合
+              useotf,dvipdfmx]{mathpulus}
+\usepackage{graphicx,xcolor}
+\usepackage{amsmath,amssymb}
+%\usepackage[utf8]{inputenc}%% LaTeX文書がutf8の場合
+\usepackage{textcomp}
+\usepackage[LY1,TS1,OT1,T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[deluxe,scale=1]{otf}[2013/11/17]%% added by miya
+\usepackage{makeidx,multicol}
+\usepackage{comment}
+\usepackage{okumacro}
+\usepackage{fancybox}
+\usepackage{ascmac}
+\usepackage{uline--,macrosMP}%% added by miya
+
+\makeatletter
+        \def\DumyWordCharacter{\@ifnextchar[{\@DumyWordCharacter}{\@DumyWordCharacter[□]}}
+        \def\@DumyWordCharacter[#1]#2{\@tempcnta=#2\relax
+        \loop
+                \ifnum\@tempcnta>\z@ \advance\@tempcnta-\@ne #1%
+        \repeat
+}
+\makeatother
+
+%% 游フォント設定
+\newcommand{\YugothM}{:0:YUGOTHM.TTC}
+\newcommand{\YugothMaj}{:0:YUGOTHM.TTC/AJ16}
+\newcommand{\YugothL}{:0:YUGOTHL.TTC}
+\newcommand{\YugothLaJ}{:0:YUGOTHL.TTC/AJ16}
+\usepackage{fontmap}
+%%
+
+\includeonly{
+main,
+%	Chap01,
+%	Chap02,
+%	Chap03,
+%	Chap04,
+%	Chap05,
+	}
+
+\begin{document}
+\frontmatter
+\tableofcontents
+\mainmatter
+\include{main}
+\include{Chap01}
+\include{Chap02}
+\include{Chap03}
+\include{Chap04}
+\include{Chap05}
+\end{document}
+
+\chapter{章の名前}
+\section{節の名前}
+      \DumyWordCharacter[□]{200}
+\subsection{項の名前}
+      \DumyWordCharacter[□]{100}
+
