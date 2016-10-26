@@ -1,15 +1,14 @@
-# 東京図書 MathPlus series classfile
+# MathPlus series classfile
 
-###覚書
 ```
 mathpulus.cls     クラスファイル
-macrosMP.sty     シリーズ用マクロセット
-shadowtext.sty   章見出し装飾補助
-fontmap.sty        フォント設定
-otf.sty                フォント設定
-multicol.sty       ^*
-make.bat            latex処理用のscript sample
-main.tex             latexプリアンブルの雛形
+macrosMP.sty      シリーズ用マクロセット
+shadowtext.sty    章見出し装飾補助
+fontmap.sty       フォント設定
+otf.sty           フォント設定
+multicol.sty      ^*
+uline--.sty       underline macropackage
+base.tex          latexプリアンブルの雛形
 fontmap/
             lm.fdd                   lmodernサイズ補正
             otf-ipaex.map        ipexのmap
