@@ -1,4 +1,4 @@
-# MathPlus series classfile
+# MATH PLUS Series classfile
 
 ```
 mathpulus.cls     クラスファイル
