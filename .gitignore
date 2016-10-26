@@ -8,6 +8,6 @@ base.pdf
 Archive/
 fontmap/Yugo_test/
 texmf-local/
-!MathPlus-sample.tex
+MathPlus-sample.tex
 !base.tex
 
