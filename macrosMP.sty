@@ -1,5 +1,16 @@
+%% 2016/11/01 beta2 パッケージロードのアラートを追加（組版変更なし）
+%% 2016/10/26 beta1 見本組作成
 %% MathPlus series Macro set by miyakawa.
-\ProvidesPackage{macrosMP}[2016/10/26 beta1]
+\ProvidesPackage{macrosMP}[2016/10/26 beta2]
+
+%% added 2016/11/01 by miya
+\@ifclassloaded{mathpulus}{}{\typeout{^^J%
+****************************************************^^J%
+Since this macro set of dedicated ``mathpulus.cls'',^^J%
+Processing will STOP.^^J%
+****************************************************
+}\stop}
+
 %% otf packageが読まれ，かつ[deluxe]が指定されているかをチェックして，
 %% trueならば，\bfseriesを再定義
 \newif\if@otf@d@chack

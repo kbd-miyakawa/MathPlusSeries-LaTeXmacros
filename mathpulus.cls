@@ -1,3 +1,6 @@
+%% 2016/11/01 beta2 otfパッケージのバージョンチェックを追加（組版変更なし）
+%% 2016/10/21 beta1 見本組
+
 %% [nolistfiles] オプション追加
 %% [useotf] オプションを追加
 %% lmodern package へのサイズ補正対応
@@ -35,7 +38,7 @@
 %% [uplatex] uplatexで処理をする．
 
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesClass{mathpulus}[2016/10/21, baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
+\ProvidesClass{mathpulus}[2016/11/01, beta2 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
 \RequirePackage{keyval}
 \DeclareRobustCommand\pTeX{p\kern-.05em\TeX}
 \DeclareRobustCommand\pLaTeX{p\kern-.05em\LaTeX}
@@ -3877,8 +3880,8 @@ kbenulbl:%
 	\makeatother
 	\renewcommand{\sfdefault}{phv}
 	}{}%
-\@ifpackageloaded{otf}
-	{%
+\@ifpackageloaded{otf}%
+{%
 	\ifkb@otf@tfm@\else\KB@class@error{^^J%%
 ***********************************************************************************^^J%
 When you'd like to use "otf package", I have to designate a "useotf" class option.^^J%
@@ -3898,7 +3901,18 @@ When you'd like to use "otf package", I have to designate a "useotf" class optio
      }
      \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}%
      \fi
-	}%
+%% added 2016/11/01 by miya
+\@ifpackagelater{otf}{2013/11/17}
+  {}
+  {%
+	\KB@class@error{%
+    Support package ``otf package'' too old}
+      {%
+        Please install an up to date version of 2013/11/17 v1.7b6\MessageBreak
+      }%
+    \endinput
+  }%
+}%
 {\ifkb@otf@tfm@\KB@class@error{^^J%
 ***********************************^^J%
 OTF package has not been specified.^^J%
