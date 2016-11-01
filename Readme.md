@@ -1,5 +1,10 @@
 # MATH PLUS Series Classfile
 
+*変更履歴*
+* 2016/11/01 beta2 パッケージロードのバージョンチェックを追加（組版変更なし）
+* 2016/10/21 beta1 見本組
+
+
 ```
 mathpulus.cls     クラスファイル
 macrosMP.sty      シリーズ用マクロセット
