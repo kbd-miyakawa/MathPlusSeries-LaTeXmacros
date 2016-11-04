@@ -1,0 +1,13 @@
+%% Georgia を使う（rmのみ）
+ \DeclareFontFamily{OT1}{grm}{}
+   \DeclareFontShape{OT1}{grm}{m}{n}{<->grm}{}
+   \DeclareFontShape{OT1}{grm}{m}{it}{<->grm}{}
+   \DeclareFontShape{OT1}{grm}{b}{n}{<->grm}{}
+   \DeclareFontShape{OT1}{grm}{b}{it}{<->grm}{}
+  
+   \DeclareFontShape{OT1}{grm}{bx}{n}{<->ssub * grm/b/n}{}
+   \DeclareFontShape{OT1}{grm}{bx}{it}{<->ssub * grm/b/it}{}
+\AtBeginDvi{\special{pdf:mapline grm Georgia "AutoEnc_ed3rjcrzuiagvz7eryzaufbcwg ReEncodeFont" <[a_ed3rjc.enc <georgia.ttf}
+
+%% ノンブルフォント
+\DeclareRobustCommand*\KBpagenumfont{\reset@font\fontencoding{OT1}\fontfamily{grm}\small}

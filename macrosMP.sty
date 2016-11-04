@@ -1,3 +1,4 @@
+%% 章見出し，節見出し体裁変更，abstract環境追加
 %% 2016/11/01 beta2 パッケージロードのアラートを追加（組版変更なし）
 %% 2016/10/26 beta1 見本組作成
 %% MathPlus series Macro set by miyakawa.
@@ -24,7 +25,8 @@ Processing will STOP.^^J%
 \fi
 
 %% section font
-\DeclareRobustCommand*\KBsectionfont{\reset@font\fontsize{13.5Q}{27H}\yugothL}
+%% baselineskip 27 -> 20H
+\DeclareRobustCommand*\KBsectionfont{\reset@font\fontsize{13.5Q}{16H}\yugothL}
 \DeclareRobustCommand*\KBsectionnumfont{\reset@font\fontsize{13.5Q}{27H}\bfs}
 \DeclareRobustCommand*\KBsubsectionfont{\reset@font\normalsize\yugothL}
 \DeclareRobustCommand*\KBsubsectionnumfont{\reset@font\normalsize\bfs}
@@ -132,15 +134,49 @@ Processing will STOP.^^J%
    \ifnum \c@secnumdepth >\m@ne
      \setlength\@tempdima{\linewidth}%
     \if@mainmatter
-      {\fboxsep\z@\colorbox{headermark}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize\kb@Chapter@shadebox@width%
+    \edef\KB@tW{\strip@pt\textwidth}%
+    \setlength{\dimen0}{\kb@Chapter@shadebox@width}%
+    \addtolength{\dimen0}{.25zw}%
+    \edef\KB@tH{\strip@pt\dimen0}%
+    \begin{picture}(0,0)
+      \put(2,-37){\fboxsep\z@\colorbox{black}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize\kb@Chapter@shadebox@width\hbox to\kb@Chapter@shadebox@width{}%
+      }$}}
+      \put(0,-35){\fboxsep\z@\colorbox{headermark}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize\kb@Chapter@shadebox@width%
       \textcolor{white}{\makebox[\kb@Chapter@shadebox@width][c]{\raisebox{2mm}{\small\@chapapp}%
-      \kern-\z@\shadowtext{\thechapter}\kern\kb@Chaptertexsep\raisebox{2mm}{\small\@chappos}}}\vfil}$}}\hskip.2zw%
+      \kern-\z@\shadowtext{\thechapter}\kern\kb@Chaptertexsep\raisebox{2mm}{\small\@chappos}}}\vfil}$}}%
      \else
       \hbox{}
     \fi
-     \KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}\vfill\fi}}%
+     \put(\KB@tH,-35){\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}
+     \end{picture}%
+     \vfill
+     \fi}}%
 }
 \let\@make@appendix@chapterhead\@makechapterhead
+
+
+% chapter*
+\def\@makeschapterhead#1{{\parindent\z@
+\toplinebox{8}{\vskip2\normalbaselineskip%
+   \KBchapternumfont
+   \ifnum \c@secnumdepth >\m@ne
+     \setlength\@tempdima{\linewidth}%
+    \edef\KB@tW{\strip@pt\textwidth}%
+    \setlength{\dimen0}{3mm}%
+    \addtolength{\dimen0}{.25zw}%
+    \edef\KB@tH{\strip@pt\dimen0}%
+    \begin{picture}(0,0)
+       \put(0,-35){\fboxsep\z@\colorbox{headermark}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize3mm%
+      \hbox to3mm{}\vfil}$}}%
+     \put(\KB@tH,-35){\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}
+     \end{picture}%
+     \vfill
+     \fi}%
+   }}
+\let\@make@toc@chapterhead\@makeschapterhead
+\let\@make@bib@chapterhead\@makeschapterhead
+\let\@make@index@chapterhead\@makeschapterhead
+
 
 % section
 \def\@startsection#1#2#3#4#5#6{%
@@ -175,7 +211,7 @@ Processing will STOP.^^J%
     \def\@svsechd{#5{\hskip #2\relax #6}}%
   \else
     \begingroup\noindent
-      #5\ifx\sectFlad\@sectFlad{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\hbox to2mm{a}}$}}\hskip2mm\fi
+      #5\ifx\sectFlad\@sectFlad{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\hbox to2mm{}}$}}\hskip2mm\fi
 %      #5%
       {%
         \@hangfrom{\hskip #2}%
@@ -203,5 +239,13 @@ Processing will STOP.^^J%
           \fi
        \advance\@tempdima\wd\z@
 \egroup
+}
+
+
+\newenvironment{abstract}{%
+\begin{center}\footnotesize
+\begin{minipage}{24zw}
+}{\end{minipage}\vspace{3\baselineskip}
+\end{center}
 }
 
