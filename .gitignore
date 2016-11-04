@@ -9,6 +9,7 @@ make.bat
 Archive/
 fontmap/Yugo_test/
 texmf-local/
+font-test/
 MathPlus-sample.tex
 !base.tex
 
