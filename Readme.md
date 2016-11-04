@@ -1,6 +1,7 @@
 # MATH PLUS Series Classfile
 
 *変更履歴*
+* 2016/11/04 beta3 「ガロアとガロア理論」入稿に伴い指定にあったノンブル書体をgeorgiaへ．章見出しに影を追加．
 * 2016/11/01 beta2 パッケージロードのバージョンチェックを追加（組版変更なし）
 * 2016/10/21 beta1 見本組
 
@@ -14,8 +15,9 @@ otf.sty           フォント設定
 multicol.sty      ^*
 uline--.sty       underline macropackage
 base.tex          latexプリアンブルの雛形
+georgia.sty       Georgiaをノンブル書体へ適応させるpackage
 fontmap/
-            lm.fdd                   lmodernサイズ補正
+            lm.fdd               lmodernサイズ補正
             otf-ipaex.map        ipexのmap
             otf-up-ipaex.map
             ptex-ipaex.map
