@@ -26,37 +26,73 @@
 %\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \KozuGo}}
 
 
-\@ifundefined{YugothM}{\def\YugothM{:0:YUGOTHM.TTC}}{}
-\@ifundefined{YugothMaj}{\def\YugothMaj{:0:YUGOTHM.TTC/AJ16}}{}
-\@ifundefined{YugothL}{\def\YugothL{:0:YUGOTHL.TTC}}{}
-\@ifundefined{YugothLaj}{\def\YugothLaJ{:0:YUGOTHL.TTC/AJ16}}{}
+% 章見出し，節見出しの書体設定
+% デフォルト=小塚ゴシック
+\@ifundefined{kbChapterFont}{\def\kbChapterFont{KozGoPro-Bold.otf}}{}
+\@ifundefined{kbChapterFontaJ}{\def\kbChapterFontaJ{KozGoPro-Bold.otf}}{}
+\@ifundefined{kbSectionFont}{\def\kbSectionFont{KozGoPro-Medium.otf}}{}
+\@ifundefined{kbSectionFontaJ}{\def\kbSectionFontaJ{KozGoPro-Medium.otf}}{}
+% CID設定のデフォルト
+\@ifundefined{kbgaiji}{\def\kbgaiji{A-OTF-RyuminPr6N-Light.otf}}{}
 
-\AtBeginDvi{\special{pdf:mapline hgothb-h H \YugothM}}
-\AtBeginDvi{\special{pdf:mapline hgothb-v V \YugothM}}
-\AtBeginDvi{\special{pdf:mapline hgothbn-h H \YugothM}}
-\AtBeginDvi{\special{pdf:mapline hgothbn-v V \YugothM}}
-\AtBeginDvi{\special{pdf:mapline otf-cjgb-h Identity-H \YugothMaj}}
-\AtBeginDvi{\special{pdf:mapline otf-cjgb-v Identity-V \YugothMaj}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H \YugothM}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V \YugothM}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H \YugothM}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V \YugothM}}
-\AtBeginDvi{\special{pdf:mapline uphgothb-h UniJIS-UTF16-H \YugothM}}
-\AtBeginDvi{\special{pdf:mapline uphgothb-v UniJIS-UTF16-V \YugothM}}
-\AtBeginDvi{\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H \YugothM}}
-\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \YugothM}}
+% 引用部分の書体
+\@ifundefined{kbdescriptionfont}{\def\kbdescriptionfont{FOT-GrecoStd-M.otf}}{}
 
-\AtBeginDvi{\special{pdf:mapline hgotheb-h H \YugothL}}
-\AtBeginDvi{\special{pdf:mapline hgotheb-v V \YugothL}}
-\AtBeginDvi{\special{pdf:mapline hgothebn-h H \YugothL}}
-\AtBeginDvi{\special{pdf:mapline hgothebn-v V \YugothL}}
-\AtBeginDvi{\special{pdf:mapline otf-cjge-h Identity-H \YugothLaJ}}
-\AtBeginDvi{\special{pdf:mapline otf-cjge-v Identity-V \YugothLaJ}}
-\AtBeginDvi{\special{pdf:mapline otf-ujge-h UniJIS-UTF16-H \YugothL}}
-\AtBeginDvi{\special{pdf:mapline otf-ujge-v UniJIS-UTF16-V \YugothL}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgen-h UniJIS2004-UTF16-H \YugothL}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgen-v UniJIS2004-UTF16-V \YugothL}}
-\AtBeginDvi{\special{pdf:mapline uphgotheb-h UniJIS-UTF16-H \YugothL}}
-\AtBeginDvi{\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V \YugothL}}
-\AtBeginDvi{\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H \YugothL}}
-\AtBeginDvi{\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V \YugothL}}
+\AtBeginDvi{\special{pdf:mapline hgothb-h H \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline hgothb-v V \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline hgothbn-h H \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline hgothbn-v V \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline otf-cjgb-h Identity-H \kbChapterFontaJ}}
+\AtBeginDvi{\special{pdf:mapline otf-cjgb-v Identity-V \kbChapterFontaJ}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline uphgothb-h UniJIS-UTF16-H \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline uphgothb-v UniJIS-UTF16-V \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H \kbChapterFont}}
+\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \kbChapterFont}}
+
+\AtBeginDvi{\special{pdf:mapline hgotheb-h H \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline hgotheb-v V \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline hgothebn-h H \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline hgothebn-v V \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline otf-cjge-h Identity-H \kbSectionFontaJ}}
+\AtBeginDvi{\special{pdf:mapline otf-cjge-v Identity-V \kbSectionFontaJ}}
+\AtBeginDvi{\special{pdf:mapline otf-ujge-h UniJIS-UTF16-H \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujge-v UniJIS-UTF16-V \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgen-h UniJIS2004-UTF16-H \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujgen-v UniJIS2004-UTF16-V \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline uphgotheb-h UniJIS-UTF16-H \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H \kbSectionFont}}
+\AtBeginDvi{\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V \kbSectionFont}}
+
+
+\AtBeginDvi{\special{pdf:mapline hminb-h H \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline hminb-v V \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline hminbn-h H \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline hminbn-v V \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline otf-cjmb-h Identity-H \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline otf-cjmb-v Identity-V \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujmb-h UniJIS-UTF16-H \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujmb-v UniJIS-UTF16-V \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujmbn-h UniJIS2004-UTF16-H \kbdescriptionfont}}
+\AtBeginDvi{\special{pdf:mapline otf-ujmbn-v UniJIS2004-UTF16-V \kbdescriptionfont}}
+
+%% ノンブル
+\AtBeginDvi{\special{pdf:mapfile ./fontmap/pdfm-grevom}}
+
+%% CID外字
+\AtBeginDvi{\special{pdf:mapline hminl-h H \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline hminl-v V \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline hminln-h H \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline hminln-v V \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline otf-cjml-h Identity-H \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline otf-cjml-v Identity-V \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline otf-ujml-h UniJIS-UTF16-H \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline otf-ujml-v UniJIS-UTF16-V \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline otf-ujmln-h UniJIS2004-UTF16-H \kbgaiji}}
+\AtBeginDvi{\special{pdf:mapline otf-ujmln-v UniJIS2004-UTF16-V \kbgaiji}}
+
+

@@ -1,8 +1,14 @@
-%% 章見出し，節見出し体裁変更，abstract環境追加
+%% 枠囲み用マクロ追加
+%% 章見出し，節見出し体裁変更
 %% 2016/11/01 beta2 パッケージロードのアラートを追加（組版変更なし）
 %% 2016/10/26 beta1 見本組作成
 %% MathPlus series Macro set by miyakawa.
 \ProvidesPackage{macrosMP}[2016/10/26 beta2]
+
+\RequirePackage{TkizasciiMP}
+
+%% localにするためだけの環境
+\newenvironment{LOCAlENV}{}{}
 
 %% added 2016/11/01 by miya
 \@ifclassloaded{mathpulus}{}{\typeout{^^J%
@@ -28,21 +34,19 @@ Processing will STOP.^^J%
 %% baselineskip 27 -> 20H
 \DeclareRobustCommand*\KBsectionfont{\reset@font\fontsize{13.5Q}{16H}\yugothL}
 \DeclareRobustCommand*\KBsectionnumfont{\reset@font\fontsize{13.5Q}{27H}\bfs}
-\DeclareRobustCommand*\KBsubsectionfont{\reset@font\normalsize\yugothL}
+\DeclareRobustCommand*\KBsubsectionfont{\reset@font\fontsize{13.5Q}{16H}\yugothL}
 \DeclareRobustCommand*\KBsubsectionnumfont{\reset@font\normalsize\bfs}
 
 % command: for 小塚ゴシック
 \DeclareRobustCommand{\KozukaG}{\kanjifamily{\gtdefault}\kanjiseries{m}%
 \romanfamily{\sfdefault}\romanseries{bx}\selectfont}
 
-% command: for 游ゴシックM（従属にHelvetica）
 \DeclareRobustCommand{\yugothM}{\not@math@alphabet\yugothM\relax
  \kanjifamily{\gtdefault}\kanjiseries{bx}\romanfamily{phv}\romanseries{m}\selectfont}
-% command: for 游ゴシックL（従属にCMbright）
 \DeclareRobustCommand{\yugothL}{\not@math@alphabet\yugothL\relax
- \kanjifamily{\gtdefault}\ebseries\romanfamily{cmbr}\romanseries{m}\selectfont}
+ \kanjifamily{\gtdefault}\ebseries\romanfamily{phv}\fontseries{m}\selectfont}
 
-
+\DeclareRobustCommand{\DescriptionFONT}{\not@math@alphabet\DescriptionFONT\relax\romanfamily{grevom}\romanseries{m}\kanjifamily{\mcdefault}\kanjiseries{bx}\selectfont}
 % chapter, section , subsectionの共通shade
 \definecolor{headermark}{gray}{0.7}
 \DeclareRobustCommand*\KBchapterfont{\reset@font\huge\yugothM}
@@ -53,10 +57,10 @@ Processing will STOP.^^J%
 
 % header
 \def\ps@headings{\let\ps@jpl@in\ps@footnombre
-    \let\@evenhead\@empty
-    \let\@oddhead\@empty
-    \def\@evenfoot{\KBpagenumfont\thepage\hskip1.5zw\KBheaderfont\rightmark\hfill}%
-    \def\@oddfoot{\hfill\KBheaderfont\leftmark\hskip1.5zw\KBpagenumfont\thepage}%
+    \let\@evenfoot\@empty
+    \let\@oddfoot\@empty
+    \def\@evenhead{\KBpagenumfont\thepage\hskip1.5zw\KBheaderfont\rightmark\hfill}%
+    \def\@oddhead{\hfill\KBheaderfont\leftmark\hskip1.5zw\KBpagenumfont\thepage}%
     \let\@mkboth\markboth
   \def\chaptermark##1{\markboth{%
      \ifnum \c@secnumdepth >\m@ne
@@ -77,10 +81,11 @@ Processing will STOP.^^J%
 \pagestyle{headings}
 
 
+
 %% chapter
 \renewcommand{\chapter}{%
   \if@openright\cleardoublepage\else\clearpage\fi
-  \thispagestyle{headings}%
+  \thispagestyle{empty}%
   \global\@topnum\z@
 %  \@afterindentfalse
 \global\advance\@chapterid\@ne% for multicite.sty, multilabel.sty
@@ -147,7 +152,7 @@ Processing will STOP.^^J%
      \else
       \hbox{}
     \fi
-     \put(\KB@tH,-35){\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}
+     \put(\KB@tH,-35){{\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}}
      \end{picture}%
      \vfill
      \fi}}%
@@ -168,7 +173,7 @@ Processing will STOP.^^J%
     \begin{picture}(0,0)
        \put(0,-35){\fboxsep\z@\colorbox{headermark}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize3mm%
       \hbox to3mm{}\vfil}$}}%
-     \put(\KB@tH,-35){\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}
+     \put(\KB@tH,-35){{\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}}
      \end{picture}%
      \vfill
      \fi}%
@@ -204,6 +209,7 @@ Processing will STOP.^^J%
 	\KB@larg{\@sect{#1}{#2}{#3}{#4}{#5}{#6}}}}%
 
 \def\sectFlad{section}
+\def\sectFlad@b{subsection}
 \def\@ssect#1#2#3#4#5#6{%
 \def\@sectFlad{#1}%
   \@tempskipa #4\relax
@@ -211,7 +217,11 @@ Processing will STOP.^^J%
     \def\@svsechd{#5{\hskip #2\relax #6}}%
   \else
     \begingroup\noindent
-      #5\ifx\sectFlad\@sectFlad{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\hbox to2mm{}}$}}\hskip2mm\fi
+      #5\ifx\sectFlad\@sectFlad{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\hbox to2mm{}}$}}\hskip2mm
+      \else
+      \ifx\sectFlad@b\@sectFlad
+      {\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\hbox to2mm{}}$}}%
+      \hskip2mm\fi\fi
 %      #5%
       {%
         \@hangfrom{\hskip #2}%
@@ -221,7 +231,16 @@ Processing will STOP.^^J%
   \@xsect{#4}}
 
 
-\def\@seccnt@afterskip@section{}
+%% thesection box Prefix skip
+\def\@seccnt@prefix@section{\hskip.5zw}
+%% thesection box After skip
+\def\@seccnt@afterskip@section{\hskip.5zw}
+
+%% thesubsection box Prefix skip
+\def\@seccnt@afterskip@subsection{\hskip.25zw}
+%% thesubsection box After skip
+\def\@seccnt@prefix@subsection{\hskip.25zw}
+
 \def\@make@section@head#1#2#3{%
 \bgroup
        \noindent#2\hskip#1\relax
@@ -241,6 +260,24 @@ Processing will STOP.^^J%
 \egroup
 }
 
+\def\@make@subsection@head#1#2#3{%
+\bgroup
+       \noindent#2\hskip#1\relax
+       % amsmath.styとの相性からbox0をbox3へ変更 *this is todo!
+       \setbox3\hbox{\hskip1mm\textcolor{white}{\@svsec}\hskip1mm}%
+       \@tempdima\linewidth\advance\@tempdima-\wd\z@
+       \advance\@tempdima-#1\relax
+       \setbox\tw@\hbox{#3}%
+       \dp3\z@{\raisebox{.4mm}{\fboxsep0pt\colorbox{headermark}{$\vcenter to7mm{\vfil\copy3\vfil}$}}}\hskip.5zw% \thesection output!
+          \ifdim\wd\tw@>\@tempdima%% タイトルが折り返す場合
+               \vtop{\hsize=\@tempdima\@parboxrestore\unhbox\tw@\@@par}
+               \par\noindent
+          \else%% タイトルが折り返さない場合．
+               \@inhibitglue\unhbox\tw@
+          \fi
+       \advance\@tempdima\wd\z@
+\egroup
+}
 
 \newenvironment{abstract}{%
 \begin{center}\footnotesize

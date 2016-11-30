@@ -1,0 +1,12 @@
+\def\indexHead#1{%
+\ifcat A#1\let\LineJ\relax
+\else
+	\ifcat Ç†#1\def\LineJ{çs}
+	\else
+		\let\LineJ\relax
+	\fi
+\fi%
+\addvspace{\baselineskip}%
+\item {\underline{\makebox[\linewidth][c]{\bfseries #1\LineJ}}\nopagebreak}%
+}
+

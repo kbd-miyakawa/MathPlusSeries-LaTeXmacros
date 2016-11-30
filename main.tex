@@ -1,6 +1,8 @@
-\documentclass[4x6t/12Q,gtsf,%
+\documentclass[gtsf,useotf,dvipdfmx,%
+%4x6t/12Q,%    見本組初期の設定
+Garoa,%        ガロアの設定
 %              uplatex,%% LaTeX文書がutf8の場合
-              useotf,dvipdfmx]{mathpulus}
+              ]{mathpulus}
 \usepackage{graphicx,xcolor}
 \usepackage{amsmath,amssymb}
 %\usepackage[utf8]{inputenc}%% LaTeX文書がutf8の場合
@@ -15,27 +17,20 @@
 \usepackage{ascmac}
 \usepackage{uline--,macrosMP}%% added by miya
 
-\makeatletter
-        \def\DumyWordCharacter{\@ifnextchar[{\@DumyWordCharacter}{\@DumyWordCharacter[□]}}
-        \def\@DumyWordCharacter[#1]#2{\@tempcnta=#2\relax
-        \loop
-                \ifnum\@tempcnta>\z@ \advance\@tempcnta-\@ne #1%
-        \repeat
-}
 \makeatother
-
-\usepackage{grm}%% georgia.ttf (ノンブル書体)
-%% 游フォント設定
-\newcommand{\YugothM}{:0:YUGOTHM.TTC}
-\newcommand{\YugothMaj}{:0:YUGOTHM.TTC/AJ16}
-\newcommand{\YugothL}{:0:YUGOTHL.TTC}
-\newcommand{\YugothLaJ}{:0:YUGOTHL.TTC/AJ16}
+%\usepackage{grm}%% georgia.ttf (ノンブル書体)
+%% 小塚ゴシック設定（代替としてipaexgを使用）
+\newcommand{\kbChapterFont}{ipaexg.ttf}          % 章見出し
+\newcommand{\kbChapterFontaJ}{ipaexg.ttf/AJ16}   % 章見出し
+\newcommand{\kbSectionFont}{ipaexg.ttf}          % 節見出し
+\newcommand{\kbSectionFontaJ}{ipaexg.ttf/AJ16}   % 節見出し
+\newcommand{\kbgaiji}{A-OTF-RyuminPr6N-Light.otf}% 異字体用
+\newcommand{\kbdescriptionfont}{ipaexg.ttf}      % 本文引用箇所
 \usepackage{fontmap}
 %%
 
 \includeonly{
-main,
-%	Chap01,
+	Chap01,
 %	Chap02,
 %	Chap03,
 %	Chap04,
@@ -53,10 +48,4 @@ main,
 \include{Chap04}
 \include{Chap05}
 \end{document}
-
-\chapter{章の名前}
-\section{節の名前}
-      \DumyWordCharacter[□]{200}
-\subsection{項の名前}
-      \DumyWordCharacter[□]{100}
 

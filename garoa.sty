@@ -1,5 +1,251 @@
 %% 「ガロアとガロア理論」でのスタイル
 \renewcommand{\thesection}{\arabic{section}}
+\@addtoreset{section}{part}
+\@addtoreset{chapter}{part}
 \@addtoreset{footnote}{section}
 \def\倦{\CID{7674}}
 \def\葛{\CID{7652}}
+\def\徽{\CID{7658}}
+\def\辻{{\ltseries\CID{3056}}}
+
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\newcounter{midashi}[chapter]
+\renewcommand{\themidashi}{\arabic{midashi}}
+\newcommand{\midasi}{%
+   \@startsection{midasi}{4}{\z@}%
+    {.5\baselineskip}
+    {.25\baselineskip}
+   {\normalsize\bfseries}}%
+\let\midasimark\@gobble
+\newcommand*{\l@midasi}{\@dottedtocline{4}{1.5em}{2.7em}}
+
+
+
+%% 節の目次の番号位置を補正
+\def\@sect#1#2#3#4#5#6[#7](#8)#9{%
+\@ifundefined{pre@#1@mark@toc@out}{\csname pre@#1@mark@toc@out\endcsname}{}%
+\@ifundefined{post@#1@mark@toc@out}{\csname post@#1@mark@toc@out\endcsname}{}%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+  \fi
+  \@tempskipa #5\relax
+  \ifdim \@tempskipa>\z@
+\@ifundefined{@make@#1@head}{%
+    \begingroup
+      #6{%
+        \@hangfrom{\hskip #3\relax{\@svsec}}%
+          \interlinepenalty\@M\@inhibitglue#9\normalsize\@@par}%% #8 => #9 added \normalsize
+    \endgroup}{\csname @make@#1@head\endcsname{#3}{#6}{#9}}%% #8 => #9
+   \csname #1mark\endcsname{#8}%% #7 => #8
+    \addcontentsline{toc}{#1}{%
+      \ifnum #2>\c@secnumdepth \else
+        \protect\snumberline{%
+\csname pre@#1@mark@toc@out\endcsname%
+\csname the#1\endcsname%
+\csname post@#1@mark@toc@out\endcsname%
+}%
+      \fi
+      #7}%
+  \else
+    \def\@svsechd{%
+      #6{\hskip #3\relax
+      \@svsec #9}%% #8 => #9
+      \csname #1mark\endcsname{#8}%
+      \addcontentsline{toc}{#1}{%
+        \ifnum #2>\c@secnumdepth \else
+         \protect\numberline{\csname the#1\endcsname}%
+        \fi
+        #7}}%
+  \fi
+  \@xsect{#5}}
+
+\let\appendix\relax
+\newenvironment{appendix}{\par
+\@openrightfalse
+\@appendix@@true
+%\DeclareRobustCommand*\KBchapternumfont{\reset@font}
+%\DeclareRobustCommand*\KBsectionfont{\reset@font\bfs}
+%\DeclareRobustCommand*\KBsubsectionfont{\reset@font\bfs}
+% \setcounter{chapter}{0}%
+%  \setcounter{section}{0}%
+%  \renewcommand{\@chapapp}{}%
+%  \renewcommand{\@chappos}{.}%
+  \renewcommand{\thesection}{\@Roman\c@section}
+}{}
+
+
+%
+%\def\@make@appendix@chapterhead#1{{\parindent\z@%
+%\toplinebox{3}{\centering\vfill
+%\vskip.5\normalbaselineskip% 10行取りにしています．
+%   \KBchapternumfont
+%   \ifnum \c@secnumdepth >\m@ne
+%     \setlength\@tempdima{\linewidth}%
+%    \if@mainmatter
+%      \@chapapp\thechapter\@chappos\hskip1zw
+%     \KBchapterfont\@inhibitglue#1\par\fi}\par\vspace{-2mm}\hbox{}}%
+%}
+
+\seccntfixTocfalse
+\renewcommand*{\l@section}{\IfSecFontChange%
+\S@ectiontrue\@dottedtocline{1}{3.8em}{2em}}
+
+\def\snumberline#1{\@lnumwidth=\z@%
+   \setbox\z@\hbox{#1\hskip1zw}%
+   \ifdim\wd\z@<\@lnumwidth \hbox to\@lnumwidth{\hss\unhbox\z@}%
+   \else
+   \hbox to\@lnumwidth{\hss\box\z@}
+   \fi\@inhibitglue}
+
+
+\renewcommand{\part}{%
+%  \if@openright \cleardoublepage \else \clearpage \fi
+  \cleardoublepage
+  \thispagestyle{empty}%
+  \if@twocolumn\onecolumn\@tempswatrue\else\@tempswafalse\fi
+   {\unitlength=1mm\begin{picture}(0,0)\put(-26.52,-172.12){\includegraphics{./kazari/BackShade2.pdf}}\end{picture}}%
+  \vfil
+  \secdef\@part\@spart}
+\def\@endpart{\vfil\newpage\thispagestyle{empty}%
+%%   {\unitlength=1mm\begin{picture}(0,0)\put(-19.43,-172.12){\includegraphics{./kazari/BackShade3.pdf}}\end{picture}}%
+%   \if@twoside\null\thispagestyle{empty}\newpage\fi
+   \if@tempswa\twocolumn\fi}
+
+\def\@part[#1]#2{%
+  \ifnum \c@secnumdepth >-2\relax
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{%
+       \protect\numberline{\prepartname\thepart\postpartname}#1}%
+  \else
+    \addcontentsline{toc}{part}{#1}%
+  \fi
+  \markboth{}{}%
+   {\centering
+   \interlinepenalty\@M\reset@font
+   \ifnum \c@secnumdepth >-2\relax
+     \KBpartnumfont\prepartname\thepart\postpartname
+     \par\vskip20\p@
+   \fi
+   \KBpartfont#2\par}%
+   \@endpart}
+
+
+
+
+\newenvironment{mathgap}[1][5]{%
+\abovedisplayskip #1\p@ \@plus2\p@ \@minus5\p@%
+\abovedisplayshortskip \z@ \@plus3\p@%
+\belowdisplayshortskip 2\p@ \@plus3\p@ \@minus3\p@%
+\belowdisplayskip \abovedisplayskip}{}
+
+\newenvironment{Quotation}{%
+\begin{list}{}{\topsep1\baselineskip\leftmargin2zw\rightmargin0pt\labelsep0pt\labelwidth0pt\listparindent1zw
+}\item[]\DescriptionFONT\baselineskip.9\baselineskip}{\end{list}}
+
+
+
+
+\newcommand{\adKBtemptoc}{\\\hfill \textrm{\textmc{\normalsize P・デュピュイ著／{\辻}\ 雄一\ 訳}}}
+
+\newcounter{tmpPart}
+\setcounter{tmpPart}{0}
+%% 目次に著者名を入れるため
+\renewcommand*{\l@part}[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \begingroup
+    \addtocounter{tmpPart}{1}%
+    \ifnum\c@tmpPart=1\relax\else\renewcommand{\adKBtemptoc}{\\\hfill \textrm{\textmc{\normalsize \辻\hskip1zw雄\hskip1zw解説　}}}\fi
+    \parindent\z@\rightskip\@pnumwidth
+    \parfillskip-\@pnumwidth
+    {\leavevmode\KBtocpartfont
+     \setlength\@lnumwidth{3.9zw}%
+     #1\hfil\nobreak\adKBtemptoc
+     {\KBtocnumpartfont\hbox to\@pnumwidth{\hss#2}}}\par
+    \nobreak
+    \global\@nobreaktrue
+    \everypar{\global\@nobreakfalse\everypar{}}%
+     \endgroup
+  \fi}
+
+%\setcounter{tocdepth}{3}
+
+
+\renewcommand*{\l@subsection}   {\IfSecFontChange
+\subS@ectiontrue\@dottedtocline{2}{5.2em}{3.25em}}
+
+\def\Subsection#1{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
+
+
+\def\装幀{\hbox{}}
+\renewcommand{\tableofcontents}{%
+\@table@of@contents@@true
+  \if@twocolumn\@restonecoltrue\onecolumn
+  \else\@restonecolfalse\fi
+  \chapter*{\contentsname}%
+    \@mkboth{\contentsname}{\contentsname}\vspace{\l@chapter@@skip}%
+    \vspace{-2\baselineskip}\baselineskip.9\baselineskip
+  \@starttoc{toc}%
+  \vfill\noindent
+  \textbf{\装幀}
+  \if@restonecol\twocolumn\fi\normalsize
+}
+\DeclareRobustCommand*\KBtocsectionfont{\reset@font\rmfamily\normalcolor
+}
+
+\DeclareRobustCommand*\KBtocnumsectionfont{\KBtocsectionfont}
+\DeclareRobustCommand*\KBtocsubsectionfont{\KBtocsectionfont}
+\DeclareRobustCommand*\KBtocnumsubsectionfont{\KBtocsectionfont}
+
+
+
+%% \sectionのあるページの処理
+\def\ps@sheadings{\let\ps@jpl@in\ps@footnombre
+    \let\@evenfoot\@empty
+    \let\@oddfoot\@empty
+    \def\@evenhead{\KBpagenumfont\thepage\hfill}%
+    \def\@oddhead{\hfill\KBheaderfont\leftmark\hskip1.5zw\KBpagenumfont\thepage}%
+    \let\@mkboth\markboth
+  \def\chaptermark##1{\markboth{%
+     \ifnum \c@secnumdepth >\m@ne
+         \if@mainmatter
+         \@chapapp\thechapter\@chappos\hskip1zw%
+         \fi
+     \fi
+     ##1}{}}%
+  \def\sectionmark##1{\markright{%
+     \ifnum \c@secnumdepth >\z@
+           \ifseccntfixHead\@seccnt@prefix@section\fi%
+              \thesection%
+           \ifseccntfixHead\@seccnt@postfix@section\fi%
+\hskip1zw%
+\fi
+     \protect\@inhibitglue##1}}%
+  }
+
+\let\save@KB@section\section
+\def\section{\thispagestyle{sheadings}\save@KB@section}
+
+\renewcommand{\indexname}{第II部の索引}
+%% 索引をアンバランス
+\renewenvironment{theindex}
+  {\if@openright\cleardoublepage\else\clearpage\fi%
+   \if@twocolumn\@restonecolfalse\else\@restonecoltrue\fi
+   \columnseprule\z@ \columnsep 35\p@
+\@ifundefined{multicols}{\twocolumn[\@make@index@chapterhead{\indexname}]}{\begin{multicols}{2}[\@make@index@chapterhead{\indexname}]}
+   \@mkboth{\indexname}{\indexname}%
+\addcontentsline{toc}{chapter}{\indexname}
+   \thispagestyle{empty}\parindent\z@
+   \parskip\z@ \@plus .3\p@\relax
+   \let\item\@idxitem\small}
+  {\if@restonecol
+\@ifundefined{multicols}{\onecolumn}{
+\setcounter{unbalance}{2}%
+\end{multicols}}\else\clearpage\fi}
+
+

@@ -1,0 +1,174 @@
+%% 2016/11/09 lineboxのパラメータを修正
+%% 2013/12/13 miyakawa
+%% screen，itemboxをmdframeパッケージで(再)定義
+%% あとは，破線のDotFrame環境，単なる線で囲んだlinebox環境を定義している．
+%% mdframeパッケージの詳細は
+%% C:\usr\local\share\texmf\doc\latex\mdframed\mdframed-example-tikz.pdf
+%% C:\usr\local\share\texmf\doc\latex\mdframed\mdframed.pdf
+%%を参照
+
+\ProvidesPackage{TkizasciiMP}[2016/11/09 beta2.1]
+\RequirePackage{tikz}
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+%% 全体的な設定
+	\mdfsetup{%
+		skipabove=.5\baselineskip,%% 枠の前のアキ
+		skipbelow=.5\baselineskip,%% 枠の後のアキ
+		needspace=3\baselineskip,%% ページ分割を決める最小値
+	}
+
+%% screen環境
+\newmdenv[%
+	skipabove=.75\baselineskip,
+	skipbelow =.35\baselineskip,
+		outerlinewidth=.4pt,%% 外側罫線の太さ
+		innerlinewidth=0pt,%% 内側罫線の太さ
+%		innerlinecolor=red,%% 内側罫線の色
+%		outerlinecolor=red,%% 外側罫線の色
+		outerlinecolor=black,
+		roundcorner=10pt,%% コーナーのR
+%		backgroundcolor=gray!50%% 
+]{Screen}
+
+
+%% screen環境
+\newmdenv[%
+skipabove=10pt,
+		outerlinewidth=.4pt,%% 外側罫線の太さ
+		innerlinewidth=.2pt,%% 内側罫線の太さ
+%leftmargin=1cm,rightmargin=2cm,%
+%innerleftmargin=1cm,innerrightmargin=1cm,
+%innertopmargin=1cm,innerbottommargin=1cm,
+		middlelinewidth=.6mm,
+		middlelinecolor=white,
+%		innerlinecolor=red,%% 内側罫線の色
+%		outerlinecolor=red,%% 外側罫線の色
+		outerlinecolor=black,
+		roundcorner=10pt,%% コーナーのR
+%		backgroundcolor=gray!50%% 
+]{SScreen}
+
+%% Verbatim環境
+%%\surroundwithmdframed[linewidth=2pt,backgroundcolor=yellow]{verbatim}
+
+%% 破線囲み
+\newmdenv[%
+%	splitbottomskip=1zw,splittopskip=1zw,
+%	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+	innerrightmargin=1zw,innertopmargin=1zw,%
+	innerleftmargin=1zw,
+	innerlinewidth=0pt,outerlinewidth=0pt,
+	middlelinewidth=.2mm,
+%	backgroundcolor=red,
+	linecolor=black,
+	middlelinecolor=white,
+	tikzsetting={draw=black,line width=.2mm,%
+	dashed,%
+	dash pattern= on 2pt off 1.5pt},%
+%	rightline=false,
+%	bottomline=false
+]{DotFrame}
+
+
+
+%% 線囲み
+\newmdenv[%
+%	splitbottomskip=1zw,splittopskip=1zw,
+	skipabove=.75\baselineskip,skipbelow =.35\baselineskip
+	innerrightmargin=1zw,%
+	innertopmargin=.5\baselineskip,%% 中身の一行目と上の罫線のアキ
+	innerbottommargin=.5\baselineskip,%% 中身の最後の行と罫線のアキ
+	innerleftmargin=1zw,
+	innerlinewidth=0pt,outerlinewidth=0pt,
+	middlelinewidth=.2mm,
+%	backgroundcolor=red,
+	linecolor=black,
+	middlelinecolor=white,
+	tikzsetting={draw=black,line width=.2mm,%
+%	dashed,%
+%	dash pattern= on 2pt off 1.5pt
+},
+%rightline=false,
+%bottomline=false
+]{linebox}
+
+
+
+%% 網囲み
+\newmdenv[%
+%	splitbottomskip=1zw,splittopskip=1zw,
+%	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+	innerrightmargin=1zw,innertopmargin=1zw,%
+	innerleftmargin=1zw,
+	innerlinewidth=0pt,outerlinewidth=0pt,
+	middlelinewidth=.2mm,
+	backgroundcolor=gray!10,
+	linecolor=black,
+	middlelinecolor=white,
+	tikzsetting={draw=black,line width=.2mm,%
+%	dashed,%
+%	dash pattern= on 2pt off 1.5pt
+},
+%rightline=false,
+%bottomline=false
+]{Shadebox}
+
+
+
+%% itembox
+%%% 上の箱
+\tikzstyle{itemboxtitregris} =[%
+%	draw=black,
+	thick,
+	fill=white,
+%	shading = exersicetitle, %
+	text=black,
+%	rectangle,
+%	rounded corners,
+	right,
+	minimum height=.1cm%
+]
+
+\def\mdf@@exercisepoints{}%new mdframed key:
+\define@key{mdf}{exercisepoints}{%
+\def\mdf@@exercisepoints{#1}
+}
+
+%% 本体
+\mdfdefinestyle{KB@itembox}{%
+	outerlinewidth=1pt,%% 外側
+	outerlinecolor=black,%
+	leftmargin=0pt,
+	rightmargin=0pt,%
+	innerlinewidth=0pt,
+	middlelinewidth=0pt,
+	roundcorner=10pt,
+	linecolor=black,
+	innertopmargin=.75\baselineskip,%% 中身の一行目と上の罫線のアキ
+	innerbottommargin=.75\baselineskip,%% 中身の最後の行と罫線のアキ
+%	skipabove={\dimexpr0.5\baselineskip+\topskip\relax},%% フレームの前のテキストとのアキ
+%	skipbelow={0em},%% フレームの後のテキストとのアキ
+	needspace=3\baselineskip,%% ページ分割を決める最小値
+	frametitlefont=\sffamily\bfseries,%% タイトルの書体
+%%	settings={\global\stepcounter{exercise}},%% タイトルにカウンタを仕込む
+	singleextra={%
+	\node[itemboxtitregris,xshift=10mm] at (P-|O) %
+	{\kern.5zw\mdf@frametitlefont{\KBitemboxtitle}\kern.5zw};
+	      \ifdefempty{\mdf@@exercisepoints}%
+      {}%
+      {\node[itemboxtitregris,left,xshift=10cm] at (P)%
+        {~\mdf@frametitlefont{\mdf@@exercisepoints points}~};}%
+},
+	 firstextra={%
+	 \node[itemboxtitregris,xshift=10mm] at (P-|O) %
+	 {\kern.5zw\mdf@frametitlefont{\KBitemboxtitle}\kern.5zw};}%
+ }
+\newenvironment{Itembox}[2]{%
+\def\KBitemboxtitle{#1}%
+\mdframed[style=KB@itembox,exercisepoints=#2]}{\endmdframed}
+
+%%これは適当
+\def\KBitemboxtitle{コラム}
+
+

@@ -1,3 +1,4 @@
+%% 2016/11/16「ガロアとガロア理論」での版面設定をclass option追加→ [Garoa]
 %% 2016/11/01 beta2 otfパッケージのバージョンチェックを追加（組版変更なし）
 %% 2016/10/21 beta1 見本組
 
@@ -78,6 +79,9 @@
 % \maketitleの\publisherで引数なしの場合に印字されます．
 \def\@publisher{}
 
+\newif\if@Garoa@
+\@Garoa@false
+
 % min10.tfm由来(jis系tfmも含んだ)の和文フォントサイズを補正しています．
 % pTeXではcmフォントに大きさを合わせるために，和文サイズを
 % 約0.961倍程度に縮小して出力します．
@@ -156,7 +160,7 @@
 % 判面左右は文字の倍数もしくは寸法，天地はそれぞれ行数，もしくは寸法で
 % 指定します．文字数や行数の場合は`zw'や`\baselineskip'は指定しないで，単位なしの数値のみで指定します．
 % 寸法指定（mmやptをつけての指定）も可能ですが，数値指定が基本です．
-% 第6が小口，第7引数が天のアキになります．
+% 第6が天，第7引数が小口のアキになります．
 % この場合「天」とは，上部仕上がりから第1行目の字面上の際です．
 \def\kb@DeclarePaperFormats#1#2#3#4#5#6#7{%
 % #1=<dsoption> #2=\paperwidth #3=\paperheight #4=\textwidth #5=\textheight
@@ -598,7 +602,7 @@
 \DeclareOption{4x6t/12Q}{%
 	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
 	\kb@DeclareFontSizeBaseline{scriptsize}{10Q}{12H}
-	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{16H}
+	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{14H}
 %	\kb@DeclareFontSizeBaseline{small}{12Q}{18H}
 %	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{23.5H}
 	\kb@DeclareFontSizeBaseline{small}{8pt}{17.5H}
@@ -610,9 +614,35 @@
 	\kb@DeclareFontSizeBaseline{Huge}{25Q}{31H}
 	\kb@DeclareFontSizeBaseline{HUGE}{45Q}{61H}
 	\kb@DeclareFontSizeBaseline{tabfont}{12Q}{14H}
-	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{}{13mm}
+	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{16mm}{13mm}
 %	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
 }
+
+% 4x6t/13.5Q
+\DeclareOption{Garoa}{\@Garoa@true%
+	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
+	\kb@DeclareFontSizeBaseline{scriptsize}{10Q}{12H}
+	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{14H}
+%	\kb@DeclareFontSizeBaseline{small}{12Q}{18H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{23.5H}
+	\kb@DeclareFontSizeBaseline{small}{8pt}{17.5H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{9pt}{21.5H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{22.5H}
+	\kb@DeclareFontSizeBaseline{normalsize}{13.5Q}{22.5H}
+	\kb@DeclareFontSizeBaseline{large}{14Q}{20H}
+	\kb@DeclareFontSizeBaseline{Large}{15Q}{21H}
+	\kb@DeclareFontSizeBaseline{LARGE}{16Q}{24H}
+	\kb@DeclareFontSizeBaseline{huge}{20Q}{29H}
+	\kb@DeclareFontSizeBaseline{Huge}{25Q}{31H}
+	\kb@DeclareFontSizeBaseline{HUGE}{45Q}{61H}
+	\kb@DeclareFontSizeBaseline{tabfont}{12Q}{14H}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{30}{27}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{28}{26}{16mm}{13mm}
+	\kb@DeclarePaperFormats{46}{128mm}{188mm}{28}{27}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
+}
+
 
 
 
@@ -1758,7 +1788,7 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 	\setlength\topskip{\Cht}
 \fi
 % 
-\setlength\footskip{5mm}
+\setlength\footskip{6mm}%% 5mm -> 6mm 2016/11/09 miya
 \setlength\maxdepth{.5\topskip}
 \setlength\marginparsep{.5zw}
 
@@ -2159,7 +2189,15 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 \setcounter{secnumdepth}{2}
 \newcounter{part}
 \newcounter{chapter}
+
+%-------
+\if@Garoa@
+\newcounter{section}[part]% 「ガロアとガロア理論」での設定
+\else
 \newcounter{section}[chapter]
+\fi
+%-------
+
 \newcounter{subsection}[section]
 \newcounter{subsubsection}[subsection]
 \newcounter{paragraph}[subsubsection]
@@ -2583,8 +2621,16 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 % \KBheadinggap[上下shift量]{heading name}{行取数}
 % \KBheadinggap[.5\normalbaselineskip]{section}{3}
 %\KBheadinggap[.5\normalbaselineskip]{section}{4}
+
+%%%-------
+\if@Garoa@
+\KBheadinggap[.5\Cht]{section}{4}% 「ガロアとガロア理論」での設定
+\else
 \KBheadinggap[.5\Cht]{section}{3}
-\KBheadinggap{subsection}{2}
+\fi
+%%%-------
+
+\KBheadinggap[.5\Cht]{subsection}{3}
 \KBheadinggap[.5\Cht]{subsubsection}{2}
 
 % --------------------------------------------------
