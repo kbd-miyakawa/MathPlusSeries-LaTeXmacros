@@ -39,7 +39,7 @@
 %% [uplatex] uplatexで処理をする．
 
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesClass{mathpulus}[2016/11/01, beta2 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
+\ProvidesClass{mathpulus}[2016/11/01, ver0.9 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
 \RequirePackage{keyval}
 \DeclareRobustCommand\pTeX{p\kern-.05em\TeX}
 \DeclareRobustCommand\pLaTeX{p\kern-.05em\LaTeX}

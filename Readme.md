@@ -1,11 +1,11 @@
 # MATH PLUS Series Classfile
 
 *変更履歴*
-* 2016/11/30 v1      「ガロアとガロア理論」での設定を反映
+* 2016/11/30 v0.9  「ガロアとガロア理論」での設定を反映
 * 2016/11/16 beta4 「ガロアとガロア理論」では版面変更 class option追加→ [Garoa]
 * 2016/11/04 beta3 「ガロアとガロア理論」入稿に伴い指定にあったノンブル書体をgeorgiaへ．章見出しに影を追加．
-* 2016/11/01 beta2 パッケージロードのバージョンチェックを追加（組版変更なし）
-* 2016/10/21 beta1 見本組
+* 2016/11/01 beta2  パッケージロードのバージョンチェックを追加（組版変更なし）
+* 2016/10/21 beta1  見本組
 
 
 ```
@@ -29,7 +29,7 @@ MathPlusLogo/     MathPlusのlogo
 ```
  `^*` texlive2015で収録されているものはpLaTeXのtombowオプションと相性が悪いため正常に動くものを念のために添付
 
-章見出しに~~小塚ゴシックB~~節見出しに~~小塚ゴシックM~~を割り当てているが，
+章見出しに小塚ゴシックB，節見出しに小塚ゴシックMを割り当てているが，
 デフォルトでは，ipaexゴシックを割り当ててある．
 
 fontmap.styでは，ipexへのmap割り当ても行っている．
@@ -70,7 +70,7 @@ Garoa,%        ガロアの設定
 %% ノンブル書体
 \usepackage{grm}%% georgia.ttf%% 環境によりエラーが出る．そのときはコメントアウトすればcmrが使われる．
 
-%% 章，節見出し書体の設定（代替としてipaexgを使用）
+%% 章，節見出し書体の設定（下では代替としてipaexgを使用）
 \newcommand{\kbChapterFont}{ipaexg.ttf}          % 章見出し
 \newcommand{\kbChapterFontaJ}{ipaexg.ttf/AJ16}   % 章見出し
 \newcommand{\kbSectionFont}{ipaexg.ttf}          % 節見出し
@@ -81,10 +81,14 @@ Garoa,%        ガロアの設定
 
 \includeonly{
 	Chap01,
+%	Chap02,
+%	Chap03,
 	}
 
 \begin{document}
 \include{Chap01}
+\include{Chap02}
+\include{Chap03}
 \end{document}
 ```
 * otfパッケージは`scale`オプションが必須なので，`2013/11/17`以降のバージョンが必要．
