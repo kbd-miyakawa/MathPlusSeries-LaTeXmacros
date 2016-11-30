@@ -4,12 +4,11 @@
 *.toc
 *.tex
 *.gz
-base.pdf
 make.bat
 Archive/
 fontmap/Yugo_test/
 texmf-local/
 font-test/
 MathPlus-sample.tex
-!base.tex
-
+!main.tex
+!Chap01.tex
