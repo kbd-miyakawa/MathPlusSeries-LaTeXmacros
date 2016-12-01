@@ -5,6 +5,7 @@
 *.tex
 *.gz
 make.bat
+font/
 Archive/
 fontmap/Yugo_test/
 texmf-local/
