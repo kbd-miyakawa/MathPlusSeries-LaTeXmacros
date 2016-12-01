@@ -1,4 +1,4 @@
-%% 2016/11/16「ガロアとガロア理論」での版面設定をclass option追加→ [Garoa]
+%% 2016/11/16「ガロアとガロア理論」での版面設定をclass option追加→ [Galois]
 %% 2016/11/01 beta2 otfパッケージのバージョンチェックを追加（組版変更なし）
 %% 2016/10/21 beta1 見本組
 
@@ -39,7 +39,7 @@
 %% [uplatex] uplatexで処理をする．
 
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesClass{mathpulus}[2016/11/01, ver0.9 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
+\ProvidesClass{mathplus}[2016/11/01, ver0.9 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
 \RequirePackage{keyval}
 \DeclareRobustCommand\pTeX{p\kern-.05em\TeX}
 \DeclareRobustCommand\pLaTeX{p\kern-.05em\LaTeX}
@@ -79,8 +79,8 @@
 % \maketitleの\publisherで引数なしの場合に印字されます．
 \def\@publisher{}
 
-\newif\if@Garoa@
-\@Garoa@false
+\newif\if@Galois@
+\@Galois@false
 
 % min10.tfm由来(jis系tfmも含んだ)の和文フォントサイズを補正しています．
 % pTeXではcmフォントに大きさを合わせるために，和文サイズを
@@ -619,7 +619,7 @@
 }
 
 % 4x6t/13.5Q
-\DeclareOption{Garoa}{\@Garoa@true%
+\DeclareOption{Galois}{\@Galois@true%
 	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
 	\kb@DeclareFontSizeBaseline{scriptsize}{10Q}{12H}
 	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{14H}
@@ -2191,7 +2191,7 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 \newcounter{chapter}
 
 %-------
-\if@Garoa@
+\if@Galois@
 \newcounter{section}[part]% 「ガロアとガロア理論」での設定
 \else
 \newcounter{section}[chapter]
@@ -2623,7 +2623,7 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 %\KBheadinggap[.5\normalbaselineskip]{section}{4}
 
 %%%-------
-\if@Garoa@
+\if@Galois@
 \KBheadinggap[.5\Cht]{section}{4}% 「ガロアとガロア理論」での設定
 \else
 \KBheadinggap[.5\Cht]{section}{3}
