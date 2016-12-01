@@ -8,26 +8,33 @@
 * 2016/10/21 beta1  見本組
 
 
-```
-mathpulus.cls     クラスファイル
-macrosMP.sty      シリーズ用マクロセット
-shadowtext.sty    章見出し装飾補助
-fontmap.sty       フォント設定
-otf.sty           フォント設定
-multicol.sty      ^*
-uline--.sty       underline
-base.tex          latexプリアンブルの雛形
-georgia.st   y    Georgiaをノンブル書体へ適応させるpackage
-indexhead.sty     索引のヘッダ体裁
-fontmap/
-            lm.fdd               lmodernサイズ補正
-            otf-ipaex.map        ipexのmap
-            otf-up-ipaex.map
-            ptex-ipaex.map
-            uptex-ipaex.map
-MathPlusLogo/     MathPlusのlogo
-```
- `^*` texlive2015で収録されているものはpLaTeXのtombowオプションと相性が悪いため正常に動くものを念のために添付
+| ファイル名 | 用途|
+|--------|--------|
+| mathpulus.cls  |    クラスファイル|
+| macrosMP.sty   |     シリーズ用マクロセット| 
+| shadowtext.sty  |    章見出し装飾補助| 
+| fontmap.sty     |    フォント設定| 
+| otf.sty         |    フォント設定| 
+| multicol.sty   |     ^*| 
+| uline--.sty     |   for linebreak underline| 
+| georgia.sty   |   Georgiaをノンブル書体へ適応させるpackage| 
+| a_ed3rjc.enc  |      ノンブル書体用のencファイル| 
+| indexhead.sty   |    索引のヘッダ体裁|
+
+`^*` texlive2015で収録されているものはpLaTeXのtombowオプションと相性が悪いため正常に動くものを念のために添付
+
+
+| ファイル名 | 用途|
+|--------|--------|
+| main.tex       |     プリアンブルを記した元締ファイル（コンパイル対象）| 
+| MathPlus-sample.tex |  sampleのtexファイル| 
+| fontmap/ | フォントのmapファイル| 
+| MathPlusLogo/  |    MathPlusのlogo | 
+
+
+
+
+
 
 章見出しに小塚ゴシックB，節見出しに小塚ゴシックMを割り当てているが，
 デフォルトでは，ipaexゴシックを割り当ててある．
