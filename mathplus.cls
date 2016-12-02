@@ -1,3 +1,4 @@
+%% 2016/12/02 BugFix: \@endpart
 %% 2016/11/16「ガロアとガロア理論」での版面設定をclass option追加→ [Galois]
 %% 2016/11/01 beta2 otfパッケージのバージョンチェックを追加（組版変更なし）
 %% 2016/10/21 beta1 見本組
@@ -2252,9 +2253,24 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
   \interlinepenalty\@M\reset@font
   \Huge\bfs#1\par}%
   \@endpart}
+% bugfix: \@endpart
+%\def\@endpart{\vfil\newpage
+%   \if@twoside\null\thispagestyle{empty}\newpage\fi
+%   \if@tempswa\twocolumn\fi}
+% https://github.com/texjporg/jsclasses/pull/44#issuecomment-261998163
 \def\@endpart{\vfil\newpage
-   \if@twoside\null\thispagestyle{empty}\newpage\fi
-   \if@tempswa\twocolumn\fi}
+  \if@twoside
+  \if@openright
+    \null
+    \thispagestyle{empty}%
+    \newpage
+  \fi
+  \fi
+  \if@restonecol
+    \twocolumn
+  \fi}
+%%%%%
+
 % \chapterに約物の行頭処理を追加しました．
 
 \newcount\@chapterid
