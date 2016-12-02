@@ -1,6 +1,8 @@
 # MATH PLUS Series Classfile
 
 *変更履歴*
+* 2016/12/02 Bigfix: \@endpart jsclass側で持っていたbugをそのまま踏襲していたため修正．
+この修正で[openany]指定時の\part，\chapter間の白ページが出現しなくなる．
 * 2016/11/30 v0.9  「ガロアとガロア理論」での設定を反映
 * 2016/11/16 beta4 「ガロアとガロア理論」では版面変更 class option追加→ [Galois]
 * 2016/11/04 beta3 「ガロアとガロア理論」入稿に伴い指定にあったノンブル書体をgeorgiaへ．章見出しに影を追加．
