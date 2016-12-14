@@ -2192,12 +2192,13 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 \newcounter{chapter}
 
 %-------
-\if@Galois@
-\newcounter{section}[part]% 「ガロアとガロア理論」での設定
-\else
-\newcounter{section}[chapter]
-\fi
+%\if@Galois@
+%\newcounter{section}[part]% 「ガロアとガロア理論」での設定
+%\else
+%\newcounter{section}[chapter]
+%\fi
 %-------
+\newcounter{section}[chapter]
 
 \newcounter{subsection}[section]
 \newcounter{subsubsection}[subsection]

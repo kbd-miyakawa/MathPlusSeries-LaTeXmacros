@@ -1,6 +1,9 @@
 # MATH PLUS Series Classfile
 
 *変更履歴*
+
+* 2016/12/14
+ガロア設定のときでも ``\newcounter{section}[part]`'  -> `'\newcounter{section}[chapter]`'のように修正（ベルヌーイ家の数学にて）
 * 2016/12/02 Bigfix: \@endpart jsclass側で持っていたbugをそのまま踏襲していたため修正．
 この修正で[openany]指定時の\part，\chapter間の白ページが出現しなくなる．
 * 2016/11/30 v0.9  「ガロアとガロア理論」での設定を反映
