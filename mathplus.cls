@@ -1,3 +1,4 @@
+%% 2016/12/XX デフォルト決定，VDN, VUPオプションを追加
 %% 2016/12/02 BugFix: \@endpart
 %% 2016/11/16「ガロアとガロア理論」での版面設定をclass option追加→ [Galois]
 %% 2016/11/01 beta2 otfパッケージのバージョンチェックを追加（組版変更なし）
@@ -40,7 +41,7 @@
 %% [uplatex] uplatexで処理をする．
 
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesClass{mathplus}[2016/11/01, ver0.9 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
+\ProvidesClass{mathplus}[2016/12/21, ver0.91 baseed on kbdbook7b.cls keibundou.corp. n.miyakawa]
 \RequirePackage{keyval}
 \DeclareRobustCommand\pTeX{p\kern-.05em\TeX}
 \DeclareRobustCommand\pLaTeX{p\kern-.05em\LaTeX}
