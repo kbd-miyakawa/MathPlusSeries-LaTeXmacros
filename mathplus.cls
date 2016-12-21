@@ -80,8 +80,14 @@
 % \maketitleの\publisherで引数なしの場合に印字されます．
 \def\@publisher{}
 
-\newif\if@Galois@
-\@Galois@false
+\newif\if@MP@Galois@
+\newif\if@MP@DefaultLayout@
+\newif\if@MP@VUP@
+\newif\if@MP@VDN@
+\@MP@Galois@false
+\@MP@DefaultLayout@false
+\@MP@VUP@false
+\@MP@VDN@false
 
 % min10.tfm由来(jis系tfmも含んだ)の和文フォントサイズを補正しています．
 % pTeXではcmフォントに大きさを合わせるために，和文サイズを
@@ -600,14 +606,15 @@
 %	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
 }
 
-\DeclareOption{4x6t/12Q}{%
+%\DeclareOption{4x6t/12Q}{%
+\DeclareOption{VDN}{\@MP@VDN@true%
 	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
-	\kb@DeclareFontSizeBaseline{scriptsize}{10Q}{12H}
-	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{14H}
+	\kb@DeclareFontSizeBaseline{scriptsize}{8Q}{12H}
+	\kb@DeclareFontSizeBaseline{footnotesize}{10Q}{14H}
 %	\kb@DeclareFontSizeBaseline{small}{12Q}{18H}
 %	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{23.5H}
-	\kb@DeclareFontSizeBaseline{small}{8pt}{17.5H}
-	\kb@DeclareFontSizeBaseline{normalsize}{9pt}{21.5H}
+	\kb@DeclareFontSizeBaseline{small}{11Q}{17.5H}
+	\kb@DeclareFontSizeBaseline{normalsize}{12.5Q}{21.5H}
 	\kb@DeclareFontSizeBaseline{large}{14Q}{20H}
 	\kb@DeclareFontSizeBaseline{Large}{15Q}{21H}
 	\kb@DeclareFontSizeBaseline{LARGE}{16Q}{24H}
@@ -620,7 +627,33 @@
 }
 
 % 4x6t/13.5Q
-\DeclareOption{Galois}{\@Galois@true%
+\DeclareOption{Galois}{\@MP@Galois@true%
+	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
+	\kb@DeclareFontSizeBaseline{scriptsize}{10Q}{12H}
+	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{14H}
+%	\kb@DeclareFontSizeBaseline{small}{12Q}{18H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{23.5H}
+	\kb@DeclareFontSizeBaseline{small}{8pt}{17.5H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{9pt}{21.5H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{22.5H}
+	\kb@DeclareFontSizeBaseline{normalsize}{13.5Q}{22.5H}
+	\kb@DeclareFontSizeBaseline{large}{14Q}{20H}
+	\kb@DeclareFontSizeBaseline{Large}{15Q}{21H}
+	\kb@DeclareFontSizeBaseline{LARGE}{16Q}{24H}
+	\kb@DeclareFontSizeBaseline{huge}{20Q}{29H}
+	\kb@DeclareFontSizeBaseline{Huge}{25Q}{31H}
+	\kb@DeclareFontSizeBaseline{HUGE}{45Q}{61H}
+	\kb@DeclareFontSizeBaseline{tabfont}{12Q}{14H}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{30}{27}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{28}{26}{16mm}{13mm}
+	\kb@DeclarePaperFormats{46}{128mm}{188mm}{28}{27}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
+}
+
+
+% 4x6t/13.5Q
+\DeclareOption{DefaultLayout}{\@MP@DefaultLayout@true%
 	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
 	\kb@DeclareFontSizeBaseline{scriptsize}{10Q}{12H}
 	\kb@DeclareFontSizeBaseline{footnotesize}{7pt}{14H}
@@ -2192,13 +2225,12 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 \newcounter{chapter}
 
 %-------
-%\if@Galois@
-%\newcounter{section}[part]% 「ガロアとガロア理論」での設定
-%\else
-%\newcounter{section}[chapter]
-%\fi
-%-------
+\if@MP@Galois@
+\newcounter{section}[part]% 「ガロアとガロア理論」での設定
+\else
 \newcounter{section}[chapter]
+\fi
+%-------
 
 \newcounter{subsection}[section]
 \newcounter{subsubsection}[subsection]
@@ -2467,6 +2499,7 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 	\let\KB@larg\KB@triplearg
 \fi
 
+
 \def\@startsection#1#2#3#4#5#6{%
   \if@noskipsec \leavevmode \fi
   \par
@@ -2640,7 +2673,7 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 %\KBheadinggap[.5\normalbaselineskip]{section}{4}
 
 %%%-------
-\if@Galois@
+\if@MP@Galois@
 \KBheadinggap[.5\Cht]{section}{4}% 「ガロアとガロア理論」での設定
 \else
 \KBheadinggap[.5\Cht]{section}{3}

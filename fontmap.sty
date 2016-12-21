@@ -7,6 +7,22 @@
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/ptex-ipaex.map}}
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/uptex-ipaex.map}}
 
+\newif\if@MP@font@default@
+\@MP@font@default@false
+\DeclareOption{代替}{\@MP@font@default@true}
+\ProcessOptions\relax
+%- 書体関連 ----------
+%% 本文書体には本番でもipaexmとipaexgを使用
+%% ノンブル書体にGeorgiaをload
+\usepackage{grm}
+\if@MP@font@default@
+%% 章見出しなどの代替え書体
+%% （指定をコメントアウトすればデフォルトが使われる）
+\章見出し書体{ipaexg.ttf}%% default -> 小塚ゴシックB
+\節見出し書体{ipaexg.ttf}%% default -> 小塚明朝M
+\異字体用書体{KozMinPr6N-Regular.otf}%% AcrobatDCに付属
+\本文引用書体{ipaexg.ttf}%% default -> グレコM
+\fi
 %% kozuka goth
 %\@ifundefined{KozuGo}{\def\KozuGo{KozGoPro-Bold.otf}}{}
 %
@@ -67,7 +83,6 @@
 \AtBeginDvi{\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V \kbSectionFont}}
 \AtBeginDvi{\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H \kbSectionFont}}
 \AtBeginDvi{\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V \kbSectionFont}}
-
 
 \AtBeginDvi{\special{pdf:mapline hminb-h H \kbdescriptionfont}}
 \AtBeginDvi{\special{pdf:mapline hminb-v V \kbdescriptionfont}}

@@ -1,11 +1,12 @@
 \documentclass[gtsf,useotf,dvipdfmx,%
-%4x6t/12Q,%    見本組初期の設定のとき
-Galois,%        ガロアの設定のとき
-%              uplatex,%% LaTeX文書がutf8の場合
+%Galois,%        ガロアの設定のとき
+VDN%              uplatex,%% LaTeX文書がutf8の場合でUNICODE文字を対象した場合
               ]{mathplus}
+
+
 \usepackage{graphicx,xcolor}
 \usepackage{amsmath,amssymb}
-%\usepackage[utf8]{inputenc}%% LaTeX文書がutf8の場合
+%\usepackage[utf8]{inputenc}%% LaTeX文書がutf8の場合でUNICODE文字を対象した場合
 \usepackage{textcomp}
 \usepackage[LY1,TS1,OT1,T1]{fontenc}
 \usepackage{lmodern}
@@ -17,25 +18,19 @@ Galois,%        ガロアの設定のとき
 \usepackage{ascmac}
 \usepackage{uline--,macrosMP}%% added by miya
 
-\makeatother
-%\usepackage{grm}%% georgia.ttf (ノンブル書体)
-%% 小塚ゴシック設定（代替としてipaexgを使用）
-\newcommand{\kbChapterFont}{ipaexg.ttf}          % 章見出し
-\newcommand{\kbChapterFontaJ}{ipaexg.ttf/AJ16}   % 章見出し
-\newcommand{\kbSectionFont}{ipaexg.ttf}          % 節見出し
-\newcommand{\kbSectionFontaJ}{ipaexg.ttf/AJ16}   % 節見出し
-\newcommand{\kbgaiji}{A-OTF-RyuminPr6N-Light.otf}% 異字体用
-\newcommand{\kbdescriptionfont}{ipaexg.ttf}      % 本文引用箇所
-\usepackage{fontmap}
-%%
+%% 装幀者
+\装幀{岡 孝治}
+%% 書体設定[代替]で代替書体（ipaexgを使用．どの環境でも処理可能）
+%% 代替を取ると章に小塚ゴシックBと節にMが使われる．書体がない場合．
+\usepackage[代替]{fontmap}
 
 \includeonly{
 MathPlus-sample,
-%	Chap01,
-%	Chap02,
-%	Chap03,
-%	Chap04,
-%	Chap05,
+%%	Chap01,
+%%	Chap02,
+%%	Chap03,
+%%	Chap04,
+%%	Chap05,
 	}
 
 \begin{document}
