@@ -623,7 +623,8 @@
 	\kb@DeclareFontSizeBaseline{Huge}{25Q}{31H}
 	\kb@DeclareFontSizeBaseline{HUGE}{45Q}{61H}
 	\kb@DeclareFontSizeBaseline{tabfont}{12Q}{14H}
-	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{16mm}{13mm}
+	\kb@DeclarePaperFormats{46}{128mm}{188mm}{378H}{598.5H}{}{}
 %	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
 }
 
@@ -1045,7 +1046,7 @@
 \@KB@tt@face@true
 \DeclareOption{nottscale}{\@KB@tt@face@false}
 
-\ExecuteOptions{a5/13Q,tombow,twoside,onecolumn,final,openright}
+\ExecuteOptions{DefaultLayout,tombow,twoside,onecolumn,final,openright}
 \ProcessOptions\relax
 \if@kb@showlistfiles@\listfiles\fi
 

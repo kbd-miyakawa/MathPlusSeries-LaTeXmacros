@@ -6,6 +6,10 @@
 \ProvidesPackage{macrosMP}[2016/10/26 beta2]
 
 \RequirePackage{TkizasciiMP}
+\RequirePackage{textcomp}
+\RequirePackage[LY1,TS1,OT1,T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage[deluxe,scale=1]{otf}[2013/11/17]%% added by miya
 
 
 \newcommand{\章見出し書体}[1]{\def\kbChapterFont{#1}\def\kbChapterFontaJ{#1/AJ16}}
@@ -335,6 +339,9 @@ Processing will STOP.^^J%
 \newenvironment{Quotation}{%
 \begin{list}{}{\topsep1\baselineskip\leftmargin2zw\rightmargin0pt\labelsep0pt\labelwidth0pt\listparindent1zw
 }\item[]\DescriptionFONT\baselineskip.9\baselineskip}{\end{list}}
+\let\Quote\Quotation
+\let\endQuote\endQuotation
+
 
 
 \def\装幀#1{\def\@装幀{\hbox{\textbf{■\hskip.5zw装幀 #1}}}}
@@ -361,6 +368,49 @@ Processing will STOP.^^J%
    \else
    \hbox to\@lnumwidth{\hss\box\z@}
    \fi\@inhibitglue}
+
+
+
+
+
+%% 丸囲み環境
+\newmdenv[%
+	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+		outerlinewidth=.2pt,%% 外側罫線の太さ
+		innerlinewidth=0pt,%% 内側罫線の太さ
+%		innerlinecolor=red,%% 内側罫線の色
+%		outerlinecolor=red,%% 外側罫線の色
+		outerlinecolor=black,
+		roundcorner=5pt,%% コーナーのR
+%		backgroundcolor=gray!50%%
+%%needspace=2.5\baselineskip
+]{tkzscreen}
+
+\newenvironment{screenbox}{\begin{tkzscreen}}{\end{tkzscreen}}
+
+%% 網囲み
+\newmdenv[%
+%	splitbottomskip=1zw,splittopskip=1zw,
+	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+	innerrightmargin=1zw,innertopmargin=1zw,%
+	innerleftmargin=1zw,
+	innerlinewidth=0pt,outerlinewidth=0pt,
+	middlelinewidth=0mm,
+	backgroundcolor=gray!20,
+	linecolor=black,
+	middlelinecolor=white,
+splittopskip=13pt,
+splitbottomskip=5pt,
+	tikzsetting={draw=black,line width=.2mm,%
+%	dashed,%
+%	dash pattern= on 2pt off 1.5pt
+},
+%rightline=false,
+%bottomline=false
+]{tkzshadebox}
+
+
+\newenvironment{shadelinebox}{\begin{tkzshadebox}}{\end{tkzshadebox}}
 
 
 \if@MP@Galois@
@@ -574,3 +624,5 @@ Processing will STOP.^^J%
 \setcounter{unbalance}{2}%
 \end{multicols}}\else\clearpage\fi}
 \fi
+
+

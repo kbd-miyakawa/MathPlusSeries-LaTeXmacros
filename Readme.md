@@ -3,6 +3,7 @@
 *変更履歴*
 
 * 2016/12/21 V0.91： 版面のデフォルト設定を決定，クラスオプションVDN（頁減少用）とVUP（頁増加用）を追加．（ただし詳細未決定） 
+「網掛け」(shadelinebox)と「ラウンド罫」(screenbox)の環境を追加（macroMP.sty）
 * 2016/12/14
 ガロア設定のときでも ``\newcounter{section}[part]`'  -> `'\newcounter{section}[chapter]`'のように修正（ベルヌーイ家の数学にて）
 * 2016/12/02 Bigfix: \@endpart jsclass側で持っていたbugをそのまま踏襲していたため修正．
@@ -70,8 +71,13 @@ fontmap.styでは，ipexへのmap割り当ても行っている．
 
 ### オプション
 
-`[VDN]`はページ減少用．`[VUP]`はページ増加用
-「ガロアとガロア理論」の体裁は，クラスオプションに `[Galois]` を追加する．
+* `[VDN]`
+ページ減少用．
+* `[VUP]`
+ページ増加用
+* `[Galois]`
+「ガロアとガロア理論」の体裁
+
 詳細は **仕様** を参照
 
 ** 例 ** 最低限必要なオプション
@@ -99,17 +105,13 @@ fontmap.styでは，ipexへのmap割り当ても行っている．
 \usepackage{fancybox}
 \usepackage{ascmac}
 \usepackage{uline--,macrosMP}%% added by miya
-```
 
 章見出し，節見出しは本番では，小塚ゴシックBとMが使われる．
-これらのフォントが無い環境ではエラーになるため，option に ``[代替]`` を設けてる．
-代替えフォントは，``ipaexg``である．
+これらのフォントが無い環境ではエラーになるため，そうなる場合はoption に [代替] を指定する．
+代替えフォントは，ipaexgである．
 
-```
 \usepackage{fontmap}           ％本番用設定
-\usepackage[代替]{fontmap}  %代替用設定
-
-```
+\usepackage[代替]{fontmap}  %代替用設定（[代替]はオプション文字そのものです．）
 
 \includeonly{
 	Chap01,
@@ -123,5 +125,28 @@ fontmap.styでは，ipexへのmap割り当ても行っている．
 \include{Chap03}
 \end{document}
 ```
+
 * otfパッケージは`scale`オプションが必須なので，`2013/11/17`以降のバージョンが必要．
+
+
+### コマンド，環境
+
+* 網掛けのボックス（macroMP.sty）
+```
+\begin{shadelinebox}
+\end{shadelinebox}
+```
+
+* ラウンド罫のボックス（macroMP.sty）
+```
+\begin{screenbox}
+\end{screenbox}
+```
+
+* 引用（書体が特殊なので代替フォントをあてています．）
+```
+\begin{Quote}
+\end{Quote}
+```
+
 
