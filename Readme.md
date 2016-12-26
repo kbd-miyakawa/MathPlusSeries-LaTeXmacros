@@ -42,6 +42,12 @@
 
 `fontmap.sty`では，ipexへのmap割り当ても行っている．
 
+
+### 例：
+```
+\documentclass[gtsf,useotf,dvipdfmx]{mathplus}
+```
+
 ### オプション
 
 * `[VDN]`
@@ -52,11 +58,6 @@
 「ガロアとガロア理論」の体裁
 
 詳細は **仕様** を参照
-
-### 例：最低限必要なオプション
-```
-\documentclass[gtsf,useotf,dvipdfmx]{mathplus}
-```
 
 ### プリアンブル例（未完）
 
@@ -71,7 +72,7 @@
 \usepackage{textcomp}
 \usepackage[LY1,TS1,OT1,T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[deluxe,scale=1]{otf}[2013/11/17]%% added by miya
+\usepackage[deluxe,scale=1]{otf}[2013/11/17]
 \usepackage{makeidx,multicol}
 \usepackage{comment}
 \usepackage{okumacro}
