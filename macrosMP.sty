@@ -1,9 +1,10 @@
+%% 2016/12/28 beta3： \sectionでの改ページをコントロールする．\sectionBreakOn，\sectionBreakOffを追加]
 %% 枠囲み用マクロ追加
 %% 章見出し，節見出し体裁変更
 %% 2016/11/01 beta2 パッケージロードのアラートを追加（組版変更なし）
 %% 2016/10/26 beta1 見本組作成
 %% MathPlus series Macro set by miyakawa.
-\ProvidesPackage{macrosMP}[2016/10/26 beta2]
+\ProvidesPackage{macrosMP}[2016/10/26 beta3]
 
 \RequirePackage{TkizasciiMP}
 \RequirePackage{textcomp}
@@ -217,15 +218,25 @@ Processing will STOP.^^J%
 \let\@make@bib@chapterhead\@makeschapterhead
 \let\@make@index@chapterhead\@makeschapterhead
 
+
+%%2016/12/28 added by miya
+\newif\if@MP@section@newpage@
+\@MP@section@newpage@true
+\def\sectionBreakOn{\@MP@section@newpage@true}
+\def\sectionBreakOff{\@MP@section@newpage@false}
+
 %%2016/12/21 added by miya
 \def\MP@sectFlad{section}
 \def\MP@sectFlad@b{subsection}
 \def\KB@clear@Section@doublepage{%
+\if@MP@section@newpage@
 \ifx\MP@sectFlad\KB@@Chack@section
      \ifnum\c@section<\@ne
      \else\clearpage\thispagestyle{sheadings}
      \fi
-\fi}
+\fi
+\fi
+}
 
 \def\KB@Chack@section{section}
 % section
