@@ -1,15 +1,16 @@
 % usejfont: ipaex, kozuka gochic
 %% MathPlus series Macro set by miyakawa.
-\ProvidesPackage{fontmap}[2016/10/26 beta1]
+\ProvidesPackage{fontmap}[2016/10/26 beta2]
 % ipaex
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/otf-ipaex.map}}
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/otf-up-ipaex.map}}
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/ptex-ipaex.map}}
 \AtBeginDvi{\special{pdf:mapfile ./fontmap/uptex-ipaex.map}}
 
+%% optionを「代替」から「general」へ変更
 \newif\if@MP@font@default@
 \@MP@font@default@false
-\DeclareOption{代替}{\@MP@font@default@true}
+\DeclareOption{general}{\@MP@font@default@true}
 \ProcessOptions\relax
 %- 書体関連 ----------
 %% 本文書体には本番でもipaexmとipaexgを使用
