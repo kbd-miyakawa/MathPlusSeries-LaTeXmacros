@@ -2,7 +2,7 @@
 
 *変更履歴*
 
-* 2016/12/28 macrosMP.sty： \sectionでの改ページをコントロールする．\sectionBreakOn，\sectionBreakOffを追加
+* 2016/12/28 macrosMP.sty： \sectionでの改ページをコントロールする．\sectionBreakOn，\sectionBreakOffを追加．fontmap.styの代替フォントを使うときのオプションを「代替」から「general」へ変更．
 * 2016/12/21 V0.91： 版面のデフォルト設定を決定，クラスオプションVDN（頁減少用）とVUP（頁増加用）を追加．（ただしVDNとVUPは詳細未決定）
 「網掛け」(shadelinebox)と「ラウンド罫」(screenbox)の環境を追加（macroMP.sty）
 * 2016/12/14
