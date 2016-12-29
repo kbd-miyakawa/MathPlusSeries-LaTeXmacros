@@ -11,17 +11,13 @@
 %\usepackage[utf8]{inputenc}%% LaTeX文書がutf8の場合でUNICODE文字を対象した場合
 \usepackage{makeidx,multicol}
 %
-\usepackage{comment}
-\usepackage{okumacro}
-\usepackage{fancybox}
-\usepackage{ascmac}
-%
 
 %% 装幀者
 \装幀{装幀者名}
-%% 書体設定[代替]で代替書体（ipaexgを使用．どの環境でも処理可能）
-%% 代替を取ると章に小塚ゴシックBと節にMが使われる．書体がない場合．
+
 \usepackage[general]{fontmap}
+%% fontmap.styのoptionの[general]を指定でipaexgを使用．これはどの環境でも処理可能．
+%% [general]を取ると章に小塚ゴシックBと節にMが使われるようになる．
 
 \includeonly{
 MathPlus-sample,
