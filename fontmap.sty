@@ -1,114 +1,157 @@
+%% 2017/01/05‰ª£Êõø„Éï„Ç©„É≥„Éà„Å´Office„Éï„Ç©„É≥„Éà„ÇíËøΩÂä†
+%% 2017/01/05„Éï„Ç©„É≥„Éà‰ª£ÊõøÁî®optionÂêç„Çí„Äå‰ª£Êõø„Äç„Åã„Çâ„Äåtemporaryfont„Äç„Å∏Â§âÊõ¥
 % usejfont: ipaex, kozuka gochic
 %% MathPlus series Macro set by miyakawa.
-\ProvidesPackage{fontmap}[2016/10/26 beta2]
-% ipaex
-\AtBeginDvi{\special{pdf:mapfile ./fontmap/otf-ipaex.map}}
-\AtBeginDvi{\special{pdf:mapfile ./fontmap/otf-up-ipaex.map}}
-\AtBeginDvi{\special{pdf:mapfile ./fontmap/ptex-ipaex.map}}
-\AtBeginDvi{\special{pdf:mapfile ./fontmap/uptex-ipaex.map}}
+\ProvidesPackage{fontmap}[2017/01/05 beta3]
 
-%% optionÇÅuë„ë÷ÅvÇ©ÇÁÅugeneralÅvÇ÷ïœçX
+
+\def\kb@FtM@pkgname{fontmap}
+
+%%%% Error, Warning
+\def\kb@FtM@error{\PackageError{\kb@FtM@pkgname}}
+\def\kb@FtM@warn{\PackageWarning\kb@FtM@pkgname}
+\def\kb@FtM@info{\PackageInfo\kb@FtM@pkgname}
+
+\def\kb@MainMappingPath{./fontmap}
+\def\kb@Map@Check#1{%
+\IfFileExists{\kb@MainMappingPath/#1}{%
+    \AtBeginDvi{\special{pdf:mapfile \kb@MainMappingPath/#1}}%
+    }{
+    \kb@FtM@error{No file \kb@MainMappingPath/#1 file}
+       {\kb@MainMappingPath/#1 „ÇíÈÖçÁΩÆ„Åó„Å¶„Åè„Å†„Åï„ÅÑÔºé}
+    }}
+
+% ipaex
+\kb@Map@Check{otf-ipaex.map}
+\kb@Map@Check{otf-up-ipaex.map}
+\kb@Map@Check{ptex-ipaex.map}
+\kb@Map@Check{uptex-ipaex.map}
+
+%% optionÂêç„Çí„Äå‰ª£Êõø„Äç„Åã„Çâ„Äåtemporaryfont„Äç„Å∏Â§âÊõ¥
 \newif\if@MP@font@default@
 \@MP@font@default@false
-\DeclareOption{general}{\@MP@font@default@true}
+\DeclareOption{temporaryfont}{\@MP@font@default@true}
+
+%% ‰ª£Êõø„Éï„Ç©„É≥„Éà„Å´Office„Éï„Ç©„É≥„Éà„ÇíËøΩÂä†
+\newif\if@MP@font@MS@
+\@MP@font@MS@false
+\DeclareOption{MS}{\@MP@font@MS@true}
 \ProcessOptions\relax
-%- èëëÃä÷òA ----------
-%% ñ{ï∂èëëÃÇ…ÇÕñ{î‘Ç≈Ç‡ipaexmÇ∆ipaexgÇégóp
-%% ÉmÉìÉuÉãèëëÃÇ…GeorgiaÇload
+
+\newcommand{\kb@Set@TT@ChapterFont}[1]{%
+\def\kbChapterFont{#1}%
+\def\kbChapterFontAJ{#1/AJ16}%
+}
+\newcommand{\kb@Set@TT@SectionFont}[1]{%
+\def\kbSectionFont{#1}%
+\def\kbSectionFontAJ{#1/AJ16}%
+}
+%\newcommand{\kb@Set@TT@AJFontM}[1]{\def\kbgaijiM{#1}}% 
+%\newcommand{\kb@Set@TT@AJFontG}[1]{\def\kbgaijiG{#1}}% 
+\newcommand{\kb@Set@TT@QoteFont}[1]{%
+\def\kbdescriptionfont{#1}%
+\def\kbdescriptionFontAJ{#1/AJ16}%
+}
+
+
+
+%- Êõ∏‰ΩìÈñ¢ÈÄ£ ----------
+%% Êú¨ÊñáÊõ∏‰Ωì„Å´„ÅØÊú¨Áï™„Åß„ÇÇipaexm„Å®ipaexg„Çí‰ΩøÁî®
+%% „Éé„É≥„Éñ„É´Êõ∏‰Ωì„Å´Georgia„Çí‰ΩøÁî®
 \usepackage{grm}
+%% Á´†Ë¶ãÂá∫„Åó„Å™„Å©„ÅÆ‰ª£Êõø„ÅàÊõ∏‰Ωì„ÅÆË®≠ÂÆö
 \if@MP@font@default@
-%% èÕå©èoÇµÇ»Ç«ÇÃë„ë÷Ç¶èëëÃ
-%% ÅiéwíËÇÉRÉÅÉìÉgÉAÉEÉgÇ∑ÇÍÇŒÉfÉtÉHÉãÉgÇ™égÇÌÇÍÇÈÅj
-\èÕå©èoÇµèëëÃ{ipaexg.ttf}%% default -> è¨íÀÉSÉVÉbÉNB
-\êﬂå©èoÇµèëëÃ{ipaexg.ttf}%% default -> è¨íÀñæí©M
-\àŸéöëÃópèëëÃ{KozMinPr6N-Regular.otf}%% AcrobatDCÇ…ïtëÆ
-\ñ{ï∂à¯ópèëëÃ{ipaexg.ttf}%% default -> ÉOÉåÉRM
+\if@MP@font@MS@
+\kb@Set@TT@ChapterFont{:0:hgrsgu.ttc}%% HGÂâµËã±Ëßí„Ç¥„Ç∑„ÉÉ„ÇØ default -> ÔºàÂ∞èÂ°ö„Ç¥„Ç∑„ÉÉ„ÇØBÔºâ
+\kb@Set@TT@SectionFont{:0:hgrge.ttc}%% HG„Ç¥„Ç∑„ÉÉ„ÇØE default -> Â∞èÂ°öÊòéÊúùM
+%\kb@Set@TT@AJFontM{:0:msmincho.ttc/AJ16}
+%\kb@Set@TT@AJFontG{:0:msgothic.ttc/AJ16}
+\kb@Set@TT@QoteFont{:0:hgrkk.ttc}%% HGÊïôÁßëÊõ∏‰Ωì default -> „Ç∞„É¨„Ç≥M
+\else
+\kb@Set@TT@ChapterFont{ipaexg.ttf}%% ipaexg default -> Â∞èÂ°ö„Ç¥„Ç∑„ÉÉ„ÇØB
+\kb@Set@TT@SectionFont{ipaexg.ttf}%% ipaexg.ttf default -> Â∞èÂ°öÊòéÊúùM
+%\kb@Set@TT@AJFontM{ipaexm.ttf/AJ16}
+%\kb@Set@TT@AJFontG{ipaexg.ttf/AJ16}
+\kb@Set@TT@QoteFont{ipaexg.ttf}%% ipaexg.ttf default -> „Ç∞„É¨„Ç≥M
 \fi
-%% kozuka goth
-%\@ifundefined{KozuGo}{\def\KozuGo{KozGoPro-Bold.otf}}{}
-%
-%\AtBeginDvi{\special{pdf:mapline hgothb-h H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline hgothb-v V \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline hgothbn-h H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline hgothbn-v V \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline otf-cjgb-h Identity-H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline otf-cjgb-v Identity-V \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline uphgothb-h UniJIS-UTF16-H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline uphgothb-v UniJIS-UTF16-V \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H \KozuGo}}
-%\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \KozuGo}}
+\fi
+
+% Á´†Ë¶ãÂá∫„ÅóÔºåÁØÄË¶ãÂá∫„Åó„ÅÆÊõ∏‰ΩìË®≠ÂÆö
+% „Éá„Éï„Ç©„É´„Éà=Â∞èÂ°ö„Ç¥„Ç∑„ÉÉ„ÇØ
+\providecommand{\kbChapterFont}{KozGoPro-Bold.otf}
+\providecommand{\kbChapterFontAJ}{KozGoPro-Bold.otf}
+\providecommand{\kbSectionFont}{KozGoPro-Medium.otf}
+\providecommand{\kbSectionFontAJ}{KozGoPro-Medium.otf}
+% CIDË®≠ÂÆö„ÅÆ„Éá„Éï„Ç©„É´„Éà
+\providecommand{\kbgaijiM}{A-OTF-RyuminPr6N-Light.otf}
+\providecommand{\kbgaijiG}{A-OTF-GothicBBBPr6N-Medium.otf}
+% ÂºïÁî®ÈÉ®ÂàÜ„ÅÆÊõ∏‰Ωì
+\providecommand{\kbdescriptionfont}{FOT-GrecoStd-M.otf}
+\providecommand{\kbdescriptionFontAJ}{FOT-GrecoStd-M.otf}
 
 
-% èÕå©èoÇµÅCêﬂå©èoÇµÇÃèëëÃê›íË
-% ÉfÉtÉHÉãÉg=è¨íÀÉSÉVÉbÉN
-\@ifundefined{kbChapterFont}{\def\kbChapterFont{KozGoPro-Bold.otf}}{}
-\@ifundefined{kbChapterFontaJ}{\def\kbChapterFontaJ{KozGoPro-Bold.otf}}{}
-\@ifundefined{kbSectionFont}{\def\kbSectionFont{KozGoPro-Medium.otf}}{}
-\@ifundefined{kbSectionFontaJ}{\def\kbSectionFontaJ{KozGoPro-Medium.otf}}{}
-% CIDê›íËÇÃÉfÉtÉHÉãÉg
-\@ifundefined{kbgaiji}{\def\kbgaiji{A-OTF-RyuminPr6N-Light.otf}}{}
-
-% à¯ópïîï™ÇÃèëëÃ
-\@ifundefined{kbdescriptionfont}{\def\kbdescriptionfont{FOT-GrecoStd-M.otf}}{}
-
-\AtBeginDvi{\special{pdf:mapline hgothb-h H \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline hgothb-v V \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline hgothbn-h H \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline hgothbn-v V \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline otf-cjgb-h Identity-H \kbChapterFontaJ}}
-\AtBeginDvi{\special{pdf:mapline otf-cjgb-v Identity-V \kbChapterFontaJ}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline uphgothb-h UniJIS-UTF16-H \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline uphgothb-v UniJIS-UTF16-V \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H \kbChapterFont}}
-\AtBeginDvi{\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \kbChapterFont}}
-
-\AtBeginDvi{\special{pdf:mapline hgotheb-h H \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline hgotheb-v V \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline hgothebn-h H \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline hgothebn-v V \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline otf-cjge-h Identity-H \kbSectionFontaJ}}
-\AtBeginDvi{\special{pdf:mapline otf-cjge-v Identity-V \kbSectionFontaJ}}
-\AtBeginDvi{\special{pdf:mapline otf-ujge-h UniJIS-UTF16-H \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujge-v UniJIS-UTF16-V \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgen-h UniJIS2004-UTF16-H \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujgen-v UniJIS2004-UTF16-V \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline uphgotheb-h UniJIS-UTF16-H \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H \kbSectionFont}}
-\AtBeginDvi{\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V \kbSectionFont}}
-
-\AtBeginDvi{\special{pdf:mapline hminb-h H \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline hminb-v V \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline hminbn-h H \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline hminbn-v V \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline otf-cjmb-h Identity-H \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline otf-cjmb-v Identity-V \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujmb-h UniJIS-UTF16-H \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujmb-v UniJIS-UTF16-V \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujmbn-h UniJIS2004-UTF16-H \kbdescriptionfont}}
-\AtBeginDvi{\special{pdf:mapline otf-ujmbn-v UniJIS2004-UTF16-V \kbdescriptionfont}}
-
-%% ÉmÉìÉuÉã
-\AtBeginDvi{\special{pdf:mapfile ./fontmap/pdfm-grevom}}
-
-%% CIDäOéö
-\AtBeginDvi{\special{pdf:mapline hminl-h H \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline hminl-v V \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline hminln-h H \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline hminln-v V \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline otf-cjml-h Identity-H \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline otf-cjml-v Identity-V \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline otf-ujml-h UniJIS-UTF16-H \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline otf-ujml-v UniJIS-UTF16-V \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline otf-ujmln-h UniJIS2004-UTF16-H \kbgaiji}}
-\AtBeginDvi{\special{pdf:mapline otf-ujmln-v UniJIS2004-UTF16-V \kbgaiji}}
-
+\AtBeginDocument{%
+\AtBeginDvi{
+\special{pdf:mapline hgothb-h H \kbChapterFont}
+\special{pdf:mapline hgothb-v V \kbChapterFont}
+\special{pdf:mapline hgothbn-h H \kbChapterFont}
+\special{pdf:mapline hgothbn-v V \kbChapterFont}
+\special{pdf:mapline otf-cjgb-h Identity-H \kbChapterFontAJ}
+\special{pdf:mapline otf-cjgb-v Identity-V \kbChapterFontAJ}
+\special{pdf:mapline otf-ujgb-h UniJIS-UTF16-H \kbChapterFont}
+\special{pdf:mapline otf-ujgb-v UniJIS-UTF16-V \kbChapterFont}
+\special{pdf:mapline otf-ujgbn-h UniJIS2004-UTF16-H \kbChapterFont}
+\special{pdf:mapline otf-ujgbn-v UniJIS2004-UTF16-V \kbChapterFont}
+\special{pdf:mapline uphgothb-h UniJIS-UTF16-H \kbChapterFont}
+\special{pdf:mapline uphgothb-v UniJIS-UTF16-V \kbChapterFont}
+\special{pdf:mapline uphgothbn-h UniJIS2004-UTF16-H \kbChapterFont}
+\special{pdf:mapline uphgothbn-v UniJIS2004-UTF16-V \kbChapterFont}
+%%
+\special{pdf:mapline hgotheb-h H \kbSectionFont}
+\special{pdf:mapline hgotheb-v V \kbSectionFont}
+\special{pdf:mapline hgothebn-h H \kbSectionFont}
+\special{pdf:mapline hgothebn-v V \kbSectionFont}
+\special{pdf:mapline otf-cjge-h Identity-H \kbSectionFontAJ}
+\special{pdf:mapline otf-cjge-v Identity-V \kbSectionFontAJ}
+\special{pdf:mapline otf-ujge-h UniJIS-UTF16-H \kbSectionFont}
+\special{pdf:mapline otf-ujge-v UniJIS-UTF16-V \kbSectionFont}
+\special{pdf:mapline otf-ujgen-h UniJIS2004-UTF16-H \kbSectionFont}
+\special{pdf:mapline otf-ujgen-v UniJIS2004-UTF16-V \kbSectionFont}
+\special{pdf:mapline uphgotheb-h UniJIS-UTF16-H \kbSectionFont}
+\special{pdf:mapline uphgotheb-v UniJIS-UTF16-V \kbSectionFont}
+\special{pdf:mapline uphgothebn-h UniJIS2004-UTF16-H \kbSectionFont}
+\special{pdf:mapline uphgothebn-v UniJIS2004-UTF16-V \kbSectionFont}
+%%
+\special{pdf:mapline hminb-h H \kbdescriptionfont}
+\special{pdf:mapline hminb-v V \kbdescriptionfont}
+\special{pdf:mapline hminbn-h H \kbdescriptionfont}
+\special{pdf:mapline hminbn-v V \kbdescriptionfont}
+\special{pdf:mapline otf-cjmb-h Identity-H \kbdescriptionFontAJ}
+\special{pdf:mapline otf-cjmb-v Identity-V \kbdescriptionFontAJ}
+\special{pdf:mapline otf-ujmb-h UniJIS-UTF16-H \kbdescriptionfont}
+\special{pdf:mapline otf-ujmb-v UniJIS-UTF16-V \kbdescriptionfont}
+\special{pdf:mapline otf-ujmbn-h UniJIS2004-UTF16-H \kbdescriptionfont}
+\special{pdf:mapline otf-ujmbn-v UniJIS2004-UTF16-V \kbdescriptionfont}
+\special{pdf:mapline uphminb-h   UniJIS-UTF16-H   \kbdescriptionfont}
+\special{pdf:mapline uphminb-v   UniJIS-UTF16-V   \kbdescriptionfont}
+\special{pdf:mapline uphminbn-h   UniJIS2004-UTF16-H   \kbdescriptionfont}
+\special{pdf:mapline uphminbn-v   UniJIS2004-UTF16-V   \kbdescriptionfont}
+%% „Éé„É≥„Éñ„É´
+\special{pdf:mapfile ./fontmap/pdfm-grevom}
+%% CIDÂ§ñÂ≠ó
+%\special{pdf:mapline otf-cjml-h	Identity-H	\kbgaijiM}
+%\special{pdf:mapline otf-cjml-v	Identity-V	\kbgaijiM}
+%\special{pdf:mapline otf-cjmr-h	Identity-H	\kbgaijiM}
+%\special{pdf:mapline otf-cjmr-v	Identity-V	\kbgaijiM}
+%%\special{pdf:mapline otf-cjmb-h	Identity-H	\kbgaijiM}
+%%\special{pdf:mapline otf-cjmb-v	Identity-V	\kbgaijiM}
+%\special{pdf:mapline otf-cjgr-h	Identity-H	\kbgaijiG}
+%\special{pdf:mapline otf-cjgr-v	Identity-V	\kbgaijiG}
+%%%\special{pdf:mapline otf-cjgb-h	Identity-H	\kbgaijiG}
+%%%\special{pdf:mapline otf-cjgb-v	Identity-V	\kbgaijiG}
+%%\special{pdf:mapline otf-cjge-h	Identity-H	\kbgaijiG}
+%%\special{pdf:mapline otf-cjge-v	Identity-V	\kbgaijiG}
+%\special{pdf:mapline otf-cjmgr-h	Identity-H	\kbgaijiG}
+%\special{pdf:mapline otf-cjmgr-v	Identity-V	\kbgaijiG}
+}}
 
