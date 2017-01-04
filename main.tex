@@ -1,13 +1,13 @@
 \documentclass[gtsf,useotf,dvipdfmx,%
 % Galois,%   ガロアの設定のとき
-% VDN%,      現在未設定
-% VUP%,      現在未設定
-%uplatex,%% LaTeX文書がutf8の場合でUNICODE文字を対象した場合
+% VDN,%      現在未設定
+% VUP,%      現在未設定
+%%uplatex,%% LaTeX文書がutf8の場合でUNICODE文字を対象した場合
 ]{mathplus}
 
 \usepackage{graphicx,xcolor}
 \usepackage{amsmath,amssymb}
-\usepackage{uline--,macrosMP}
+\usepackage{uline--,url,macrosMP}
 %\usepackage[utf8]{inputenc}%% LaTeX文書がutf8の場合でUNICODE文字を対象した場合
 \usepackage{makeidx,multicol}
 %
@@ -15,11 +15,15 @@
 %% 装幀者
 \装幀{装幀者名}
 
-\usepackage[general]{fontmap}
-%% fontmap.styのoptionの[general]を指定でipaexgを使用．これはどの環境でも処理可能．
-%% [general]を取ると章に小塚ゴシックBと節にMが使われるようになる．
+%% fontmap.styの標準では章タイトルに小塚ゴシックB，節見出しに小塚ゴシックMが使われるようになる．
+%% optionに[general]を指定することでipaexgを使用する設定になる．これはどの環境でも処理可能．
+%% generalにMSを追加すると，Officeフォントが代替に使われる．Windowsユーザ向けの設定．
+\usepackage{fontmap}%% 章タイトルの書体に小塚ゴシックB，節見出しに小塚ゴシックM，引用箇所にグレコM
+%\usepackage[general]{fontmap}%% 見出し，引用箇所代替書体にipaex
+%\usepackage[general,MS]{fontmap}%% 章タイトルの代替書体にOfficeのHG創英角ゴシック，節見出しにHGゴシックE，引用箇所にHG教科書体
 
 \includeonly{
+hilbert_homonki,
 MathPlus-sample,
 %%	Chap01,
 %%	Chap02,
@@ -32,6 +36,7 @@ MathPlus-sample,
 \frontmatter
 \tableofcontents
 \mainmatter
+\include{hilbert_homonki}
 \include{MathPlus-sample}
 \include{Chap01}
 \include{Chap02}
