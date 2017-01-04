@@ -13,12 +13,6 @@
 \RequirePackage[deluxe,scale=1]{otf}[2013/11/17]%% added by miya
 
 
-\newcommand{\章見出し書体}[1]{\def\kbChapterFont{#1}\def\kbChapterFontaJ{#1/AJ16}}
-\newcommand{\節見出し書体}[1]{\def\kbSectionFont{#1}\def\kbSectionFontaJ{#1/AJ16}}
-\newcommand{\異字体用書体}[1]{\def\kbgaiji{#1}}% 
-\newcommand{\本文引用書体}[1]{\def\kbdescriptionfont{#1}}
-
-
 %% localにするためだけの環境
 \newenvironment{LOCAlENV}{}{}
 
@@ -44,25 +38,25 @@ Processing will STOP.^^J%
 
 %% section font
 %% baselineskip 27 -> 20H
-\DeclareRobustCommand*\KBsectionfont{\reset@font\fontsize{13.5Q}{16H}\yugothL}
+\DeclareRobustCommand*\KBsectionfont{\reset@font\fontsize{13.5Q}{16H}\eb}
 \DeclareRobustCommand*\KBsectionnumfont{\reset@font\fontsize{13.5Q}{27H}\bfs}
-\DeclareRobustCommand*\KBsubsectionfont{\reset@font\fontsize{13.5Q}{16H}\yugothL}
+\DeclareRobustCommand*\KBsubsectionfont{\reset@font\fontsize{13.5Q}{16H}\eb}
 \DeclareRobustCommand*\KBsubsectionnumfont{\reset@font\normalsize\bfs}
 
 \DeclareRobustCommand{\KozukaG}{\kanjifamily{\gtdefault}\kanjiseries{m}%
 \romanfamily{\sfdefault}\romanseries{bx}\selectfont}
 
-\DeclareRobustCommand{\yugothM}{\not@math@alphabet\yugothM\relax
+\DeclareRobustCommand{\gtbx}{\not@math@alphabet\gtbx\relax
  \kanjifamily{\gtdefault}\kanjiseries{bx}\romanfamily{phv}\romanseries{m}\selectfont}
-\DeclareRobustCommand{\yugothL}{\not@math@alphabet\yugothL\relax
- \kanjifamily{\gtdefault}\ebseries\romanfamily{phv}\fontseries{m}\selectfont}
+\DeclareRobustCommand{\eb}{\not@math@alphabet\eb\relax
+ \kanjifamily{\gtdefault}\ebseries\romanfamily{phv}\romanseries{m}\selectfont}
 
 
 %% \kanjifamily{\mcdefault}\kanjiseries{bx}
 \DeclareRobustCommand{\DescriptionFONT}{\not@math@alphabet\DescriptionFONT\relax\romanfamily{grevom}\romanseries{m}\kanjifamily{\mcdefault}\kanjiseries{bx}\selectfont}
 % chapter, section , subsectionの共通shade
 \definecolor{headermark}{gray}{0.7}
-\DeclareRobustCommand*\KBchapterfont{\reset@font\huge\yugothM}
+\DeclareRobustCommand*\KBchapterfont{\reset@font\huge\gtbx}
 \DeclareRobustCommand*\KBchapternumfont{\reset@font
 \fontsize{48Q}{0pt}\KozukaG\slshape}
 \DeclareRobustCommand*\KBpagenumfont{\reset@font\footnotesize}
