@@ -1,4 +1,5 @@
-%% 2016/12/XX デフォルト決定，VDN, VUPオプションを追加
+%% 2017/01/06 デフォルト決定，VDN, VUPオプション暫定決定
+%% 2016/12/28 デフォルト決定，VDN, VUPオプションを追加
 %% 2016/12/02 BugFix: \@endpart
 %% 2016/11/16「ガロアとガロア理論」での版面設定をclass option追加→ [Galois]
 %% 2016/11/01 beta2 otfパッケージのバージョンチェックを追加（組版変更なし）
@@ -615,7 +616,7 @@
 %	\kb@DeclareFontSizeBaseline{small}{12Q}{18H}
 %	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{23.5H}
 	\kb@DeclareFontSizeBaseline{small}{11Q}{17.5H}
-	\kb@DeclareFontSizeBaseline{normalsize}{12.5Q}{21.5H}
+	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{22H}
 	\kb@DeclareFontSizeBaseline{large}{14Q}{20H}
 	\kb@DeclareFontSizeBaseline{Large}{15Q}{21H}
 	\kb@DeclareFontSizeBaseline{LARGE}{16Q}{24H}
@@ -623,10 +624,32 @@
 	\kb@DeclareFontSizeBaseline{Huge}{25Q}{31H}
 	\kb@DeclareFontSizeBaseline{HUGE}{45Q}{61H}
 	\kb@DeclareFontSizeBaseline{tabfont}{12Q}{14H}
-%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{31}{29}{16mm}{13mm}
-	\kb@DeclarePaperFormats{46}{128mm}{188mm}{378H}{598.5H}{}{}
+	\kb@DeclarePaperFormats{46}{128mm}{188mm}{29}{28}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{378H}{598.5H}{}{}
 %	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
 }
+
+%\DeclareOption{4x6t/12Q}{%
+\DeclareOption{VUP}{\@MP@VDN@true%
+	\kb@DeclareFontSizeBaseline{tiny}{7Q}{9H}
+	\kb@DeclareFontSizeBaseline{scriptsize}{8Q}{12H}
+	\kb@DeclareFontSizeBaseline{footnotesize}{10Q}{14H}
+%	\kb@DeclareFontSizeBaseline{small}{12Q}{18H}
+%	\kb@DeclareFontSizeBaseline{normalsize}{13Q}{23.5H}
+	\kb@DeclareFontSizeBaseline{small}{11Q}{17.5H}
+	\kb@DeclareFontSizeBaseline{normalsize}{13.5Q}{22.5H}
+	\kb@DeclareFontSizeBaseline{large}{14Q}{20H}
+	\kb@DeclareFontSizeBaseline{Large}{15Q}{21H}
+	\kb@DeclareFontSizeBaseline{LARGE}{16Q}{24H}
+	\kb@DeclareFontSizeBaseline{huge}{20Q}{29H}
+	\kb@DeclareFontSizeBaseline{Huge}{25Q}{31H}
+	\kb@DeclareFontSizeBaseline{HUGE}{45Q}{61H}
+	\kb@DeclareFontSizeBaseline{tabfont}{12Q}{14H}
+	\kb@DeclarePaperFormats{46}{128mm}{188mm}{27}{26}{16mm}{13mm}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{378H}{598.5H}{}{}
+%	\kb@DeclarePaperFormats{46}{128mm}{188mm}{93mm}{27}{}{15mm}
+}
+
 
 % 4x6t/13.5Q
 \DeclareOption{Galois}{\@MP@Galois@true%
