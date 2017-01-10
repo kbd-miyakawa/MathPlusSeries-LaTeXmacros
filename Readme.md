@@ -2,6 +2,7 @@
 
 *変更履歴*
 
+* 回り込み（mawarikomi環境）追加 (emathMw.sty)
 * 2017/01/06 VDN, VUPを設定
 * 2016/12/28 macrosMP.sty： \sectionでの改ページをコントロールする．\sectionBreakOn，\sectionBreakOffを追加．
 * 2016/12/28 fontmap.sty：
