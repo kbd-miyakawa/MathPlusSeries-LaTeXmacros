@@ -1,7 +1,7 @@
 % emathMw.sty by tDB (emath@nifty.com)
 %
 \NeedsTeXFormat{LaTeX2e}%
-\ProvidesPackage{emathMw}[2015/03/09 v0.46 $B2s$j9~$_(B]%
+\ProvidesPackage{emathMw}[2015/03/09 v0.46 回り込み]%
 %\RequirePackage{emath}
 \RequirePackage{emathC}
 %\RequirePackage{keyval}
@@ -17,7 +17,7 @@
   \DeclareOption{silent}{\def\Mw@silent{}}%
   \ProcessOptions\relax
 %
-% list $B4D6-2<$K$*$1$k?^$N2s$j9~$_(B
+% list 環境下における図の回り込み
 %
 %
 \def\Mw@save@label@box{%
@@ -35,12 +35,12 @@
 }%
 %
 % \mawarikomi<#1>[#2](#3,#4)#5#6
-%   #1 : $B$O$8$a$N2s$j9~$_$r9T$o$J$$9T?t(B
-%   #2 : $B2s$j9~$_9T?t!JAjBP;XDj2D!K(B
-%        $B@hF,$K(B`l'$B$r$D$1$?$H$-$O?^$r:8$KG[CV(B
-%   (#3,#4): $B?^$N0LCV$NHyD4@0(B
-%   #5 : $B?^$N2#I}(B
-%   #6 : $B?^(B
+%   #1 : はじめの回り込みを行わない行数
+%   #2 : 回り込み行数（相対指定可）
+%        先頭に`l'をつけたときは図を左に配置
+%   (#3,#4): 図の位置の微調整
+%   #5 : 図の横幅
+%   #6 : 図
 %
 \edef\Mw@precaption{\empty}%
 \edef\Mw@postcaption{\empty}%
@@ -136,8 +136,8 @@
   \def\mawarikomi@here@sw{0}%
 %\ifvmode\typeout{Av}\else\typeout{Ah}\fi
   \ifthenelse{\boolean{vmode}}{%
-    \@@@@@mawarikomi<#1>[#2](#3,#4){#5}{#6}\ignorespaces}{%$BCJMnESCf$KF~$l$k>l9g(B
-\@warning{mawarikomi$B4D6-$rCJMnESCf$KG[CV$7$^$7$?!#(B(mawarikomi environment must be used at the top of a paragraph.)}%
+    \@@@@@mawarikomi<#1>[#2](#3,#4){#5}{#6}\ignorespaces}{%段落途中に入れる場合
+\@warning{mawarikomi環境を段落途中に配置しました。(mawarikomi environment must be used at the top of a paragraph.)}%
      \def\mawarikomi@here@sw{1}%
 %     \@bsphack
 %     \vadjust{%\@restorepar
@@ -160,7 +160,7 @@
     \advance\linewidth\EMLR@rskip
   }%
   \ifnum\@listdepth>\z@\if@inlabel\edef\EMWR@inlabel{1}\fi\fi
-% \mbox{}\ignorespaces% 12/26 $BJ]N1(B
+% \mbox{}\ignorespaces% 12/26 保留
 %
   \def\end##1{%
     \csname end##1\endcsname\@checkend{##1}%
@@ -170,7 +170,7 @@
   \let\EMWR@par\par
   \long\def\par{\EMWR@shape\ignorespaces}%
 \@ifundefined{mwrkmpar}{%
-\let\mwrkmpar\par}{\errmessage{mawarikomi$B4D6-$O%M%9%H$G$-$^$;$s(B}}%
+\let\mwrkmpar\par}{\errmessage{mawarikomi環境はネストできません}}%
   \let\EMWR@list\list
   \let\endEMWR@list\endlist
   \def\list##1##2{\EMWR@list{##1}{##2}\EMWR@shape\let\par\mwrkmpar}%% BBS #7906
@@ -264,7 +264,7 @@
   \ifthenelse{\equal{#5}\empty}{%
     \global\@mawarikomisep=\mawarikomikankaku\relax
     \setbox\EMWR@box=\hbox{{#6}}\xdef\EMWR@zuhaba{\the\wd\EMWR@box}%
-    \@ifundefined{Mw@silent}{\typeout{mawarikomi:$B?^I}(B=\EMWR@zuhaba}}{}%
+    \@ifundefined{Mw@silent}{\typeout{mawarikomi:図幅=\EMWR@zuhaba}}{}%
     \ifnum\prepost@caption=\@ne
       \setbox\EMWR@box=\hbox{%
         \begin{minipage}{\EMWR@zuhaba}%
@@ -380,7 +380,7 @@
       \@tempdimb\z@\relax
 %     \advance\@tempdimb-\EMWR@overhanglines\baselineskip
       \ifthenelse{\equal{#4}{0}}{}{\advance\@tempdimb#4}%
-% $B<!$N(B1$B9T!'(B2003/07/21 $B%3%a%s%H%"%&%H(B 2004/09/26 $BI|3h(B 2005/01/19 $B%3%a%s%H%"%&%H(B
+% 次の1行：2003/07/21 コメントアウト 2004/09/26 復活 2005/01/19 コメントアウト
 %     \advance\@tempdimc\leftmargin
 %     \advance\@tempdimc\@mawarikomisep
 %     \advance\@tempdimc\@mawarikomisep
@@ -548,7 +548,7 @@
 }%
 \def\mawarikomimusi{\xdef\EMWR@gyousuu{0}}%
 %
-% $B7QB3(B
+% 継続
 \expandafter\def\csname mawarikomi*\endcsname{%
   \xdef\EMWR@zuhaba{\save@EMWR@zuhaba}%
   \setlength{\@mawarikomisep}{\save@mawarikomisep}%
@@ -581,17 +581,17 @@
 %
 \expandafter\def\csname endmawarikomi*\endcsname{\endmawarikomi}%
 %
-% $B2~%Z!<%8$r$7$J$$(B mawarikomi
+% 改ページをしない mawarikomi
 %
 \def\Pmawarikomi{\MWnewpage{no}\mawarikomi}%
 \def\endPmawarikomi{\endmawarikomi}%
 %
-% $B9TF,$GG[CV$9$k5l7A<0$N(B mawarikomi
+% 行頭で配置する旧形式の mawarikomi
 %
 \def\Amawarikomi{\def\Mw@old{1}\mawarikomi}%
 \def\endAmawarikomi{\endmawarikomi}%
 %
-% $B9TKv$GG[CV$9$k7A<0$N(B mawarikomi$B!J%G%U%)%k%H!K(B
+% 行末で配置する形式の mawarikomi（デフォルト）
 %
 \def\Zmawarikomi{\def\Mw@old{0}\mawarikomi}%
 \def\endZmawarikomi{\endmawarikomi}%
@@ -632,7 +632,7 @@
   \fi
   }%
 %
-% $B%F%-%9%HI}(B
+% テキスト幅
 %
 \def\getmawarikomitextwidth#1{{%
   \@tempdima\linewidth\advance\@tempdima-\EMWR@zuhaba\relax
@@ -640,13 +640,13 @@
   \advance\@tempdima-\@mawarikomisep\advance\@tempdima-\@mawarikomisep
   \xdef #1{\the\@tempdima}}}%
 %
-% $B1&6u$1(B
+% 右空け
 %   \Akeru<#1>[#2]#3
-%     #2 : $B9T?t(B
-%            0 $B$N$H$-$O!$1&6u$1$r=*N;$9$k!#(B
-%            $B;XDj$7$J$$$H$-$O(B,$BL58B$KB3$/!#(B
-%     #3 : $B6u$1$kI}(B
-%            $B;XDj$7$J$$$H$-$O(B,$B4{$K(B Nidan $B4D6-$G;XDj$7$?$b$N$,;H$o$l$k!#(B
+%     #2 : 行数
+%            0 のときは，右空けを終了する。
+%            指定しないときは,無限に続く。
+%     #3 : 空ける幅
+%            指定しないときは,既に Nidan 環境で指定したものが使われる。
 \def\Migihaiti{\@ifnextchar({\@Migihaiti}{\@Migihaiti(\z@,\z@)}}
 \def\@Migihaiti(#1,#2)#3{\ignorespaces{%
   \setbox0=\hbox{{#3}}%
@@ -680,10 +680,10 @@
     \parshape\zu@shape
   \fi\fi\ignorespaces}
 %
-% $B1&6u$1(B enumerate
+% 右空け enumerate
 % \begin{nidanenumerate}[#1]<#2>
-%   #1 : enumerate $B4D6-$N(B [...] $B%*%W%7%g%s$HF1$8(B
-%   #2 : $B2s$j9~$_9T?t(B
+%   #1 : enumerate 環境の [...] オプションと同じ
+%   #2 : 回り込み行数
 %
 \edef\nidanenum@depth{0}%
 \def\ND@item{\ND@shape\ltxitem}
@@ -698,7 +698,7 @@
 \csname endNidan*\endcsname\endenumerate}
 %
 %
-% enumerate $B4D6-2<$GHV9f0LCV$N=$@5(B
+% enumerate 環境下で番号位置の修正
 %
 %\newdimen\eitemindent
 \newskip\eitemindent
@@ -715,14 +715,14 @@
   \begin{minipage}{\templa}\item[#2]#3\end{minipage}\par}%
 %
 %%%
-%%% $B?^$N$^$o$j$N%F%-%9%H2s$j9~$_(B
+%%% 図のまわりのテキスト回り込み
 %%%
 \newlength\zu@width
 \newlength\zuitemwidth
 %
 \def\zu{\@ifnextchar<{\@@@zu}{\@@@zu<r>}}
 \def\@@@zu<#1>{\edef\fig@placement{#1}\@@zu}
-\def\@@zu{\@ifnextchar({\z@u}{\z@u(1zw)}}%  $B%$%s%G%s%HNL(B
+\def\@@zu{\@ifnextchar({\z@u}{\z@u(1zw)}}%  インデント量
 \def\z@u(#1){%
   \@ifundefined{c@WF@wrappedlines}{}{%
     \leavevmode\vspace{-1.85\baselineskip}\par}%
@@ -731,7 +731,7 @@
 \long\def\@zu[#1]#2#3{%
   \global\setlength{\zu@width}{#2}%
   \begin{wrapfigure}[#1]{\fig@placement}{#2}\noindent #3\end{wrapfigure}}%
-\long\def\zu@#1#2{%              #1=$B?^$N2#6R(B #2=$B?^(B
+\long\def\zu@#1#2{%              #1=図の横巾 #2=図
   \global\setlength{\zu@width}{#1}%
   \begin{wrapfigure}{\fig@placement}{#1}\noindent #2\end{wrapfigure}}%
 \def\endzu{\end{minipage}\vskip\topsep\vskip\parskip\endtrivlist}%
@@ -745,21 +745,21 @@
   \addtolength{\zuitemwidth}{-\columnsep}%
   \item \parbox[t]{\zuitemwidth}{#3}\\[#1]}%
 %
-% zuhaiti $B4D6-(B
+% zuhaiti 環境
 % \begin{zuhaiti}
 %   \haiti[#1](#2,#3)#4
 %   ...................
 % \end{zuhaiti}
-% $B$3$N$"$H(B \wakudori $B$GOH$r@_Dj$9$k!#(B
+% このあと \wakudori で枠を設定する。
 %
 %   \haiti[#1](#2,#3)#4
-%     #1 : r : $B1&G[CV!J%G%U%)%k%H!K(B
-%          l : $B:8G[CV(B
-%     (#2,#3) : $B<+A3$J0LCV$+$i$N=$@5%Y%/%H%k(B
-%               #2>0 $B$N$H$-$O1&$X!$(B#2<0$B$N$H$-$O:8$X(B
-%               #3>0 $B$N$H$-$O>e$X!$(B#3<0$B$N$H$-$O2<$X(B
-%               #2, #3 $B$O$$$:$l$bC10L$rH<$&D9$5(B
-%    #4 : $B?^I=$J$I(B
+%     #1 : r : 右配置（デフォルト）
+%          l : 左配置
+%     (#2,#3) : 自然な位置からの修正ベクトル
+%               #2>0 のときは右へ，#2<0のときは左へ
+%               #3>0 のときは上へ，#3<0のときは下へ
+%               #2, #3 はいずれも単位を伴う長さ
+%    #4 : 図表など
 %
 \def\zuhaiti{\ignorespaces%
   \def\haiti{\@ifnextchar[{\@haiti}{\@haiti[r]}}%
@@ -771,7 +771,7 @@
     \@tempdimc\@tempdima
     \advance\@tempdima\zuhaiti@Y
     \edef\zuhaiti@Y{\the\@tempdimc}%
-    \@ifundefined{Mw@silent}{\typeout{$B?^I}(B=\the\wd0}}{}%
+    \@ifundefined{Mw@silent}{\typeout{図幅=\the\wd0}}{}%
     \if l##1\relax
       \@tempdimb\z@%
     \else
@@ -788,16 +788,16 @@
   \bgroup\unitlength1pt\relax\picture(0,0)\ignorespaces}%
 \def\endzuhaiti{\endpicture\egroup\@ignoretrue}%
 %
-% $B?^$NOH$r$"$1$k(B
+% 図の枠をあける
 % \wakudori#1
-%   #1 $B$O(B
-%     $B9T?t(B*($B:8OH$NI}(B,$B1&OH$NI}(B)
-%   $B$r(B`;'$B6h@Z$j$GJB$Y$k!#(B
+%   #1 は
+%     行数*(左枠の幅,右枠の幅)
+%   を`;'区切りで並べる。
 %
-%   $B!JCm(B1$B!K1&OH$N$_$N$H$-$O(B
-%     $B9T?t(B*$B1&OH$NI}(B
-%   $B$HN,5-$G$-$k!#(B
-%   $B!JCm(B2$B!K2r=|$O(B
+%   （注1）右枠のみのときは
+%     行数*右枠の幅
+%   と略記できる。
+%   （注2）解除は
 %       \wakudori{}
 %
 \def\wakudori#1{\ignorespaces%
@@ -888,91 +888,91 @@
 \endinput
 %
 v 0.00 2003/09/03
-        emathE.sty $B$+$iFHN)(B
+        emathE.sty から独立
 v 0.01 2003/11/26
-        mawarikomi$B4D6-$G!$?^I};XDj$r>JN,$7$?$H$-!$(B
-        $B<B:]$N?^I}$r%m%0%U%!%$%k$K=q$-=P$9!#(B
+        mawarikomi環境で，図幅指定を省略したとき，
+        実際の図幅をログファイルに書き出す。
 v 0.02 2003/11/28
-        emathLb.sty $B$rFI$_9~$`(B
+        emathLb.sty を読み込む
 v 0.03 2004/01/18
         \@mawarikomisep, \mawarikomisep, \mawarikomikankaku :
             dimen ---> skip
 v 0.04 2004/07/19
-        $B1&G[CV$r(B \vadjust $B$K$h$kJ}K!$KJQ99(B
-        $B%m!<%I%*%W%7%g%s(B [old] $B$K$h$j!$5l7A<0$H$J$k(B
+        右配置を \vadjust による方法に変更
+        ロードオプション [old] により，旧形式となる
 v 0.05 2004/08/28-30
-        $BCJMnESCf$G$N;HMQ$r2DG=$H$9$k;n$_(B
-        $B6/@)2~%Z!<%8$r5v2D$9$k$+H]$+$r(B \if@mawarikomi@newpage $B$G@)8f(B
+        段落途中での使用を可能とする試み
+        強制改ページを許可するか否かを \if@mawarikomi@newpage で制御
 v 0.06 2004/11/19
         vtop to \z@ ---> \vtop
 v 0.08 2005/03/06
-        Amawarikomi$B4D6-!'9TF,$GG[CV$9$k5l7A<0$N(Bmawarikomi
-        Zmawarikomi$B4D6-!'9TKv$GG[CV$9$k7A<0$N(Bmawarikomi
+        Amawarikomi環境：行頭で配置する旧形式のmawarikomi
+        Zmawarikomi環境：行末で配置する形式のmawarikomi
 v 0.09 2005/03/08
-        \mawarikomitextwidth : $B?7@_(B --->xxx
+        \mawarikomitextwidth : 新設 --->xxx
 v 0.10 2005/04/11
-        \getmawarikomitextwidth#1 : $BBg0hJQ?t(B#1$B$KC10LIU$NCM$r%;%C%H(B --->xxx
-        \EMWRlinewidth$B!'%F%-%9%HIt$N2#I}(B
-        Pmawarikomi$B4D6-!'<!%Z!<%8$KAw$k=hM}$r$7$J$$(B
-          $B!J%m!<%I%*%W%7%g%s(B[samepage]$B$rIU2C$7$F$bF1$88z2L!K(B
-v 0.11 \mawarikomimusi : \mawarikomiowari $B$H0[$J$j!$=*N;=hM}$r$7$J$$(B
+        \getmawarikomitextwidth#1 : 大域変数#1に単位付の値をセット --->xxx
+        \EMWRlinewidth：テキスト部の横幅
+        Pmawarikomi環境：次ページに送る処理をしない
+          （ロードオプション[samepage]を付加しても同じ効果）
+v 0.11 \mawarikomimusi : \mawarikomiowari と異なり，終了処理をしない
 v 0.12 2005/08/01
           \mawarikomiowari* = \mawarikomimusi
 v 0.13 2005/09/03
-          emathLb.sty $B$NFI$_9~$_Cf;_(B
+          emathLb.sty の読み込み中止
 v 0.14 2005/11/30
           \EMintertext
 v 0.15 2006/06/14
-        \mwrkmpar : mawarikomi$B4D6-Fb$G(B list$B7O4D6-$rMQ$$$k$H$-$N(B \par
+        \mwrkmpar : mawarikomi環境内で list系環境を用いるときの \par
 v 0.16 2006/12/12
-        \mwrkmpar : mawarikomi*$B4D6-Fb$G$b;HMQ2D(B
+        \mwrkmpar : mawarikomi*環境内でも使用可
 v 0.17 2007/01/11
-        $B#19TL\$H#29TL\$N9T4V$,!$B>$HHf3S$7$F69$$$3$H$N=$@5(B
+        １行目と２行目の行間が，他と比較して狭いことの修正
 v 0.18 2007/04/02
-        EMminipages$B4D6-(B
+        EMminipages環境
 v 0.19 2007/07/14
-        tadan$B4D6-(B
+        tadan環境
 v 0.20 2007/07/17
-        tadan$B4D6-(B ---> EMminipages$B4D6-(B ---> EMminipages.sty
+        tadan環境 ---> EMminipages環境 ---> EMminipages.sty
 v 0.22 2008/01/05
-        mawarikomi$B4D6-Fb$K!$=$>~(Benumerate$B4D6-$N(B \item* $B$rG[CV2DG=$H$9$k!#(B
+        mawarikomi環境内に，修飾enumerate環境の \item* を配置可能とする。
 v 0.23 2008/01/11
-        emathEc.sty $B$rFI$_9~$`(B
+        emathEc.sty を読み込む
 v 0.24 2008/01/12
-        $BC1FH;HMQ$r9MN8$7!$(BemathEc.sty $B$N%m!<%I$r30$7!$(B
-        \EMitem $B$,L$Dj5A$N>l9g$KBP1~(B (BBS #6944)
+        単独使用を考慮し，emathEc.sty のロードを外し，
+        \EMitem が未定義の場合に対応 (BBS #6944)
 v 0.25 2008/08/11
-        'precaption=..', 'postcaption=..' $B%*%W%7%g%s(B
+        'precaption=..', 'postcaption=..' オプション
 v 0.26 2008/08/17
-        \wakudori: $B4D6-$H$7$F$b;HMQ$G$-$k$h$&$K$7!$(B
-                   \endwakudori $B$K(B \par $B$r4^$a$k!#(B(BBS #7420)
+        \wakudori: 環境としても使用できるようにし，
+                   \endwakudori に \par を含める。(BBS #7420)
 v 0.27 2008/09/12
-        \mawarikomi: #6 $B$r(B \hbox $B$G$/$k$`!#(B(BBS #7520)
+        \mawarikomi: #6 を \hbox でくるむ。(BBS #7520)
 v 0.28 2008/11/06
-        sep $B@0Hw(B
+        sep 整備
 v 0.29 2009/01/08
-        <samepage>$B%*%W%7%g%s(B
-        <#1> $B%*%W%7%g%s(B
-        minipage $B$KF~$l$k>l9g$NI{:nMQ(B \textwidth (BBS #7844)
-        mawarikomi$B4D6-Fb$N(B list $B$G$O(B \let\par\mwrkmpar
+        <samepage>オプション
+        <#1> オプション
+        minipage に入れる場合の副作用 \textwidth (BBS #7844)
+        mawarikomi環境内の list では \let\par\mwrkmpar
 v 0.30 2009/01/22
-        minipage $B$KF~$l$k>l9g$NI{:nMQ:FD{(B
+        minipage に入れる場合の副作用再訂
 v 0.31 2009/10/18
-        \leftskip $BBP1~(B
-v 0.32 2010/01/30 $B6uGr$N:.F~2sHr(B
+        \leftskip 対応
+v 0.32 2010/01/30 空白の混入回避
 v 0.33 2010/09/08 \box0 --> \box\EMWR@box
-v 0.34 2011/02/03 $B%m!<%I%*%W%7%g%s(B silent: $B?^I}>pJs$N=PNO$rM^@)(B
-v 0.35 2011/04/17 \numcases $BBP1~(B (BBS #9808)
-v 0.36 2011/04/29 Imawarikomi: \item $BD>8e$N(B mawarikomi
-                     (item$BHV9f$H$NJ,N%$rHr$1$k!$(B\ReadTeXFile<Imawarikomi>)
+v 0.34 2011/02/03 ロードオプション silent: 図幅情報の出力を抑制
+v 0.35 2011/04/17 \numcases 対応 (BBS #9808)
+v 0.36 2011/04/29 Imawarikomi: \item 直後の mawarikomi
+                     (item番号との分離を避ける，\ReadTeXFile<Imawarikomi>)
 %                 http://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/27350.html
-v 0.37 2011/06/20 preoption, postoption $B@0Hw(B
-v 0.38 2011/06/25 v0.37 $B$N%P%0=$@5(B (BBS #9984)
-v 0.39 2011/07/23 mawarikomi$B4D6-$N2#I}$K!$7W;;<0(B(calc.sty)$B$r5vMF(B
-v 0.40 2011/11/20 Fmwarikomi: \caption $B$H?^$J$I$N4V3V$r(B \intextsep $B$H$9$k!#(B
-v 0.41 2012/10/16 \item $BD>8e$N>l9g(B
-v 0.42 2012/11/10 $B",=$@5(B (BBS #11230)
-v 0.43 2013/02/02 \item $BD>8e$N>l9g(B (BBS #11510) Imawarikomi$B4D6-(B
-v 0.44 2014/05/28 $BCJMn@hF,$N;z2<$2(B (BBS #12307)
-v 0.45 2014/10/07 $B",=$@5(B (BBS #12517)
-v 0.46 2015/03/09 \listparindent $B$r;XDj$7$?>l9g(B (BBS #12631)
+v 0.37 2011/06/20 preoption, postoption 整備
+v 0.38 2011/06/25 v0.37 のバグ修正 (BBS #9984)
+v 0.39 2011/07/23 mawarikomi環境の横幅に，計算式(calc.sty)を許容
+v 0.40 2011/11/20 Fmwarikomi: \caption と図などの間隔を \intextsep とする。
+v 0.41 2012/10/16 \item 直後の場合
+v 0.42 2012/11/10 ↑修正 (BBS #11230)
+v 0.43 2013/02/02 \item 直後の場合 (BBS #11510) Imawarikomi環境
+v 0.44 2014/05/28 段落先頭の字下げ (BBS #12307)
+v 0.45 2014/10/07 ↑修正 (BBS #12517)
+v 0.46 2015/03/09 \listparindent を指定した場合 (BBS #12631)

@@ -10,8 +10,8 @@
 %
 \def\strtohairetu#1#2{%
 %
-% #1: $BJ8;zNs(B
-% #2: $BG[NsL>(B
+% #1: 文字列
+% #2: 配列名
 %
   \edef\mkstrbufi@{0}%
   \expandafter\@tfor\expandafter\stoh@c\expandafter:\expandafter=#1\do{%
@@ -21,7 +21,7 @@
   \expandafter\edef\csname #2N\endcsname{\mkstrbufi@}%
 }%
 %
-% $BG[Ns(B
+% 配列
 %
 \def\EMromannumeral#1{%
   \ifnum #1=\z@ o\else\expandafter\romannumeral#1\fi}% 0 --> o
@@ -228,11 +228,11 @@
   \ignorespaces
 }%
 \def\hairetukakunin#1#2#3{%
-% #1:$B%j%9%HG[NsL>(B
-% #2:$B9`L\(B
-% #3:$BLa$jCM$r<u$1<h$k@)8fDV(B
-%      $B4{=P%j%9%H$KB8:_$7$J$+$C$?>l9g$O(B 0
-%      $BB8:_$7$?>l9g$O!$9`L\HV9f(B
+% #1:リスト配列名
+% #2:項目
+% #3:戻り値を受け取る制御綴
+%      既出リストに存在しなかった場合は 0
+%      存在した場合は，項目番号
   \@ifundefined{#1N}{%
     \errmessage{undefined hairetu:#1}%
   }{}%
@@ -279,8 +279,8 @@
 %\def\csvhairetu#1#2#3{%
 %\def\csvhairetu*#1#2{%
 % #1 : csv
-% #2 : $BG[NsL>(B
-% #3 : $BG[Ns$N%5%$%:$r<u$1<h$k@)8fDV(B
+% #2 : 配列名
+% #3 : 配列のサイズを受け取る制御綴
 %
 \def\csvhairetu{\@ifstar{\csvhairetu@}{\@csvhairetu}}%
 \def\csvhairetu@{\@ifnextchar[{\csvhairetu@@}{\csvhairetu@@[,]}}%
@@ -316,8 +316,8 @@
 }%
 %
 \def\hairetucsv#1#2{%
-% #1 : $BG[NsL>(B
-% #2 : csv $B$r<u$1<h$k@)8fDV(B
+% #1 : 配列名
+% #2 : csv を受け取る制御綴
 %
   \edef\hd@N{\csname #1N\endcsname}%
   \ifnum\hd@N=\z@
@@ -334,9 +334,9 @@
 }%
 %
 \def\srchhairetu#1#2#3{%
-% #1 : $BG[NsL>(B
-% #2 : $B%5!<%A$9$kCM(B
-% #3 : $B8+$D$+$C$?E:$(;z(B
+% #1 : 配列名
+% #2 : サーチする値
+% #3 : 見つかった添え字
   \edef#3{\hairetu@baseN}%
   \Cfor{\edef\sh@i{0}\edef\sh@found{0}}{\sh@found=0 \and \sh@i<\csname #1N\endcsname}{}\do{%
     \Incr\sh@i
@@ -353,8 +353,8 @@
   \@ifnextchar[{\@EMinputcsvfile}{\@EMinputcsvfile[,]}}%
 \def\@EMinputcsvfile[#1]#2#3{%
 %
-% #2: $B%U%!%$%kL>(B
-% #3: $BG[NsL>(B
+% #2: ファイル名
+% #3: 配列名
 %
   \def\EMinputcsvfile@sub{%
     \read\fileophndl to \read@ln
@@ -403,7 +403,7 @@
 \fi
 }%
 %
-% $B3J;R9TNs(B
+% 格子行列
 %
 \DeclareRobustCommand\kousigyouretu{%
   \@ifnextchar<{\@kousigyouretu}{\@kousigyouretu<\empty>}}%
@@ -424,9 +424,9 @@
 %
 \endinput
 %
-v 0.00 2012/01/14 emathC.sty $B$+$i0\$9!#(B
+v 0.00 2012/01/14 emathC.sty から移す。
 v 0.01 2012/01/16 \kousigyouretu
 v 0.02 2012/04/16 \hairetusyokika: dimen=.. syokiti=..
 v 0.03 2012/09/28 \typeouthairetu
-v 0.04 2014/03/17 \csvhairetu: $B0z?t$,6u$N>l9g$K$bBP1~(B
-v 0.05 2015/10/23 \hairetusyokika:   \ignorespaces $B$rDI2C(B (BBS #12826)
+v 0.04 2014/03/17 \csvhairetu: 引数が空の場合にも対応
+v 0.05 2015/10/23 \hairetusyokika:   \ignorespaces を追加 (BBS #12826)
