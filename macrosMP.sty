@@ -1,3 +1,4 @@
+%% 2017/01/11 screenbox env, shadelinebox enb 前後のアキを増加
 %% 2017/01/10 beta3a emathmw追加
 %% 2016/12/28 beta3： \sectionでの改ページをコントロールする．\sectionBreakOn，\sectionBreakOffを追加]
 %% 枠囲み用マクロ追加
@@ -382,7 +383,8 @@ Processing will STOP.^^J%
 
 %% 丸囲み環境
 \newmdenv[%
-	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+%	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+	skipabove=.65\baselineskip,skipbelow =.65\baselineskip
 		outerlinewidth=.2pt,%% 外側罫線の太さ
 		innerlinewidth=0pt,%% 内側罫線の太さ
 %		innerlinecolor=red,%% 内側罫線の色
@@ -398,7 +400,8 @@ Processing will STOP.^^J%
 %% 網囲み
 \newmdenv[%
 %	splitbottomskip=1zw,splittopskip=1zw,
-	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+%	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
+	skipabove=.65\baselineskip,skipbelow =.65\baselineskip
 	innerrightmargin=1zw,innertopmargin=1zw,%
 	innerleftmargin=1zw,
 	innerlinewidth=0pt,outerlinewidth=0pt,
