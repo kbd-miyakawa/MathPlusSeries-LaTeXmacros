@@ -1,0 +1,88 @@
+\renewcommand{\tableofcontents}{%  行間を詰めているだけ．
+\@table@of@contents@@true
+  \if@twocolumn\@restonecoltrue\onecolumn
+  \else\@restonecolfalse\fi
+  \chapter*{\contentsname}%
+    \@mkboth{\contentsname}{\contentsname}\vspace{\l@chapter@@skip}%
+    \vspace{-2\baselineskip}\baselineskip.97\baselineskip
+  \@starttoc{toc}%
+  \vfill
+ \begin{center}
+ \includegraphics[width=\textwidth]{./Fig/Tree.pdf}\vskip0pt
+ \makebox[\textwidth][c]{\fontsize{10Q}{10Q}\textbf{ベルヌーイ家の家系図}}
+ \addcontentsline{toc}{chapter}{ベルヌーイ家の家系図}
+\end{center}
+  \vfill\noindent
+  \@装幀
+  \if@restonecol\twocolumn\fi\normalsize
+}
+
+
+\renewenvironment{theindex}
+  {\if@openright\cleardoublepage\else\clearpage\fi%
+   \if@twocolumn\@restonecolfalse\else\@restonecoltrue\fi
+   \columnseprule\z@ \columnsep 35\p@
+\begin{multicols}{2}[\section*{\indexname}]
+   \@mkboth{\indexname}{\indexname}%
+\addcontentsline{toc}{chapter}{\indexname}
+   \thispagestyle{empty}\parindent\z@
+   \parskip\z@ \@plus .3\p@\relax
+   \let\item\@idxitem\footnotesize\baselineskip.9\baselineskip
+   \noindent\hbox{*`ff'は「以降」を表す。}
+   }
+  {\if@restonecol
+\end{multicols}\else\clearpage\fi}
+
+
+
+\renewenvironment{thebibliography}[1]
+{\@the@bibliography@@true
+%\chapter*{\bibname}
+\section*{\bibname}
+\@mkboth{\bibname}{\bibname}
+\addcontentsline{toc}{chapter}{\bibname}
+\def\bibitem{\par\noindent\hangindent1zw}
+%   \list{}%
+%        {%
+%         \leftmargin1zw\labelsep-1zw\labelwidth=0pt
+%         \@openbib@code
+%         \let\p@enumiv\@empty
+         \footnotesize
+         \smalller[-1pt]%
+         \baselineskip0.92\baselineskip
+%         }%
+   \sloppy
+   \clubpenalty4000
+   \@clubpenalty\clubpenalty
+   \widowpenalty4000%
+   \sfcode`\.\@m
+\lefthyphenmin=2\righthyphenmin=2%% ハイフネーションの条件を少し緩和
+\frenchspacing% 全体のspaceを均等に
+}
+  {\def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+\par}
+\let\@openbib@code\@empty
+
+
+\def\TEMPChapter#1{
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \thispagestyle{empty}%
+  \global\@topnum\z@\@afterindenttrue
+{\parindent\z@
+\toplinebox{5}{\vskip5pt%
+   \KBchapternumfont
+   \ifnum \c@secnumdepth >\m@ne
+     \setlength\@tempdima{\linewidth}%
+    \edef\KB@tW{\strip@pt\textwidth}%
+    \dimen0=3mm%
+    \addtolength{\dimen0}{.25zw}%
+    \edef\KB@tH{\strip@pt\dimen0}%
+    \begin{picture}(0,0)
+       \put(0,-35){\fboxsep\z@\colorbox{headermark}{$\vcenter to\kb@Chapter@shadebox@width{\vfil\hsize3mm%
+      \hbox to3mm{}\vfil}$}}%
+     \put(\KB@tH,-35){{\KBchapterfont\parbox[t]{\kb@Chaptertextwidth}{\@inhibitglue#1\par}}}
+     \end{picture}%
+     \vfill
+     \fi}%
+   }}
