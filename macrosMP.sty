@@ -1,3 +1,4 @@
+%% 2017/01/11 \smalller追加．（現状のフォントより1pt小さいサイズにする）\smalller[-3pt]のようにすると任意．
 %% 2017/01/11 screenbox env, shadelinebox enb 前後のアキを増加
 %% 2017/01/10 beta3a emathmw追加
 %% 2016/12/28 beta3： \sectionでの改ページをコントロールする．\sectionBreakOn，\sectionBreakOffを追加]
@@ -14,6 +15,7 @@
 \RequirePackage{lmodern}
 \RequirePackage[deluxe,scale=1]{otf}[2013/11/17]%% added by miya
 \RequirePackage{emathmw}
+\let\Mw\mawarikomi\let\endMw\endmawarikomi
 
 
 %% localにするためだけの環境
@@ -384,7 +386,7 @@ Processing will STOP.^^J%
 %% 丸囲み環境
 \newmdenv[%
 %	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
-	skipabove=.65\baselineskip,skipbelow =.65\baselineskip
+	skipabove=.65\baselineskip,skipbelow =.2\baselineskip
 		outerlinewidth=.2pt,%% 外側罫線の太さ
 		innerlinewidth=0pt,%% 内側罫線の太さ
 %		innerlinecolor=red,%% 内側罫線の色
@@ -395,13 +397,15 @@ Processing will STOP.^^J%
 %%needspace=2.5\baselineskip
 ]{tkzscreen}
 
-\newenvironment{screenbox}{\begin{tkzscreen}}{\end{tkzscreen}}
+\newenvironment{screenbox}{\begin{tkzscreen}\abovedisplayskip0pt
+}{\end{tkzscreen}}
 
 %% 網囲み
 \newmdenv[%
 %	splitbottomskip=1zw,splittopskip=1zw,
 %	skipabove=.5\baselineskip,skipbelow =.5\baselineskip
-	skipabove=.65\baselineskip,skipbelow =.65\baselineskip
+%	skipabove=.65\baselineskip,skipbelow =.65\baselineskip
+	skipabove=.65\baselineskip,skipbelow =.2\baselineskip
 	innerrightmargin=1zw,innertopmargin=1zw,%
 	innerleftmargin=1zw,
 	innerlinewidth=0pt,outerlinewidth=0pt,
@@ -420,10 +424,17 @@ splitbottomskip=5pt,
 ]{tkzshadebox}
 
 
-\newenvironment{shadelinebox}{\begin{tkzshadebox}}{\end{tkzshadebox}}
+\newenvironment{shadelinebox}{\begin{tkzshadebox}\abovedisplayskip0pt
+}{\end{tkzshadebox}}
 
 
+\DeclareRobustCommand*\KBtocsectionfont{\reset@font\rmfamily\normalcolor
+\fontsize{13Q}{24H}\selectfont}
+\DeclareRobustCommand*\KBtocnumsectionfont{\reset@font\rmfamily\normalcolor\fontsize{13Q}{24H}\selectfont}
+\DeclareRobustCommand*\KBtocsubsectionfont{\fontsize{11.5Q}{21H}\selectfont}
+\DeclareRobustCommand*\KBtocnumsubsectionfont{\fontsize{11.5Q}{21H}\selectfont}
 \if@MP@Galois@
+	
 \renewcommand{\tableofcontents}{%  行間を詰めているだけ．
 \@table@of@contents@@true
   \if@twocolumn\@restonecoltrue\onecolumn
@@ -634,5 +645,85 @@ splitbottomskip=5pt,
 \setcounter{unbalance}{2}%
 \end{multicols}}\else\clearpage\fi}
 \fi
+%% 現状より1pt小さく
+\def\smalller{\@ifnextchar[{\@smalller}{\@smalller[-1pt]}}
+\def\@smalller[#1]{\kb@tempdima=\f@size\p@\advance\kb@tempdima#1\relax%
+\fontsize{\kb@tempdima}{.9\baselineskip}\selectfont
+}
+
+
+\def\Fscaledown#1{\kb@tempdima=\f@size\p@\advance\kb@tempdima#1%
+\fontsize{\kb@tempdima}{.9\baselineskip}\selectfont
+}
+
+%% \cdotと\bulletの中間の大きさとし定義
+\def\Cdot{\makebox[.85zw][c]{\raisebox{0pt}{\scalebox{.6}{$\bullet$}}}}
+\def\Cdot{\hbox{\raisebox{.3ex}{\makebox[.8zw][c]{\Fscaledown{-5pt}$\bullet$}}}
+}
+
+
+
+
+%% ティータイム
+\def\コラム{\@ifnextchar[{\teatime@}{\teatime@[\relax]}}
+\def\endコラム{%
+\leavevmode\hbox to\textwidth{%%
+\fontsize{12Q}{12Q}\selectfont\bfseries\@teatimeleader{.5zw}%
+}\endtrivlist\egroup}
+\definecolor{GrayXX}{gray}{0.8}
+\protected@edef\●{\hbox to1.25zw{\hfil\textcolor{GrayXX}{●}\hfil}}
+
+\def\@teatimeleader#1{\xleaders\hbox to#1{\hss ・\hss}\hfil}
+\def\Ch@@teatime@@title{\relax}
+\def\teatime@[#1]{\par\vspace{4mm}\noindent%%\markright{Tea Time}%
+\bgroup
+\def\teatimetitle{#1}
+%\ifx\Ch@@teatime@@title\teatimetitle%
+%    \addcontentsline{toc}{section}{\global\let\protect\tocendsq\relax Tea Time}%
+%\else
+%\def\teatimetitle{\@@teatimetitle\●#1}\addcontentsline{toc}{section}{\teatimetitle}
+%%\addcontentsline{toc}{section}{\global\let\protect\tocendsq\relax\Sfface{Tea Time}\hskip.1zw\●\teatimetitle}
+%\markright{ティータイム\●\teatimetitle}
+%\markright{Tea Time\●\teatimetitle}
+%%\markright{Tea Time}
+%\fi
+\fontsize{11.5Q}{19.5H}\selectfont\hspace*{-1zw}%
+\leavevmode\hbox to\textwidth{%%
+\includegraphics[clip]{parts/Teatime-logo.pdf}%
+\fontsize{12Q}{12Q}\selectfont\bfseries\@teatimeleader{.5zw}%
+\ifx\Ch@@teatime@@title\teatimetitle%
+\else
+\●%
+\fi%
+\teatimetitle%
+}\par\nobreak\vskip-.5\baselineskip\fboxsep.5zw\@beginparpenalty\@M\trivlist\item[]\small
+}
+
+\newcommand\PH[1]{\phantom{#1}}
+
+
+
+\newenvironment{Benumerate}
+  {\ifnum \@enumdepth >3\relax\@toodeep\else
+   \advance\@enumdepth\@ne
+   \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+   \list{\csname label\@enumctr\endcsname}{%
+         \parskip\z@\itemsep\z@ \parsep\z@
+         \labelsep.5zw
+         \ifnum \@enumdepth=\@ne \leftmargin1zw\relax
+           \else\leftmargin\leftskip\fi
+         \advance\leftmargin1zw
+	 \labelwidth\leftmargin \advance\labelwidth -\labelsep
+         \usecounter{\@enumctr}%
+         \def\makelabel##1{\hss\llap{##1}}}%
+   \fi}{\endlist}
+%% ベルヌーイだけの可能性あり
+\newenvironment{参考文献}{\par\noindent
+	\textbf{参考文献}\renewcommand{\labelenumi}{\theenumi.}
+	\let\enumerate\Benumerate\let\endenumerate\endBenumerate
+}{}
+
+
+
 
 

@@ -1,3 +1,5 @@
+%% 2017/01/12 \tabular環境用に\TCと\TRを追加
+%% 2017/01/11 enumerateのデフォルト変更LABEL=(1), \leftmargin=3zw \labelsep.5zw
 %% 2017/01/06 デフォルト決定，VDN, VUPオプション暫定決定
 %% 2016/12/28 デフォルト決定，VDN, VUPオプションを追加
 %% 2016/12/02 BugFix: \@endpart
@@ -1069,7 +1071,7 @@
 \@KB@tt@face@true
 \DeclareOption{nottscale}{\@KB@tt@face@false}
 
-\ExecuteOptions{DefaultLayout,tombow,twoside,onecolumn,final,openright}
+\ExecuteOptions{DefaultLayout,usehyperref,tombow,twoside,onecolumn,final,openright}
 \ProcessOptions\relax
 \if@kb@showlistfiles@\listfiles\fi
 
@@ -2770,7 +2772,7 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 \renewcommand{\theenumii}{\@alph\c@enumii}
 \renewcommand{\theenumiii}{\@roman\c@enumiii}
 \renewcommand{\theenumiv}{\@Alph\c@enumiv}
-\newcommand{\labelenumi}{\theenumi.}
+\newcommand{\labelenumi}{(\theenumi)}
 \newcommand{\labelenumii}{(\theenumii)}
 \newcommand{\labelenumiii}{\theenumiii.}
 \newcommand{\labelenumiv}{\theenumiv.}
@@ -2779,20 +2781,20 @@ Please do not specify the `uplatex' option, when you use pLaTeX^^J%
 \renewcommand{\p@enumiv}{\p@enumiii\theenumiii}
 
 % 
-%\renewenvironment{enumerate}
-%  {\ifnum \@enumdepth >3\relax\@toodeep\else
-%   \advance\@enumdepth\@ne
-%   \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
-%   \list{\csname label\@enumctr\endcsname}{%
-%         \parskip\z@\itemsep\z@ \parsep\z@
-%         \labelsep.5zw
-%         \ifnum \@enumdepth=\@ne \leftmargin1zw\relax
-%           \else\leftmargin\leftskip\fi
-%         \advance\leftmargin 1zw
-%	 \labelwidth\leftmargin \advance\labelwidth -\labelsep
-%         \usecounter{\@enumctr}%
-%         \def\makelabel##1{\hss\llap{##1}}}%
-%   \fi}{\endlist}
+\renewenvironment{enumerate}
+  {\ifnum \@enumdepth >3\relax\@toodeep\else
+   \advance\@enumdepth\@ne
+   \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+   \list{\csname label\@enumctr\endcsname}{%
+         \parskip\z@\itemsep\z@ \parsep\z@
+         \labelsep.5zw
+         \ifnum \@enumdepth=\@ne \leftmargin2zw\relax
+           \else\leftmargin\leftskip\fi
+         \advance\leftmargin 1zw
+	 \labelwidth\leftmargin \advance\labelwidth -\labelsep
+         \usecounter{\@enumctr}%
+         \def\makelabel##1{\hss\llap{##1}}}%
+   \fi}{\endlist}
 %
 \let\senumerate\enumerate
 \let\endsenumerate\endenumerate
@@ -2847,6 +2849,10 @@ kbenulbl:%
          \protected@write\@auxout{}{%
          \protect\enucntID{##1}{\theenume@cnt@id}}\hss\llap{##1}}}%
 \fi}{\advance\c@enume@cnt@id-\@ne\endlist}
+
+\let\enumerate\senumerate
+\let\endenumerate\endsenumerate
+
 
 \newcommand{\labelitemi}{\textbullet}
 \newcommand{\labelitemii}{{\normalfont\bfs\textendash}}
@@ -3983,6 +3989,20 @@ kbenulbl:%
 
 % \displaystyle の省略形
 \let\dis\displaystyle
+
+
+% tabularでセル幅固定
+\newcommand\TC{%
+  \rightskip\@flushglue\leftskip\@flushglue
+  \parindent\z@\parfillskip\z@skip}
+\newcommand\TR{%
+  \rightskip\z@skip\leftskip\@flushglue
+  \parindent\z@\parfillskip\z@skip}
+
+% use:
+%%{|p{3cm}|>{\TC}p{3cm}|>{\TR}p{3cm}|} \hline
+
+
 
 %\RequirePackage{etoolbox}
 %\AfterPreamble{

@@ -1,4 +1,7 @@
-\documentclass[gtsf,useotf,dvipdfmx,]{mathplus}
+%% utf8文章
+%% use: uplatex
+\documentclass[gtsf,useotf,dvipdfmx,uplatex]{mathplus}
+%%%\documentclass[gtsf,useotf,dvipdfmx,VDN]{mathplus}
 
 \usepackage{graphicx,xcolor}
 \usepackage{amsmath,amssymb}
@@ -6,19 +9,26 @@
 \usepackage{makeidx,multicol}
 \usepackage{okumacro}
 \usepackage{comment}
-%
+\usepackage{bm}
 \sectionBreakOn  % \sectionごとの改ページあり
 % \sectionBreakOff % \sectionごとの改ページなし
+\usepackage{indexhead}
+\usepackage{float}
+\urlstyle{rm}%% URLstyle = Romanfase.
+\makeindex
 
 %% 装幀者
 \装幀{装幀者名}
 
 %% fontmap.styの標準では章タイトルに小塚ゴシックB，節見出しに小塚ゴシックMが使われるようになる．
-%% optionに[general]を指定することでipaexgを使用する設定になる．これはどの環境でも処理可能．
-%% generalにMSを追加すると，Officeフォントが代替に使われる．Windowsユーザ向けの設定．
-%\usepackage{fontmap}%% 章タイトルの書体に小塚ゴシックB，節見出しに小塚ゴシックM，引用箇所にグレコM
-\usepackage[general]{fontmap}%% 見出し，引用箇所代替書体にipexg
-%\usepackage[general,MS]{fontmap}%% 章タイトルの代替書体にOfficeのHG創英角ゴシック，節見出しにHGゴシックE，引用箇所にHG教科書体
+%% optionに[temporaryfont]を指定することでipaexgを使用する設定になる．これはどの環境でも処理可能．
+%% temporaryfontにMSを追加すると，Officeフォントが代替に使われる．Windowsユーザ向けの設定．
+%%\usepackage{fontmap}%% 章タイトルの書体に小塚ゴシックB，節見出しに小塚ゴシックM，引用箇所にグレコM
+%\usepackage[temporaryfont]{fontmap}%% 見出し，引用箇所代替書体にipexg
+%\usepackage[temporaryfont,MS]{fontmap}%% 章タイトルの代替書体にOfficeのHG創英角ゴシック，節見出しにHGゴシックE，引用箇所にHG教科書体
+
+%\usepackage{fontmap} % for KEIBUNDOU setteing
+\usepackage[temporaryfont,MS]{fontmap} % for TOKYO TOSHO setteing
 
 \includeonly{
 hilbert_homonki,

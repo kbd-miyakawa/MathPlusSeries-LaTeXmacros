@@ -2,6 +2,11 @@
 
 *変更履歴*
 
+* 2017/01/11　目次の節を13Q，項を11.5Qへ変更（ベルヌーイにてmathplus.cls）ベルヌーイではページ調整のため，目次見出し直下を詰めている．
+* mawarikomi環境のショートカット \let\Mw\mawarikomi\let\endMw\endmawarikomi(macrosMP.sty)
+* %% 2017/01/11 \smalller追加．（現状のフォントより1pt小さいサイズにする）\smalller[-3pt]のようにすると任意．(macrosMP.sty)
+* 2017/01/12 \tabular環境用に\TCと\TRを追加(mathplus.cls)
+* 2017/01/11 enumerateのデフォルト変更LABEL=(1), \leftmargin=3zw \labelsep.5zw(mathplus.cls)
 * 2017/01/11 screenbox env, shadelinebox enb 前後のアキを増加
 * 2017/01/10 回り込み（mawarikomi環境）追加 (emathMw.sty)
 * 2017/01/06 VDN, VUPを設定
