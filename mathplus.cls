@@ -1071,7 +1071,7 @@
 \@KB@tt@face@true
 \DeclareOption{nottscale}{\@KB@tt@face@false}
 
-\ExecuteOptions{DefaultLayout,usehyperref,tombow,twoside,onecolumn,final,openright}
+\ExecuteOptions{DefaultLayout,tombow,twoside,onecolumn,final,openright}
 \ProcessOptions\relax
 \if@kb@showlistfiles@\listfiles\fi
 

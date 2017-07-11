@@ -433,20 +433,8 @@ splitbottomskip=5pt,
 \DeclareRobustCommand*\KBtocnumsectionfont{\reset@font\rmfamily\normalcolor\fontsize{13Q}{24H}\selectfont}
 \DeclareRobustCommand*\KBtocsubsectionfont{\fontsize{11.5Q}{21H}\selectfont}
 \DeclareRobustCommand*\KBtocnumsubsectionfont{\fontsize{11.5Q}{21H}\selectfont}
-\if@MP@Galois@
 	
-\renewcommand{\tableofcontents}{%  行間を詰めているだけ．
-\@table@of@contents@@true
-  \if@twocolumn\@restonecoltrue\onecolumn
-  \else\@restonecolfalse\fi
-  \chapter*{\contentsname}%
-    \@mkboth{\contentsname}{\contentsname}\vspace{\l@chapter@@skip}%
-    \vspace{-2\baselineskip}\baselineskip.9\baselineskip
-  \@starttoc{toc}%
-  \vfill\noindent
-  \@装幀
-  \if@restonecol\twocolumn\fi\normalsize
-}
+\if@MP@Galois@
 %%%%%%%%%
 %% 「ガロアとガロア理論」でのスタイル
 \renewcommand{\thesection}{\arabic{section}}
@@ -726,4 +714,4 @@ splitbottomskip=5pt,
 
 
 
-
+\def\ENum{英数字}
